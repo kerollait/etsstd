@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest android:hardwareAccelerated="true" android:versionCode="1" android:versionName="0.0.1" package="com.etoos.study" tools:ignore="GradleOverrides" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" android:xlargeScreens="true" />
+    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="27" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application android:hardwareAccelerated="true" android:finishOnTaskLaunch="true" android:icon="@mipmap/icon" android:label="@string/app_name" android:name="com.etoos.study.EtoosApplication" android:supportsRtl="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize" android:hardwareAccelerated="true" android:label="@string/activity_name" android:launchMode="singleTop" android:name="MainActivity" android:screenOrientation="unspecified" android:windowSoftInputMode="adjustResize">
+            <intent-filter android:label="@string/launcher_name">
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <provider android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true" android:name="org.apache.cordova.camera.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/camera_provider_paths" />
+        </provider>
+        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize" android:name="cl.kunder.webview.WebViewActivity" android:launchMode="singleTop" android:screenOrientation="unspecified" android:windowSoftInputMode="adjustResize" />
+        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize" android:name="LoginActivity" android:launchMode="singleTop" android:screenOrientation="unspecified" android:windowSoftInputMode="stateHidden" />
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" android:launchMode="singleTop" android:name=".player.PlayerActivity" android:screenOrientation="sensor" android:theme="@style/PlayerTheme">
+            <intent-filter>
+                <action android:name="com.google.android.exoplayer.demo.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="content" />
+                <data android:scheme="asset" />
+                <data android:scheme="file" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.exoplayer.demo.action.VIEW_LIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <service android:exported="false" android:name=".player.DemoDownloadService">
+            <intent-filter>
+                <action android:name="com.google.android.exoplayer.downloadService.action.INIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:name="com.google.android.exoplayer2.scheduler.PlatformScheduler$PlatformSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE" />
+    </application>
+</manifest>

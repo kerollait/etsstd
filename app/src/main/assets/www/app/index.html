@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+        <link rel="stylesheet" type="text/css" href="file:///android_asset/www/common/css/metoos_2017.css">
+        <script type="text/javascript" src="file:///android_asset/www/common/js/jquery/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_util.js"></script>
+
+        <script type="text/javascript" src="file:///android_asset/www/app/js/common/head.js"></script>
+        <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_ui.js"></script>
+
+        <title>이투스 메인</title>
+    </head>
+    <body>
+    <div id="etoosHtmlBody">
+
+        <div id="intro_go" class="intro_go alertpop">
+            <div class="atranim">
+                <p>이투스의 시작페이지로 설정할<br />학년을 선택해 주세요. </p>
+                <ul>
+                    <li><input type="radio" id="etgrd_go3" name="set_etgrd"  Checked value="go3"><label for="etgrd_go3">고3·N수</label></li>
+                    <li><input type="radio" id="etgrd_go2" name="set_etgrd"  value="go2"><label for="etgrd_go2">고2</label></li>
+                    <li><input type="radio" id="etgrd_go1" name="set_etgrd"  value="go1"><label for="etgrd_go1">고1</label></li>
+                </ul>
+                <!--<p class="tal fw300 fz13">학년을 선택해 주세요.</p>-->
+                <a href="javascript:;" onclick="fnGrdChange();" class="intro_popbtn f_r"><span>확인</span></a>
+            </div>
+            <span class="alertbg"></span>
+        </div>
+
+
+        <div id="etoosWrap">
+
+            <!--//////////////////// 메인 컨텐츠 시작 ////////////////////////////// -->
+            <div id="etoosContent" class="maincont">
+
+                <div id="appmainvisual" class="comswiper " pevNo="1" centsild="true" swloop="true" pyype="fraction" sbtw="0" atplay="4000">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/lecture/promotion/2018/06/mh_pass_go3/?etgrd=go3&stype=0001','');"><span class='bandayno'>D-5</span><img src="http://img.etoos.com/lecture/Promotion/2018/04/unlimited6_g3/0628/660x290_g31.gif	" width="100%" alt="2019 무한패스 시즌7_이과"/></a></div>
+
+                            <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/lecture/promotion/2018/06/mh_pass_go3/?etgrd=go3&stype=0002','');"><span class='bandayno'>D-5</span><img src="http://img.etoos.com/lecture/Promotion/2018/04/unlimited6_g3/0628/660x290_g32.gif	" width="100%" alt="2019 무한패스 시즌7_문과"/></a></div>
+
+                            <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/lecture/promotion/2018/06/one_pass_go3/?etgrd=go3','');"><img src="http://img.etoos.com/lecture/Promotion/2018/05/onepass/g3/0628/660x290_3.jpg	" width="100%" alt="선생님 ONE PASS"/></a></div>
+
+                            <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/lecture/promotion/2018/05/N_pack/','');"><img src="http://img.etoos.com/lecture/Promotion/2018/05/npackage/660x290.gif	" width="100%" alt="N수생 전용관"/></a></div>
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <style>
+                    #appmainevent2 .swiper-pagination .swiper-pagination-current{color:#222222;font-weight:700;}
+                </style>
+
+                <div id="appmainevent2" class="comswiper appmainev " pevNo="1" centsild="true" swloop="true" pyype="fraction" sbtw="0" atplay="4000" style="padding:6px 13px 6px;">
+                    <div>
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/ecommunity/event/2018/05/etoosapp_evt/','');"><img src="http://img.etoos.com/lecture/Promotion/2018/06/app_11/18_660x160.png	" width="100%" alt="수강앱 신규 런칭 홍보" /></a></div>
+
+                                <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/ecommunity/daily_voca/','');"><img src="http://img.etoos.com/lecture/promotion/2017/11/voca/660160.png	" width="100%" alt="데일리 보카20 " /></a></div>
+
+                                <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/lecture/promotion/2018/06/summer_g3/','');"><img src="http://img.etoos.com/lecture/Promotion/2018/06/summer_22/660160.png	" width="100%" alt="여름방학용 커리큘럼 홍보" /></a></div>
+
+                                <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/ecommunity/event/2018/03/scholarship_award/','');"><img src="http://img.etoos.com/lecture/Promotion/2018/03/scholarship/180620/660x160.png	" width="100%" alt="2019 대입 이투스 장학생 모집 공고" /></a></div>
+
+                                <div class="swiper-slide"><a href="javascript:goPageApp('http://qr2.etoos.gscdn.com/hd/qr/000/18/180607/260691_ehd.mp4','');"><img src="http://img.etoos.com/home/banner/180605/660x160.png	" width="100%" alt="고3 6월 홍보영상" /></a></div>
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 메인 배너 -->
+
+                <div class="mt6 bgw"><a href="javascript:;" onclick = "alert('킹갓제네럴 이투스플래너 커밍순 ~');"><img src="http://img.etoos.com/lecture/promotion/2018/06/planner_main/m_mainbn.gif" class="wid100" alt=""/></a></div>
+
+                <div class="mainbox">
+
+                    <h2 class="tac" style="margin-left:-13px;"><a href="http://m.etoos.com/teacher/tcc/">우리 선생님이 알차게 준비한 TCC</a></h2>
+
+                    <!-- TCC -->
+
+                    <div id="tccswiper" class="comswiper" pevNo="2.3" centsild="false" swloop="false" sbtw="5" style="opacity: 0">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <a href="javascript:fnTccView('app/teacher/tcc/view.html?mode=teacher&teacher_id=200245&board_id=2312&board_arti_id=24031928');">
+                                        <span class="tccsicon">특별영상</span>
+                                        <img src="http://img.etoos.com/board/2312/24031928.jpg" width="100%" height="50" alt="" />
+                                        <span class="list_ti linetx2">교재 선택도 전략이다!<BR>너에게 딱 맞는 교재 알랴줌 :) </span>
+                                        <span class="list_nameb">
+								영어
+
+								&nbsp;강원우
+							</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="javascript:fnTccView('http://m.etoos.com/teacher/tcc/tcc_view.asp?mode=teacher&teacher_id=200248&board_id=1999&board_arti_id=24014231');">
+                                        <span class="tccsicon">학습전략</span>
+                                        <img src="http://img.etoos.com/board/1999/24014231.jpg" width="100%" height="50" alt="" />
+                                        <span class="list_ti linetx2">★ 반수생 성공 비법! ★</span>
+                                        <span class="list_nameb">
+								국어
+
+								&nbsp;신영균
+							</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/tcc/tcc_view.asp?mode=teacher&teacher_id=200209&board_id=1999&board_arti_id=24012029">
+                                        <span class="tccsicon">학습전략</span>
+                                        <img src="http://img.etoos.com/board/1999/24012029.jpg" width="100%" height="50" alt="" />
+                                        <span class="list_ti linetx2">벌써 6평 분석 끝내려고?</span>
+                                        <span class="list_nameb">
+								국어
+
+								&nbsp;김민정
+							</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/tcc/tcc_view.asp?mode=teacher&teacher_id=200238&board_id=1999&board_arti_id=24012019">
+                                        <span class="tccsicon">학습전략</span>
+                                        <img src="http://img.etoos.com/board/1999/24012019.jpg" width="100%" height="50" alt="" />
+                                        <span class="list_ti linetx2">6평 때 ★비연계 문학★에 당했다고?</span>
+                                        <span class="list_nameb">
+								국어
+
+								&nbsp;방동진
+							</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/tcc/tcc_view.asp?mode=teacher&teacher_id=200368&board_id=1999&board_arti_id=24011887">
+                                        <span class="tccsicon">학습전략</span>
+                                        <img src="http://img.etoos.com/board/1999/24011887.jpg" width="100%" height="50" alt="" />
+                                        <span class="list_ti linetx2">30번이 사라졌다!</span>
+                                        <span class="list_nameb">
+								수학
+
+								&nbsp;정현경
+									<span class="new">N</span>
+
+							</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/tcc/tcc_view.asp?mode=teacher&teacher_id=200166&board_id=2312&board_arti_id=24003314">
+                                        <span class="tccsicon">특별영상</span>
+                                        <img src="http://img.etoos.com/board/2312/24003314.jpg" width="100%" height="50" alt="" />
+                                        <span class="list_ti linetx2">[6월 모평]생명과학Ⅰ12번,15번 오류 없음에 대하여</span>
+                                        <span class="list_nameb">
+								과학
+
+								&nbsp;백호
+							</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/tcc/tcc_view.asp?mode=teacher&teacher_id=200213&board_id=2312&board_arti_id=24002566">
+                                        <span class="tccsicon">특별영상</span>
+                                        <img src="http://img.etoos.com/board/2312/24002566.jpg" width="100%" height="50" alt="" />
+                                        <span class="list_ti linetx2">6월 모평 정재민선생님의 평가는?</span>
+                                        <span class="list_nameb">
+								과학
+
+								&nbsp;정재민
+							</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/tcc/tcc_view.asp?mode=teacher&teacher_id=200340&board_id=1999&board_arti_id=23980220">
+                                        <span class="tccsicon">학습전략</span>
+                                        <img src="http://img.etoos.com/board/1999/23980220.jpg" width="100%" height="50" alt="" />
+                                        <span class="list_ti linetx2">[6평 총평] 한국사, 잠깐의 힐링 타임이었다!</span>
+                                        <span class="list_nameb">
+								한국사
+
+								&nbsp;최태성
+							</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/tcc/tcc_view.asp?mode=teacher&teacher_id=200273&board_id=2312&board_arti_id=23980218">
+                                        <span class="tccsicon">특별영상</span>
+                                        <img src="http://img.etoos.com/board/2312/23980218.jpg" width="100%" height="50" alt="" />
+                                        <span class="list_ti linetx2">비교불가!! 6월 평가원 적중은 이장규</span>
+                                        <span class="list_nameb">
+								수학
+
+								&nbsp;이장규
+							</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/tcc/tcc_view.asp?mode=teacher&teacher_id=200333&board_id=1999&board_arti_id=23979746">
+                                        <span class="tccsicon">학습전략</span>
+                                        <img src="http://img.etoos.com/board/1999/23979746.jpg" width="100%" height="50" alt="" />
+                                        <span class="list_ti linetx2">영어, 총평은 필요없다!</span>
+                                        <span class="list_nameb">
+								영어
+
+								&nbsp;구현아
+							</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TCC -->
+                </div>
+
+
+
+                <!-- 입시 학습정보 + SKY 의치정보 -->
+
+                <div class="mainbox">
+                    <h2 class="tac" style="margin-left:-13px;"><a href="/report/">고3/N수&nbsp;필독!&nbsp;입시 이슈 분석</a></h2>
+                    <div class="mainrbox">
+                        <ul class="mainsbox clear">
+
+                            <li>
+                                <a href="http://m.etoos.com/report/2018/univ_issue/info_view.asp?boardArticle_id=24042071">
+                                    <div class="dtableb">
+                                        <div>
+                                            <span class="sti">정시</span>
+                                            <b><font color=#0c818b>6월 모의평가</font></b><br>심층분석
+                                        </div>
+                                    </div>
+                                    <p class="list_ti tac db lh12 fw400"><span class="colr_re db">[전문가 칼럼]</span>이투스 교육평가연구소<br />김병진&nbsp;소장
+                                        <span class="new">N</span>
+
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="http://m.etoos.com/report/2018/univ_issue/info_view.asp?boardArticle_id=24030726">
+                                    <div class="dtableb">
+                                        <div>
+                                            <span class="sti">수시</span>
+                                            <b><font color=#0c818b>논술전형,</font></b><br>모의논술로 대비하자!
+                                        </div>
+                                    </div>
+                                    <p class="list_ti tac db lh12 fw400"><span class="colr_re db">[전문가 칼럼]</span>이투스<br />교육평가연구소&nbsp;
+                                        <span class="new">N</span>
+
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- 입시 학습정보 + SKY 의치정보 -->
+
+
+
+                <!-- 모평/학평 풀 서비스 -->
+
+                <div class="mainbox pl0 pr0">
+                    <h2 class="tac" style="margin-left:-13px;"><a href="http://m.etoos.com/exam/quiz/exam_service.asp">이투스만의 차별화된 수능/모평 풀 서비스</a></h2>
+                    <style>
+                        .app_ban{display:block;position:relative;text-align:center;}
+                        .app_ban:before{content:"";position:absolute;left:0;top:0;height:100%;width:50%;background:#8a8d90;}
+                        .app_ban:after{content:"";position:absolute;right:0;top:0;height:100%;width:50%;background:#ffec04;}
+                        .app_ban img{max-width:320px;width:100%;position:relative;z-index:3;}
+                    </style>
+                    <div class="app_ban"><img src="http://img.etoos.com/M/metoos2017/main/app_ban.png" alt="" width="320px" usemap="#app_ban" border="0" />
+                        <map name="app_ban" id="app_ban">
+                            <area shape="poly" coords="227,96,183,1,1,2,3,98" href="http://m.etoos.com/exam/quiz/exam_service.asp" alt="빠른 채점 결과 분석까지" />
+                            <area shape="poly" coords="230,99,320,98,318,-6,184,-5" href="http://m.etoos.com/report/ipsi_info/counseling/" alt="1:1 상담신청하기" />
+                        </map>
+                    </div>
+                </div>
+                <!-- 모평/학평 풀 서비스 -->
+
+
+                <div class="mainbox pb1">
+
+                    <h2 class="tac" style="margin-left:-13px;"><a href="/teacher/onecut/">핵심 영상으로 보는 한컷강의</a></h2>
+
+                </div>
+                <!-- 한컷강의 -->
+
+
+                <div id="onecut_swiper_menu" class="comswiper not-this comtabsw">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><a href="javascript:;" data-area-cd="0001"><span>국어</span></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" data-area-cd="0003"><span>수학</span></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" data-area-cd="0002"><span>영어</span></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" data-area-cd="0004"><span>사회</span></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" data-area-cd="0005"><span>과학</span></a></div>
+                            <div class="swiper-slide"><a href="javascript:;" data-area-cd="0016"><span>한국사</span></a></div>
+
+                            <div class="swiper-slide"><a href="javascript:;" data-area-cd="0007"><span>대학별</span></a></div>
+
+
+                            <div class="swiper-slide"><a href="javascript:;" data-area-cd="0006"><span>제2외/한</span></a></div>
+                        </div>
+                    </div>
+                    <a href="javascript:;" class="more"><span>더보기</span></a>
+                </div>
+                <div class="mainbox pt1 mt0">
+                    <div id="onecut" class="comswiper not-this">
+
+                        <div id="onecut_swiper_content_0001" class="swiper-container" style="display:none;">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200319&board_id=3378&board_arti_id=21801552">
+                                        <div class="tx"><span>비문학을 완성하고 싶다면잠깐만 클릭하세요</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21801552.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200319/photo04.gif" alt="" />
+							<span class="list_nameb">국어&nbsp;최미영</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200209&board_id=3378&board_arti_id=21801203">
+                                        <div class="tx"><span>음운 변동의 모든 것</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21801203.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200209/photo04.gif" alt="" />
+							<span class="list_nameb">국어&nbsp;김민정</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200248&board_id=3378&board_arti_id=21801353">
+                                        <div class="tx"><span>발목 잡는 과학 지문 독해이젠 놔버리자</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21801353.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200248/photo04.gif" alt="" />
+							<span class="list_nameb">국어&nbsp;신영균</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200238&board_id=3378&board_arti_id=22375101">
+                                        <div class="tx"><span>어근과 어간, 이젠 털어낼 때</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201707131544_254724.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200238/photo04.gif" alt="" />
+							<span class="list_nameb">국어&nbsp;방동진</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200281&board_id=3378&board_arti_id=21801240">
+                                        <div class="tx"><span>평가원이 원하는 독해전략</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21801240.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200281/photo04.gif" alt="" />
+							<span class="list_nameb">국어&nbsp;강지연</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200351&board_id=3378&board_arti_id=21801248">
+                                        <div class="tx"><span>고전시가 어려워?</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21801248.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200351/photo04.gif" alt="" />
+							<span class="list_nameb">국어&nbsp;함재홍</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200320&board_id=3378&board_arti_id=21801539">
+                                        <div class="tx"><span>피동? 사동? 모두 알아보자!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21801539.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200320/photo04.gif" alt="" />
+							<span class="list_nameb">국어&nbsp;오찬세</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200325&board_id=3378&board_arti_id=21801612">
+                                        <div class="tx"><span>내 문학 실력에도봄은 오겠지</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21801612.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200325/photo04.gif" alt="" />
+							<span class="list_nameb">국어&nbsp;박한신</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200345&board_id=3378&board_arti_id=21828478">
+                                        <div class="tx"><span>일관된 독해도구문학에서도 적용된다</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21828478.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200345/photo04.gif" alt="" />
+							<span class="list_nameb">국어&nbsp;그믐달</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200179&board_id=3378&board_arti_id=21801585">
+                                        <div class="tx"><span>접미사? 전성어미? 모르면 클릭!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21801585.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200179/photo04.gif" alt="" />
+							<span class="list_nameb">국어&nbsp;최원용</span>
+						</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="onecut_swiper_content_0003" class="swiper-container" style="display:none;">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200303&board_id=3378&board_arti_id=23785604">
+                                        <div class="tx"><span>그림자(정사영)문제는 직각삼각형 그려!!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201805041838_260154.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200303/photo04.gif" alt="" />
+							<span class="list_nameb">수학&nbsp;신승범</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200368&board_id=3378&board_arti_id=23201741">
+                                        <div class="tx"><span>정현경은 왜 항상LINK UP을 찾는가? </span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201712142319_257360.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200368/photo04.gif" alt="" />
+							<span class="list_nameb">수학&nbsp;정현경</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200347&board_id=3378&board_arti_id=23545929">
+                                        <div class="tx"><span>이항계수&독립시행 확률의최댓값 구하기</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201803071904_258534.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200347/photo04.gif" alt="" />
+							<span class="list_nameb">수학&nbsp;한재후</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200300&board_id=3378&board_arti_id=23169239">
+                                        <div class="tx"><span>유리함수 그래프하 드 캐 리</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201711221834_256981.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200300/photo04.gif" alt="" />
+							<span class="list_nameb">수학&nbsp;이미지</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200296&board_id=3378&board_arti_id=21817616">
+                                        <div class="tx"><span>도함수 I LUV IT! 속도 I LUV IT!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21817616.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200296/photo04.gif" alt="" />
+							<span class="list_nameb">수학&nbsp;이주영</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200336&board_id=3378&board_arti_id=23207789">
+                                        <div class="tx"><span>넌 규칙성을얼마나 볼 수 있니?</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201712191446_257398.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200336/photo04.gif" alt="" />
+							<span class="list_nameb">수학&nbsp;이황전</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200337&board_id=3378&board_arti_id=21816617">
+                                        <div class="tx"><span>독립과 종속의 정의</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21816617.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200337/photo04.gif" alt="" />
+							<span class="list_nameb">수학&nbsp;전동진</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200334&board_id=3378&board_arti_id=21816813">
+                                        <div class="tx"><span>점과 곡선의 최단거리는wi-fi로 해결하자!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21816813.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200334/photo04.gif" alt="" />
+							<span class="list_nameb">수학&nbsp;이정환</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200273&board_id=3378&board_arti_id=21816407">
+                                        <div class="tx"><span>원순열과 직순열개념 바로알기</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21816407.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200273/photo04.gif" alt="" />
+							<span class="list_nameb">수학&nbsp;이장규</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200180&board_id=3378&board_arti_id=21802457">
+                                        <div class="tx"><span>벡터를 보는 두 가지 시선</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21802457.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200180/photo04.gif" alt="" />
+							<span class="list_nameb">수학&nbsp;정승제</span>
+						</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="onecut_swiper_content_0002" class="swiper-container" style="display:none;">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200331&board_id=3378&board_arti_id=21817732">
+                                        <div class="tx"><span>수능을 지배하는 MBC, KTF!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21817732.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200331/photo04.gif" alt="" />
+							<span class="list_nameb">영어&nbsp;그레이스</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200182&board_id=3378&board_arti_id=23477404">
+                                        <div class="tx"><span>목적격의 해석  이렇게 하자!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201802201108_257562.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200182/photo04.gif" alt="" />
+							<span class="list_nameb">영어&nbsp;조인한</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200236&board_id=3378&board_arti_id=23276449">
+                                        <div class="tx"><span>기초 중 기초문장의 5형식!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201801091029_257577.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200236/photo04.gif" alt="" />
+							<span class="list_nameb">영어&nbsp;심우철</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200333&board_id=3378&board_arti_id=23191902">
+                                        <div class="tx"><span>문제에 적용하는 실전원리!!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201712071447_257231.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200333/photo04.gif" alt="" />
+							<span class="list_nameb">영어&nbsp;구현아</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200349&board_id=3378&board_arti_id=23191959">
+                                        <div class="tx"><span>to부정사를 쉽게  이해시켜줄게!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201712071534_257163.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200349/photo04.gif" alt="" />
+							<span class="list_nameb">영어&nbsp;정주형</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=000094&board_id=3378&board_arti_id=21898926">
+                                        <div class="tx"><span>관계사절 분석 NO! 해석 OK!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21898926.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/000094/photo04.gif" alt="" />
+							<span class="list_nameb">영어&nbsp;김정호</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200233&board_id=3378&board_arti_id=23430941">
+                                        <div class="tx"><span>infection부터 terminal까지</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201802141157_258259.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200233/photo04.gif" alt="" />
+							<span class="list_nameb">영어&nbsp;이PD</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200245&board_id=3378&board_arti_id=23678209">
+                                        <div class="tx"><span>딸기잼 찍은 주먹만 기억하자!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201804091349_259614.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200245/photo04.gif" alt="" />
+							<span class="list_nameb">영어&nbsp;강원우</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=000159&board_id=3378&board_arti_id=23540930">
+                                        <div class="tx"><span>어휘 해석  생각을 확장하자!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201803061449_258892.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/000159/photo04.gif" alt="" />
+							<span class="list_nameb">영어&nbsp;한주희</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=000109&board_id=3378&board_arti_id=23420841">
+                                        <div class="tx"><span>명사란 무엇인가?  종류와 역할</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201802121032_257553.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/000109/photo04.gif" alt="" />
+							<span class="list_nameb">영어&nbsp;최원규</span>
+						</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="onecut_swiper_content_0004" class="swiper-container" style="display:none;">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200177&board_id=3378&board_arti_id=21817952">
+                                        <div class="tx"><span>친숙해지자! 쾨펜의 기후 구분</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21817952.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200177/photo04.gif" alt="" />
+							<span class="list_nameb">사회&nbsp;강용성</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200324&board_id=3378&board_arti_id=21822326">
+                                        <div class="tx"><span>기능론&갈등론  흐름으로 끝장보기! </span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21822326.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200324/photo04.gif" alt="" />
+							<span class="list_nameb">사회&nbsp;김성묵</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200293&board_id=3378&board_arti_id=21822390">
+                                        <div class="tx"><span>법률 상의 혼인관계란?</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21822390.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200293/photo04.gif" alt="" />
+							<span class="list_nameb">사회&nbsp;최적</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200310&board_id=3378&board_arti_id=23901676">
+                                        <div class="tx"><span>독서실을 가야할까?친구 생일파티를 가야할까?</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201805291624_260510.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200310/photo04.gif" alt="" />
+							<span class="list_nameb">사회&nbsp;박근수</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200288&board_id=3378&board_arti_id=23319044">
+                                        <div class="tx"><span>롱패딩 입는다면?너도 이 현상</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201801180934_257743.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200288/photo04.gif" alt="" />
+							<span class="list_nameb">사회&nbsp;김일영</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200130&board_id=3378&board_arti_id=24041350">
+                                        <div class="tx"><span>태홍쌤이 알고보니우리 아빠였다구?</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201806271449_260982.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200130/photo04.gif" alt="" />
+							<span class="list_nameb">사회&nbsp;강태홍</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200292&board_id=3378&board_arti_id=21817233">
+                                        <div class="tx"><span>3 STEP으로  표풀이 완전 정복!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21817233.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200292/photo04.gif" alt="" />
+							<span class="list_nameb">사회&nbsp;한준호</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200322&board_id=3378&board_arti_id=21803294">
+                                        <div class="tx"><span>수능장에서 활용하는 주간인구지수 TIP!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21803294.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200322/photo04.gif" alt="" />
+							<span class="list_nameb">사회&nbsp;이남승</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200225&board_id=3378&board_arti_id=21816969">
+                                        <div class="tx"><span>이제 내 눈에지배층의 변화가 보여</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21816969.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200225/photo04.gif" alt="" />
+							<span class="list_nameb">사회&nbsp;박통</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200131&board_id=3378&board_arti_id=21816349">
+                                        <div class="tx"><span>독재자를 무너뜨린 아테네의 민주정치</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21816349.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200131/photo04.gif" alt="" />
+							<span class="list_nameb">사회&nbsp;최영욱</span>
+						</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="onecut_swiper_content_0005" class="swiper-container" style="display:none;">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200353&board_id=3378&board_arti_id=21802968">
+                                        <div class="tx"><span>비는 왜 오는 걸까? 온난 전선 vs 한랭전선</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21802968.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200353/photo04.gif" alt="" />
+							<span class="list_nameb">과학&nbsp;김남준</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200174&board_id=3378&board_arti_id=23221264">
+                                        <div class="tx"><span>지구 공전</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201712271615_257475.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200174/photo04.gif" alt="" />
+							<span class="list_nameb">과학&nbsp;오지훈</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200213&board_id=3378&board_arti_id=21802947">
+                                        <div class="tx"><span>철수가 던진 돌에고양이가 맞을 확률(나쁜철수)</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21802947.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200213/photo04.gif" alt="" />
+							<span class="list_nameb">과학&nbsp;정재민</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200166&board_id=3378&board_arti_id=21818794">
+                                        <div class="tx"><span>근절계산</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21818794.png?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200166/photo04.gif" alt="" />
+							<span class="list_nameb">과학&nbsp;백호</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200269&board_id=3378&board_arti_id=21802926">
+                                        <div class="tx"><span>등속 원운동한컷으로 정리 끝!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21802926.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200269/photo04.gif" alt="" />
+							<span class="list_nameb">과학&nbsp;배기범</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200167&board_id=3378&board_arti_id=21818601">
+                                        <div class="tx"><span>그 유명한 구심력 등장! 등속 원운동</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21818601.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200167/photo04.gif" alt="" />
+							<span class="list_nameb">과학&nbsp;서진석</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200186&board_id=3378&board_arti_id=21818736">
+                                        <div class="tx"><span>기억해, 입체의 조건! 분자의 구조식과 모양 ..</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21818736.png?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200186/photo04.gif" alt="" />
+							<span class="list_nameb">과학&nbsp;백인덕</span>
+						</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="onecut_swiper_content_0016" class="swiper-container" style="display:none;">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200308&board_id=3378&board_arti_id=21817403">
+                                        <div class="tx"><span>신박한 암기법으로 여러 나라의 성장 몰아풀기</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21817403.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200308/photo04.gif" alt="" />
+							<span class="list_nameb">한국사&nbsp;은동진</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200184&board_id=3378&board_arti_id=23370651">
+                                        <div class="tx"><span>엄마의 원수 갚자  갑자 사화</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201801300939_257852 .JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200184/photo04.gif" alt="" />
+							<span class="list_nameb">한국사&nbsp;설민석</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200291&board_id=3378&board_arti_id=21822930">
+                                        <div class="tx"><span>아름다운 문장속 숨겨진 의도 -강화도 조약-</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21822930.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200291/photo04.gif" alt="" />
+							<span class="list_nameb">한국사&nbsp;배준환</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200340&board_id=3378&board_arti_id=21817336">
+                                        <div class="tx"><span>고려의 대외관계 아트판서 한 판 정리</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21817336.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200340/photo04.gif" alt="" />
+							<span class="list_nameb">한국사&nbsp;최태성</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200306&board_id=3378&board_arti_id=22134987">
+                                        <div class="tx"><span>'농경'하면 뭐가 생각나니? 한단어로 정리하..</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/22134987.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200306/photo04.gif" alt="" />
+							<span class="list_nameb">한국사&nbsp;황현필</span>
+						</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="onecut_swiper_content_0007" class="swiper-container" style="display:none;">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200342&board_id=3378&board_arti_id=22110345">
+                                        <div class="tx"><span>어멋 이런 오류는 피해야해! </span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/22110345.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200342/photo04.gif" alt="" />
+							<span class="list_nameb">대학별&nbsp;정재훈</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200282&board_id=3378&board_arti_id=23939191">
+                                        <div class="tx"><span>점이 지나간 자취는 곡선! 근데 도형이 움직..</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201806051946_260571.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200282/photo04.gif" alt="" />
+							<span class="list_nameb">대학별&nbsp;오승준 수리논술</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200285&board_id=3378&board_arti_id=21802089">
+                                        <div class="tx"><span>천재는 악필이다는 옛말!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21802089.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200285/photo04.gif" alt="" />
+							<span class="list_nameb">대학별&nbsp;이병대</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200343&board_id=3378&board_arti_id=22078856">
+                                        <div class="tx"><span>★최근 과학 논술 트렌드★</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/22078856.png?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200343/photo04.gif" alt="" />
+							<span class="list_nameb">대학별&nbsp;김세영</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200283&board_id=3378&board_arti_id=21945216">
+                                        <div class="tx"><span>[국어영역] 운문문학 표현법!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21945216.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200283/photo04.gif" alt="" />
+							<span class="list_nameb">대학별&nbsp;이완적성</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200311&board_id=3378&board_arti_id=22643351">
+                                        <div class="tx"><span>물리 논술은 이렇게 나온다!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201708291804_255511.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200311/photo04.gif" alt="" />
+							<span class="list_nameb">대학별&nbsp;이석</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200352&board_id=3378&board_arti_id=23666879">
+                                        <div class="tx"><span>비교대조기준 떠올리는  꾸르 팁 방출!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201804061718_259642.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200352/photo04.gif" alt="" />
+							<span class="list_nameb">대학별&nbsp;김명철[논술]</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200371&board_id=3378&board_arti_id=23547979">
+                                        <div class="tx"><span>눈이 오니까 커피 마시자 이게 무슨 소리야?</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201803081041_258882.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200371/photo04.gif" alt="" />
+							<span class="list_nameb">대학별&nbsp;최은식</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200318&board_id=3378&board_arti_id=21802015">
+                                        <div class="tx"><span>자소서 1번, 선배 BAD 사례!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21802015.jpg?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200318/photo04.gif" alt="" />
+							<span class="list_nameb">대학별&nbsp;김명철[학종]</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200341&board_id=3378&board_arti_id=23541218">
+                                        <div class="tx"><span>존.재.성 그것은 무엇인가?</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201803061600_258861.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200341/photo04.gif" alt="" />
+							<span class="list_nameb">대학별&nbsp;김의남</span>
+						</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="onecut_swiper_content_0006" class="swiper-container" style="display:none;">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200253&board_id=3378&board_arti_id=23191923">
+                                        <div class="tx"><span>시험 빈출 BEST3  최중요 단어 배우기</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201712071429_257174.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200253/photo04.gif" alt="" />
+							<span class="list_nameb">제2외/한&nbsp;하지숙</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200323&board_id=3378&board_arti_id=23192399">
+                                        <div class="tx"><span>정통 어원으로쉽게 한자 공부하기</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201712072227_257196.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200323/photo04.gif" alt="" />
+							<span class="list_nameb">제2외/한&nbsp;박한신</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200254&board_id=3378&board_arti_id=23192797">
+                                        <div class="tx"><span>귀요미 회화 만화로 배우는호칭과 인사</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/201712081032_257204.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200254/photo04.gif" alt="" />
+							<span class="list_nameb">제2외/한&nbsp;최고아라</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200252&board_id=3378&board_arti_id=21802637">
+                                        <div class="tx"><span>일본어 어렵지 않아요~</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21802637.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200252/photo04.gif" alt="" />
+							<span class="list_nameb">제2외/한&nbsp;조준호</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200250&board_id=3378&board_arti_id=21802629">
+                                        <div class="tx"><span>수능 프랑스어에 이거 나온다</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21802629.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200250/photo04.gif" alt="" />
+							<span class="list_nameb">제2외/한&nbsp;백희세</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200326&board_id=3378&board_arti_id=21824494">
+                                        <div class="tx"><span>깔끔하게 배워! 베트남어 어법</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21824494.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200326/photo04.gif" alt="" />
+							<span class="list_nameb">제2외/한&nbsp;백희세</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200255&board_id=3378&board_arti_id=21824735">
+                                        <div class="tx"><span>리노 쌤과 한시 완전정복!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21824735.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200255/photo04.gif" alt="" />
+							<span class="list_nameb">제2외/한&nbsp;박리노</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200251&board_id=3378&board_arti_id=21824639">
+                                        <div class="tx"><span>수능 중국어 핵필수 어휘</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21824639.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200251/photo04.gif" alt="" />
+							<span class="list_nameb">제2외/한&nbsp;이수경</span>
+						</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="http://m.etoos.com/teacher/onecut/onecut_view.asp?teacher_id=200256&board_id=3378&board_arti_id=21802655">
+                                        <div class="tx"><span>스페인어 알파벳 배워보자!</span></div>
+                                        <div class="img"><img src="http://img.etoos.com/board/3378/21802655.JPG?2018-06-28 오후 8:46:06" alt="" /></div>
+                                        <span class="nameimg">
+							<img src="http://img.etoos.com/teacher/teacher/200256/photo04.gif" alt="" />
+							<span class="list_nameb">제2외/한&nbsp;홍영아</span>
+						</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- 한컷강의 -->
+            </div>
+            <!--//////////////////// 메인 컨텐츠 종료 ////////////////////////////// -->
+
+        </div>
+
+        <!--// 퀵메뉴 시작 -->
+        <div class="quicknavi">
+            <div class="apprefresh"><a href="javascript:fnRefresh();"><span>새로고침</span></a></div>
+            <div class="apptopgobtn"><a href="javascript:fnScrollTop();"><span>상단으로</span></a></div>
+        </div>
+
+        <script type="text/javascript" src="file:///android_asset/www/app/js/common/quick_menu.js"></script>
+        <!--// 퀵메뉴 종료 -->
+
+    </div>
+
+    <script type="text/javascript" src="file:///android_asset/www/cordova.js"></script>
+
+    <!-- external library -->
+    <script type="text/javascript" src="file:///android_asset/www/common/js/jquery/jquery.iosslider.min.js"></script>
+    <script type="text/javascript" src="file:///android_asset/www/common/js/jquery/swiper3.4.2.jquery.min.js"></script>
+    <script type="text/javascript" src="file:///android_asset/www/common/js/lib/js.cookie.js"></script>
+    <script type="text/javascript" src="file:///android_asset/www/common/js/lib/nano-sql.min.js"></script>
+    <!-- external library -->
+
+    <!-- etoos library -->
+    <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_common.js?t=201806230123"></script>
+    <!-- etoos library -->
+
+    <script type="text/javascript" src="file:///android_asset/www/app/js/index.js"></script>
+
+    </body>
+</html>

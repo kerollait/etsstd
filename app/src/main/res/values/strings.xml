@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">이투스!</string>
+    <string name="launcher_name">@string/app_name</string>
+    <string name="activity_name">@string/launcher_name</string>
+
+    <string name="grade3_name">고3·N수</string>
+    <string name="grade2_name">고2</string>
+    <string name="grade1_name">고1</string>
+
+    <string name="login">로그인</string>
+    <string name="id">아이디</string>
+    <string name="password">비밀번호</string>
+    <string name="join_member">회원가입</string>
+</resources>

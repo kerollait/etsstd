@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/footer"
+    android:background="#f5f5f5"
+    android:layout_alignParentBottom="true">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/footer_border"
+        android:id="@+id/bottom_border_line"
+        android:background="#222222"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dip"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:id="@+id/bottom_menu"
+        android:layout_below="@id/bottom_border_line">
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:id="@+id/btn_footer_home"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home"
+                android:id="@+id/iv_footer_home"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:id="@+id/btn_footer_recent_playlist"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_m"
+                android:id="@+id/iv_footer_recent_playlist"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:id="@+id/btn_footer_download_list"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fl"
+                android:id="@+id/iv_footer_download_list"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:id="@+id/btn_footer_myroom"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_u"
+                android:id="@+id/iv_footer_myroom"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

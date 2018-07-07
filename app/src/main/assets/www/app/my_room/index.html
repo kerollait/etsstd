@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+    <link rel="stylesheet" type="text/css" href="file:///android_asset/www/common/css/metoos_2017.css">
+    <script type="text/javascript" src="file:///android_asset/www/common/js/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_util.js"></script>
+
+    <script type="text/javascript" src="file:///android_asset/www/app/js/common/head.js"></script>
+    <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_ui.js"></script>
+
+    <title>이투스 메인</title>
+</head>
+<body>
+<div id="etoosHtmlBody">
+
+
+    <div id="etoosWrap">
+
+        <!--//////////////////// 메인 컨텐츠 시작 ////////////////////////////// -->
+
+        <div id="afterEvent"></div>
+
+
+
+
+        <div class="mrmain">
+            <div class="formoj mt0 mytop">
+                <div class="tcell name" style="width:47%">
+                    <div class="mr_member">
+                        <p id="myroom_mem_grade_nm"></p>
+                        <div>서청훈님</div>
+                        <a href="http://m.etoos.com/member/join_info_new.asp"><span class="member_icon iconsize" iconsizew="16" iconsizeh="18" style="height:18px;"></span> 정보수정</a>
+                    </div>
+                    <div class="formoj mt30">
+                        <div class="tcell fz11 lh12">수강중인<br />강좌</div>
+                        <div class="tcell classno"><a href="http://m.etoos.com/my_room/lecture/lecture_watch.asp" id="myroom_study_cnt">0</a></div>
+                    </div>
+                    <div class="mymbtn mt10"><a href="http://m.etoos.com/my_room/lecture/study_end_list.asp">수강종료 강좌</a></div>
+                </div>
+                <div class="tcell list">
+                    <ul>
+                        <li><a href="http://m.etoos.com/my_room/slip_paper/slip_paper_list.asp">쪽지<span id="myroom_slippaper_cnt">0</span></a></li>
+                        <li><a href="http://m.etoos.com/my_room/qna/tea_qna_default.asp">선생님 질문/답변<span id="myroom_qna_cnt">0</span></a></li>
+
+                        <li><a href="http://m.etoos.com/my_room/order/ebank/coupon_list.asp">이투스 할인권<span id="myroom_coupon_cnt">0</span></a></li>
+
+                        <li><a href="http://m.etoos.com/my_room/scrap/scrap_list.asp">학습 스크랩<span id="myroom_scrap_cnt">0</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="myrmbody mr_main">
+
+            <a href="http://m.etoos.com/my_room/order/order_list.asp" class="delivery">
+                <p><strong>주문/배송조회 <span>(최근 3개월)</span></strong></p>
+                <ul class="clear">
+                    <li>입금대기<strong >0</strong></li>
+                    <li>결제완료<strong >0</strong></li>
+                    <li>발송준비<strong >0</strong></li>
+                    <li>발송완료<strong >0</strong></li>
+                </ul>
+            </a>
+
+
+            <div class="formoj mt6 mr_list1">
+
+                <div class="tcell vat"><a href="http://m.etoos.com/my_room/order/cart_list.asp" class="clear"><strong>장바구니</strong><i id="myroom_cart_cnt">0</i><span class="mricon1 iconsize" iconsizew="34" iconsizeh="28" style="height:28px;"></span></a></div>
+
+
+                <div class="tcell vat"><a href="http://m.etoos.com/my_room/order/ebank/point_list.asp" class="clear"><strong>e-통장</strong><span class="mricon2 iconsize" iconsizew="34" iconsizeh="28" style="height:28px;"></span></a></div>
+                <div class="tcell vat" style="width:40%;"><a href="http://m.etoos.com/my_room/lecture/study_lecture_book_select.asp" class="clear"><strong>수강중<br />강좌교재<br />구매</strong><span class="mricon3 iconsize" iconsizew="34" iconsizeh="28"></span></a></div>
+            </div>
+
+
+
+            <div class="formoj mt6 mr_list2"><!-- 카카오 선물하기 삭제 시 .mt6 추가 해야함 style 삭제 해야함 -->
+                <div class="tcell"><a href="http://m.etoos.com/my_room/qna/ct_qna_default.asp" class="clear"><strong>고객센터 1:1 상담 내역</strong> <span>0</span></a></div>
+                <div class="tcell" style="width:40%;"><a href="http://m.etoos.com/customer/2014/kakaotalk.asp" class="clear"><strong class="pt4">카톡상담</strong> <span class="talk_icon1 iconsize" iconsizew="30" iconsizeh="28" style="height:28px;">카카오톡</span></a></div>
+            </div>
+
+
+            <div class="formoj mr_list2 mt6" style="margin-top:0;">
+                <div class="tcell pl">
+                    <a href="http://m.etoos.com/past_exam/my_exam/" class="clear">
+                        <strong class="db ">MY 기출문제</strong>
+                        <ul class="list_type1 pt10 clear">
+                            <li>이투스 전국연합 모의고사</li>
+                            <li>이투스 문제은행 </li>
+                        </ul>
+                        <style>
+							.stepmy{position:absolute;right:23px;top:20px;}
+							.stepmy ul{position:relative;width:122px;}
+							.stepmy ul li{position:absolute;left:0;top:0;width: 51px;text-align: center;background-color: rgba(239, 239, 239, 0.5);border: 1px solid #e6e6e6;line-height: 1.2;padding: 10px 0;border-radius: 25px;color:#666666;font-size:10px;}
+							.stepmy ul li:nth-of-type(2){left:45px;}
+							.stepmy ul li:nth-of-type(3){left:88px;}
+						</style>
+                        <div class="stepmy">
+                            <ul>
+                                <li>배송<br />조회</li>
+                                <li>성적<br />조회</li>
+                                <li>학교/학원<br />성적 인증</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="mr_list3 mt6">
+
+                <div class="formoj mt0">
+                    <div class="tcell">
+                        내 학습기기<br />
+                        [MOBILE] sm-g920s
+                        <span>(18.07.06 등록)</span>
+
+                    </div>
+                    <div class="tcell" style="width:40%;">
+                        <a href="javascript:alert('현재 수강중인 강좌가 있습니다.\n\n수강종료 후 기기등록 초기화가 가능합니다.\n기기초기화 문의는 고객센터(1599-6405)로 연락주세요~');">기기등록<br />초기화</a>
+                        <a href="http://m.etoos.com/customer/device_init.asp">초기화<br />방법</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!--//////////////////// 메인 컨텐츠 종료 ////////////////////////////// -->
+
+    </div>
+
+    <!--// 퀵메뉴 시작 -->
+    <div class="quicknavi">
+        <div class="apprefresh"><a href="javascript:fnRefresh();"><span>새로고침</span></a></div>
+        <div class="apptopgobtn"><a href="javascript:fnScrollTop();"><span>상단으로</span></a></div>
+    </div>
+
+    <script type="text/javascript" src="file:///android_asset/www/app/js/common/quick_menu.js"></script>
+    <!--// 퀵메뉴 종료 -->
+
+</div>
+
+<script type="text/javascript" src="file:///android_asset/www/cordova.js"></script>
+
+<!-- external library -->
+
+<script type="text/javascript" src="file:///android_asset/www/common/js/lib/js.cookie.js"></script>
+<script type="text/javascript" src="file:///android_asset/www/common/js/lib/nano-sql.min.js"></script>
+<!-- external library -->
+
+<!-- etoos library -->
+<script type="text/javascript" src="file:///android_asset/www/common/js/etoos_common.js?t=201806230123"></script>
+<!-- etoos library -->
+
+<script type="text/javascript" src="file:///android_asset/www/app/js/my_room/index.js"></script>
+
+</body>
+</html>

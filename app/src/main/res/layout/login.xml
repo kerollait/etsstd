@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:layout_gravity="top"
+        android:layout_marginBottom="0dp"
+        android:padding="40dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_close"
+            android:id="@+id/btn_login_close"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_login_title"
+                android:textColor="#666666"
+                android:textSize="30sp"
+                android:fontFamily="@font/noto_sans_kr_black_"
+                android:text="@string/login"
+                />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:textColorHint="#cccccc">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/et_login_id"
+                    android:hint="@string/id"
+                    android:fontFamily="@font/noto_sans_kr_black_"
+                    android:inputType="textEmailSubject"
+                    android:textColor="#cccccc"
+                    android:backgroundTint="#cccccc"
+                    android:drawableStart="@drawable/ic_person"
+                    android:paddingLeft="10dp"
+                    android:textSize="20sp"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColorHint="#cccccc">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/et_login_pwd"
+                    android:paddingLeft="10dp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:textColor="#cccccc"
+                    android:fontFamily="@font/noto_sans_kr_black_"
+                    android:drawableStart="@drawable/ic_privacy"
+                    android:backgroundTint="#cccccc"
+                    android:textSize="20sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="40dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:id="@+id/btn_login_submit"
+                        android:text="@string/login"
+                        android:textSize="16sp"
+                        android:layout_marginEnd="5dp"
+                        android:fontFamily="@font/noto_sans_kr_black_"
+                        android:background="@color/color_button_default"
+                        android:textColor="#ffffff"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:id="@+id/btn_join_member"
+                        android:text="@string/join_member"
+                        android:textSize="16sp"
+                        android:layout_marginStart="5dp"
+                        android:textColor="#444444"
+                        android:fontFamily="@font/noto_sans_kr_black_"
+                        android:background="#e7e7e7"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+    <link rel="stylesheet" type="text/css" href="file:///android_asset/www/common/css/metoos_2017.css">
+    <script type="text/javascript" src="file:///android_asset/www/common/js/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_util.js"></script>
+
+    <script type="text/javascript" src="file:///android_asset/www/app/js/common/head.js"></script>
+    <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_ui.js"></script>
+
+    <title>이투스 메인</title>
+</head>
+<body>
+<div id="etoosHtmlBody" class="main_nav_open">
+    <!--// GNB 메뉴 시작 -->
+
+    <!--// 선생님 전체 목록 시작 -->
+
+    <div class="teacher_list">
+        <div class="alltch_box">
+            <h1>선생님 전체보기</h1>
+            <a href="javascript:;" onclick="allTeacher()"><span>선생님 전체보기 닫기</span></a>
+        </div>
+        <ul>
+
+            <li id="gnb_teacher_list_0001" name="gnb_teacher_list_0001" class="on">
+                <a href="javascript:;">국어</a>
+                <div>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200211&etgrd=go3">권규호 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200248&etgrd=go3">신영균 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200209&etgrd=go3">김민정 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200238&etgrd=go3">방동진 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200345&etgrd=go3">그믐달 </a></li>
+                        <!--<li><a href="http://m.etoos.com/teacher/main/?teacher_id=200297&etgrd=go3">윤재웅 </a></li>-->
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200320&etgrd=go3">오찬세 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200319&etgrd=go3">최미영 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200281&etgrd=go3">강지연 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200179&etgrd=go3">최원용 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200351&etgrd=go3">함재홍 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200325&etgrd=go3">박한신 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200235&etgrd=go3">권민호 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200350&etgrd=go3">김현옥 </a></li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li id="gnb_teacher_list_0003" name="gnb_teacher_list_0003" class="">
+                <a href="javascript:;">수학</a>
+                <div>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200180&etgrd=go3">정승제 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200273&etgrd=go3">이장규 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200296&etgrd=go3">이주영 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200337&etgrd=go3">전동진 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200334&etgrd=go3">이정환 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200336&etgrd=go3">이황전 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200300&etgrd=go3">이미지 <span class='new'>N</span></a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200368&etgrd=go3">정현경 <span class='new'>N</span></a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200348&etgrd=go3">차상현 <span class='new'>N</span></a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200347&etgrd=go3">한재후 <span class='new'>N</span></a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200303&etgrd=go3">신승범 </a></li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li id="gnb_teacher_list_0002" name="gnb_teacher_list_0002" class="">
+                <a href="javascript:;">영어</a>
+                <div>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200236&etgrd=go3">심우철 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200245&etgrd=go3">강원우 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=000159&etgrd=go3">한주희 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200333&etgrd=go3">구현아 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=000109&etgrd=go3">최원규 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200331&etgrd=go3">그레이스 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200182&etgrd=go3">조인한 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=000094&etgrd=go3">김정호 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200233&etgrd=go3">이PD </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200349&etgrd=go3">정주형 </a></li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li id="gnb_teacher_list_0004" name="gnb_teacher_list_0004" class="">
+                <a href="javascript:;">사회탐구</a>
+                <div>
+                    <p>일반사회/윤리</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200293&etgrd=go3">최적 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200292&etgrd=go3">한준호 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200324&etgrd=go3">김성묵 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200310&etgrd=go3">박근수 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200130&etgrd=go3">강태홍 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200288&etgrd=go3">김일영 </a></li>
+                    </ul>
+
+                    <p>지리</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200322&etgrd=go3">이남승 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200177&etgrd=go3">강용성 </a></li>
+                    </ul>
+
+                    <p>역사</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200225&etgrd=go3">박통 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200131&etgrd=go3">최영욱 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200308&etgrd=go3">은동진 </a></li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li id="gnb_teacher_list_0005" name="gnb_teacher_list_0005" class="">
+                <a href="javascript:;">과학탐구</a>
+                <div>
+                    <p>물리</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200269&etgrd=go3">배기범 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200213&etgrd=go3">정재민 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200167&etgrd=go3">서진석 </a></li>
+                    </ul>
+
+                    <p>화학</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200186&etgrd=go3">백인덕 </a></li>
+                        <!--<li><a href="http://m.etoos.com/teacher/main/?teacher_id=200024&etgrd=go3">박원청정 </a></li>-->
+                    </ul>
+
+                    <p>생명과학</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200166&etgrd=go3">백호 </a></li>
+                    </ul>
+
+                    <p>지구과학</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200174&etgrd=go3">오지훈 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200353&etgrd=go3">김남준 </a></li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li id="gnb_teacher_list_0016" name="gnb_teacher_list_0016" class="">
+                <a href="javascript:;">한국사</a>
+                <div>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200184&etgrd=go3">설민석 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200340&etgrd=go3">최태성 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200306&etgrd=go3">황현필 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200308&etgrd=go3">은동진 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200291&etgrd=go3">배준환 </a></li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li id="gnb_teacher_list_0007" name="gnb_teacher_list_0007" class="">
+                <a href="javascript:;">대학별고사</a>
+                <div>
+                    <p>인문논술</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200270&etgrd=go3">권대승 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200352&etgrd=go3">김명철[논술] </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200371&etgrd=go3">최은식 <span class='new'>N</span></a></li>
+                        <!--<li><a href="http://m.etoos.com/teacher/main/?teacher_id=200200&etgrd=go3">김기호논술 </a></li>-->
+                    </ul>
+
+                    <p>수리논술</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200282&etgrd=go3">오승준 수리논술 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200341&etgrd=go3">김의남 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200342&etgrd=go3">정재훈 </a></li>
+                        <!--<li><a href="http://m.etoos.com/teacher/main/?teacher_id=200240&etgrd=go3">파이널컷 </a></li>-->
+                    </ul>
+
+                    <p>과학논술</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200311&etgrd=go3">이석 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?TEACHER_ID=200343&etgrd=go3">김세영 </a></li>
+                        <!--<li><a href="http://m.etoos.com/teacher/main/?teacher_id=200240&etgrd=go3">파이널컷 </a></li>-->
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200166&etgrd=go3">백호 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?TEACHER_ID=200269&univ=yes&etgrd=go3">배기범 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?TEACHER_ID=200213&etgrd=go3">정재민 </a></li>
+                    </ul>
+
+                    <p>학생부종합</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200318&etgrd=go3">김명철[학종] </a></li>
+                        <!--<li><a href="http://m.etoos.com/teacher/main/?teacher_id=200240&etgrd=go3">파이널컷 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200200&etgrd=go3">김기호논술 </a></li>-->
+                    </ul>
+
+                    <p>전공적성</p>
+                    <ul><li><a href="http://m.etoos.com/teacher/main/?teacher_id=200283&etgrd=go3">이완적성 </a></li></ul>
+
+                    <p>쓰기지도</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200285&etgrd=go3">이병대 </a></li>
+                    </ul>
+
+
+                </div>
+            </li>
+
+
+            <li id="gnb_teacher_list_0006" name="gnb_teacher_list_0006" class="">
+                <a href="javascript:;">제2외국어/한문</a>
+                <div>
+                    <p>아랍어</p>
+                    <ul><li><a href="http://m.etoos.com/teacher/main/?teacher_id=200253&etgrd=go3">하지숙 </a></li></ul>
+                    <p>한문</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200323&etgrd=go3">박한신 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200255&etgrd=go3">박리노 </a></li>
+                    </ul>
+                    <p>베트남어</p>
+                    <ul>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200254&etgrd=go3">최고아라 </a></li>
+                        <li><a href="http://m.etoos.com/teacher/main/?teacher_id=200326&etgrd=go3">백희세 </a></li>
+                    </ul>
+                    <p>일본어</p>
+                    <ul><li><a href="http://m.etoos.com/teacher/main/?teacher_id=200252&etgrd=go3">조준호 </a></li></ul>
+                    <p>중국어</p>
+                    <ul><li><a href="http://m.etoos.com/teacher/main/?teacher_id=200251&etgrd=go3">이수경 </a></li></ul>
+                    <p>프랑스어</p>
+                    <ul><li><a href="http://m.etoos.com/teacher/main/?teacher_id=200250&etgrd=go3">백희세 </a></li></ul>
+                    <p>스페인어</p>
+                    <ul><li><a href="http://m.etoos.com/teacher/main/?teacher_id=200256&etgrd=go3">홍영아 </a></li></ul>
+                </div>
+            </li>
+
+
+        </ul>
+    </div>
+    <div class="teacher_listbg"></div>
+
+
+    <!--// 선생님 전체 목록 종료 -->
+
+    <div id="intro_go" class="intro_go alertpop">
+        <div class="atranim">
+            <p>이투스의 시작페이지로 설정할<br />학년을 선택해 주세요. </p>
+            <ul>
+                <li><input type="radio" id="etgrd_go3" name="set_etgrd"  Checked value="go3"><label for="etgrd_go3">고3·N수</label></li>
+                <li><input type="radio" id="etgrd_go2" name="set_etgrd"  value="go2"><label for="etgrd_go2">고2</label></li>
+                <li><input type="radio" id="etgrd_go1" name="set_etgrd"  value="go1"><label for="etgrd_go1">고1</label></li>
+            </ul>
+            <!--<p class="tal fw300 fz13">학년을 선택해 주세요.</p>-->
+            <a href="javascript:;" onclick="fnGrdChange();" class="intro_popbtn f_r"><span>확인</span></a>
+        </div>
+        <span class="alertbg"></span>
+    </div>
+
+
+    <div id="cNavNew" style="z-index:30;">
+        <div class="leftgnb">
+            <a href="javascript:;" onclick="fnGnbClose();" class="leftgnbcle"><span>전체메뉴 닫기</span></a>
+            <div class="gnbhead">
+                <div class="gnbti"><strong>고3·N수</strong><a href="javascript:fnPopupOpen('alert', '#intro_go');">학년설정</a></div>
+
+
+                <div class="loginbox"><a href="javascript:loginCheck('');">로그인</a><a href="https://m.etoos.com:44300/member/join_01.asp">회원가입</a></div>
+
+            </div>
+            <div class="onofftab tfixed gnbtab">
+                <ul class="tfrow">
+                    <li class="tfcell"><a href="#gnbcont1" id="btn_gnb_tab_favorit" class="on">자주 찾는 메뉴</a></li>
+                    <li class="tfcell"><a href="#gnbcont2" id="btn_gnb_tab_all">전체 메뉴</a></li>
+                </ul>
+            </div>
+            <div class="gnbcont">
+
+                <div id="gnbcont1">
+                    <div class="gnbmic">
+                        <ul class="clear" name="_init_alpha_elements" style="opacity: 0;">
+                            <li><a href="javascript:;" onclick="fnGnbMyStudyLink('study');"><span class="gnb_icon1 iconsize" iconsizew="45" iconsizeh="32" style="height:32px"><s><span id="gnb_mem_stat_study" style="display:none;">-</span></s></span><strong>수강중인 강좌</strong></a></li>
+                            <li><a href="javascript:;" onclick="fnGnbMyStudyLink('qna');"><span class="gnb_icon2 iconsize" iconsizew="45" iconsizeh="32" style="height:32px"><s><span id="gnb_mem_stat_qna" style="display:none;">N</span></s></span><strong>나의 Q&A</strong></a></li>
+                            <li><a href="javascript:;" onclick="fnGnbMyStudyLink('slippaper');"><span class="gnb_icon3 iconsize" iconsizew="45" iconsizeh="32" style="height:32px"><s><span id="gnb_mem_stat_slippaper" style="display:none;">-</span></s></span><strong>쪽지</strong></a></li>
+                            <li><a href="javascript:;" onclick="fnGnbMyStudyLink('cart');"><span class="gnb_icon4 iconsize" iconsizew="45" iconsizeh="32" style="height:32px"><s><span id="gnb_mem_stat_cart" style="display:none;">-</span></s></span><strong>장바구니</strong></a></li>
+                            <li><a href="javascript:;" onclick="fnGnbMyStudyLink('order');"><span class="gnb_icon5 iconsize" iconsizew="45" iconsizeh="32" style="height:32px"><s><span id="gnb_mem_stat_order" style="display:none;">-</span></s></span><strong>주문 · 배송조회</strong></a></li>
+
+                            <li><a href="javascript:;" onclick="fnGnbMyStudyLink('point');"><span class="gnb_icon6 iconsize" iconsizew="45" iconsizeh="32" style="height:32px"><s><span id="gnb_mem_stat_point" style="display:none;">-</span></s></span><strong>e-통장</strong></a></li>
+
+                            <!--<li><a href="javascript:;" onclick="fnGnbMyStudyLink('scrap');"><span class="gnb_icon6 iconsize" iconsizew="45" iconsizeh="32"><s><span id="gnb_mem_stat_scrap" style="display:none;">-</span></s></span><strong>학습보관함</strong></a></li>-->
+                        </ul>
+                        <a href="javascript:;" onclick="allTeacher()">이투스 선생님 전체보기</a>
+                    </div>
+                    <div class="gnbcontent">
+                        <div class="onofftab tfixed gnbone">
+                            <ul class="tfrow">
+                                <li class="tfcell"><span><a href="http://m.etoos.com/exam/quiz/2018/default.asp?exam_grade=3" class="tfcell">수능/모평<br />풀 서비스</a></span></li>
+                                <li class="tfcell"><span><a href="http://m.etoos.com/report/ipsi_info/counseling/" class="tfcell">1:1<br />입시상담</a></span></li>
+                                <li class="tfcell"><span><a href="http://m.etoos.com/teacher/tcc/" class="tfcell">TCC</a></span></li>
+                                <li class="tfcell"><span><a href="http://m.etoos.com/schoolreport/" class="tfcell">학생부<br />풀 서비스</a></span></li>
+                            </ul>
+                        </div>
+
+                        <!--// GNB 프로모션 시작 -->
+
+                        <ul class="gnbsme">
+
+                            <li><a href="http://m.etoos.com/lecture/Promotion/2018/06/mh_pass_go3?etgrd=go3&stype=0001">고3 이과 무한패스 <span class='new'>N</span></a></li>
+                            <li><a href="http://m.etoos.com/lecture/Promotion/2018/06/mh_pass_go3?etgrd=go3&stype=0002">고3 문과 무한패스 <span class='new'>N</span></a></li>
+                            <li><a href="http://m.etoos.com/lecture/promotion/2018/06/one_pass_go3?etgrd=go3">고3 선생님 ONE PASS <span class='new'>N</span></a></li>
+                            <li><a href="http://m.etoos.com/lecture/promotion/2018/05/n_pack/?etgrd=go3">N수생 전용관 <span class='new'>N</span></a></li>
+                            <!-- <li><a href="http://m.etoos.com/lecture/promotion/2018/05/n_pack?etgrd=go3">N수생 전용관 <span class='new'>N</span></a></li> -->
+                            <li><a href="http://m.etoos.com/lecture/promotion/2018/05/go32_promotion/?etgrd=go3">30일 끝장 특강 <span class='new'>N</span></a></li>
+                            <!-- <li><a href="http://m.etoos.com/Lecture/Promotion/2017/09/10ne_pass/?etgrd=go3">[10강좌] ONE-PASS <span class="new">N</span></a></li> -->
+
+                            <!-- <li><a href="http://m.etoos.com/lecture/Promotion/2017/09/mh_pass_go3_final/">2018 무한패스 <span class='new'>N</span></a></li> -->
+
+                            <!-- <li><a href="http://m.etoos.com/lecture/promotion/2017/09/mania_freepass_final/?etgrd=go3">파이널 매니아프리패스 <span class='new'>N</span></a></li> -->
+                            <!-- 	<li><a href="http://m.etoos.com/lecture/Promotion/2017/08/big_promotion_17/?etgrd=go3">합격시크릿 BIG3 <span class='new'>N</span></a></li> -->
+                            <!-- 	<li><a href="http://m.etoos.com/lecture/promotion/2017/07/speed_promotion/?etgrd=go3">SPEED 개념 패키지 특강 <span class='new'>N</span></a></li> -->
+                            <!-- <li><a href="http://m.etoos.com/Lecture/Promotion/2017/10/diy/?etgrd=go3" class="link">최종점검 DIY 패키지 특강 <span class='new'>N</span></a></li> -->
+                            <!--	<li><a href="http://m.etoos.com/Lecture/Promotion/2017/08/pickup/?etgrd=go3" class="link">PICK UP 특강</a></li>-->
+                            <!-- <li><a href="http://m.etoos.com/Lecture/Promotion/2017/10/f_diy/?etgrd=go3" class="link">수능직전 파이널 PACK <span class='new'>N</span></a></li> -->
+                            <!-- 	<li><a href="http://m.etoos.com/lecture/promotion/2017/09/speed_promotion/?etgrd=go3" class="link">벼락치기 패키지 특강 <span class='new'>N</span></a></li> -->
+
+
+                        </ul>
+                        <!--// GNB 프로모션 종료 -->
+
+
+                    </div>
+                </div>
+
+                <div id="gnbcont2" style="display:none;">
+                    <div class="gnbcontent">
+                        <ul class="gnball">
+                            <li class="on"><span><a href="http://m.etoos.com/teacher/" class="link">선생님</a><a href="javascript:" class="depthbtn">접고/펼치기</a></span>
+                                <div>
+                                    <ul>
+                                        <li><a href="http://m.etoos.com/teacher/">전체보기</a></li>
+                                        <li><a href="http://m.etoos.com/teacher/tcc/">TCC</a></li>
+                                        <li><a href="http://m.etoos.com/teacher/onecut/">한컷강의</a></li>
+                                        <li><a href="http://m.etoos.com/teacher/evaluate/">수강후기</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li><span><a href="http://m.etoos.com/lecture/" class="link">전체강좌</a></span></li>
+
+                            <li class="on"><span><a href="http://m.etoos.com/past_exam/" class="link">기출문제</a><a href="javascript:" class="depthbtn">접고/펼치기</a></span>
+                                <div>
+                                    <ul>
+                                        <li><a href="http://m.etoos.com/past_exam/past_test/?exam_type=0001">대학수학능력시험</a></li>
+                                        <li><a href="http://m.etoos.com/past_exam/past_test/?exam_type=0002">모의평가/학력평가</a></li>
+                                        <li><a href="http://m.etoos.com/past_exam/exam_apply/">이투스 전국연합 모의고사</a></li>
+                                        <li><a href="http://m.etoos.com/past_exam/exam_bank/">이투스 문제은행</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="on">
+							<span>
+
+									<a href="http://m.etoos.com/report/" class="link">입시정보</a>
+
+								<a href="javascript:" class="depthbtn">접고/펼치기</a>
+							</span>
+                                <div>
+                                    <ul>
+                                        <li><a href="http://m.etoos.com/report/2018/univ_issue/">입시 이슈 분석</a></li>
+                                        <li><a href="http://m.etoos.com/report/2018/knowhow/">멘토노하우</a></li>
+                                        <li><a href="http://m.etoos.com/report/study_speech/default_ipsi.asp?speeh_type=0002">설명회</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="on">
+							<span>
+								<a href="javascript:window.open('http://m.etoos.com/book');" class="link">이투스북</a>
+								<a href="javascript:" class="depthbtn">접고/펼치기</a>
+							</span>
+                                <div>
+                                    <ul>
+                                        <li><a href="http://m.etoos.com/book/search/">도서검색</a></li>
+                                        <li><a href="http://m.etoos.com/book/service/">학습서비스</a></li>
+                                        <li><a href="http://m.etoos.com/book/materials/">학습자료실</a></li>
+                                        <li><a href="http://m.etoos.com/book/materials/errata.asp">정오표</a></li>
+                                        <li><a href="http://m.etoos.com/book/t_hub/">T폴더</a></li>
+                                        <li><a href="http://m.etoos.com/book/eventNew/">이벤트</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+
+                            <li><span><a href="http://m.etoos.com/exam/quiz/2018/default.asp?exam_grade=3" class="link">수능/모평 풀 서비스</a></span></li>
+
+                            <li class="on"><span><a href="http://m.etoos.com/schoolReport/default.asp?ht=20180701163519#menu=main" class="link">학생부 풀 서비스</a><a href="javascript:" class="depthbtn">접고/펼치기</a></span>
+                                <div>
+                                    <ul>
+                                        <li><a href="http://m.etoos.com/schoolReport/default.asp?ht=20180701163519#menu=student_roll">나의 학생부 등록</a></li>
+                                        <li><a href="http://m.etoos.com/schoolReport/default.asp?ht=20180701163519#menu=unit_cou_analyze">학생부 종합 분석</a></li>
+                                        <li><a href="http://m.etoos.com/schoolReport/default.asp?ht=20180701163519#menu=goal_univ">목표대학 점검</a></li>
+                                        <li><a href="http://m.etoos.com/schoolReport/default.asp?ht=20180701163519#menu=guide">이용 가이드</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li><span><a href="http://m.etoos.com/report/ipsi_info/counseling/" class="link">1:1 입시 상담</a></span></li>
+
+                            <!--
+
+                            -->
+
+                            <li><span><a href="http://m.etoos.com/event/" class="link">이벤트</a></span></li>
+
+                            <li><span><a href="http://m.etoos.com/customer/2017/?etgrd=go3" class="link">고객센터</a></span></li>
+                        </ul>
+                    </div>
+                    <div class="gnbcontent mt10">
+                        <div class="gnbapp">
+                            <p>열공지원 APP</p>
+                            <ul class="clear">
+                                <li><a href="javascript: fnGoAppMarket('https://play.google.com/store/apps/details?id=com.etoos.etoosapp', 'https://itunes.apple.com/us/app/%EC%9D%B4%ED%88%AC%EC%8A%A4-%EC%88%98%EA%B0%95%EC%95%B1/id1319164773?mt=8');" class="gnbapp1_1">이투스 수강앱</a></li>
+
+                                <li><a href="javascript: fnGoAppMarket('https://play.google.com/store/apps/details?id=com.etoos.wordmaster.highbasic2016', 'https://itunes.apple.com/kr/app/word-master-wodeumaseuteo/id1158670193?mt=8');" class="gnbapp2">고등 BASIC</a></li>
+
+                                <li><a href="javascript: fnGoAppMarket('https://play.google.com/store/apps/details?id=com.etoos.wordmaster.sat20002016', 'https://itunes.apple.com/kr/app/word-master-wodeumaseuteo/id1174330013?mt=8');" class="gnbapp3">수능 2000</a></li>
+
+                                <li class="aftno"><a href="javascript: fnGoAppMarket('https://play.google.com/store/apps/details?id=com.etoos.wordmaster.hyper20002016', 'https://itunes.apple.com/kr/app/word-master-wodeumaseuteo/id1175293986?mt=8');"><span class="appimg icon5"></span>하이퍼 2000</a></li>
+
+                                <li><a href="javascript: fnGoAppMarket('https://play.google.com/store/apps/details?id=com.etoos.wordmaster.ebs.vfinal2016', 'https://itunes.apple.com/kr/app/2016-word-master-%EC%9B%8C%EB%93%9C%EB%A7%88%EC%8A%A4%ED%84%B0-ebs-%ED%8C%8C%EC%9D%B4%EB%84%90-1200/id1137645705?mt=8');" class="gnbapp9">EBS 파이널 1200</a></li>
+
+                                <li class="aftno"><a href="javascript: fnGoAppMarket('https://play.google.com/store/apps/details?id=kr.co.waterbear.dualvoca', 'https://itunes.apple.com/kr/app/reading-master-lidingmaseuteo/id884906006?mt=8');"><span class="appimg icon6"></span>듀얼보카</a></li>
+
+                                <li><a href="javascript: fnGoAppMarket('http://m.etoos.com/book/qr_link.asp?seq=13', 'http://m.etoos.com/book/qr_link.asp?seq=13');" class="gnbapp6">수능어휘완성</a></li>
+
+                                <li><a href="javascript: fnGoAppMarket('https://play.google.com/store/apps/details?id=com.etoos.MasterPieceVoca2016', 'https://itunes.apple.com/kr/app/newmyeongpumboka-simseun-sim/id1177269405?mt=8');" class="gnbapp8">명품 VOCA</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function fnPlayerAppMarket() {
+            fnGoAppMarket(PLAYER_APP_ANDROID_MARKET_URL, PLAYER_APP_IPHONE_URL, PLAYER_APP_IPAD_URL);
+        }
+
+        // 학년 설정
+        function fnGrdChange() {
+            var cookie_grd = etoos_util.getCookie('etgrd');
+            var now_grd = "go3";
+            var grd = jQuery('input:radio[name="set_etgrd"]:checked').val();
+
+            if (now_grd != grd || !cookie_grd) {
+                var set_url = etoos_util.pageParamMake(null, 'etgrd', 'etgrd', grd, ['full-popup', 'pop-obj', 'pop-url', 'anim-type', 'header-menu', 'alert-popup', 'alert-pop-obj']);
+                if (gnb_set_url) {
+                    set_url = etoos_util.pageParamMake(gnb_set_url, 'etgrd', 'etgrd', grd);
+                }
+
+                etoos_util.setCookie('etgrd', grd, 365);
+
+
+
+                if (is_pushstate_supported) {
+                    setTimeout(function() {
+                        if (is_header_menu_open) {
+                            document.location.href = set_url;
+                        } else {
+                            document.location.replace(set_url);
+                        }
+                    }, 150);
+
+                    if (is_header_menu_open) {
+                        window.history.go(-2);
+                    }
+
+                } else {
+                    setTimeout(function() {
+                        document.location.replace(set_url);
+                    }, 150);
+                }
+
+            } else {
+                set_url = etoos_util.pageParamMake(null, null, null, null, ['alert-popup', 'alert-pop-obj']);
+
+                if (is_pushstate_supported) {
+                    if (is_header_menu_open) {
+                        setTimeout(function() {
+                            window.history.pushState(null, '', set_url);
+                            window.history.back(-1);
+                        }, 150);
+
+                        window.history.back(-1);
+                    } else {
+                        window.history.replaceState(null, '', set_url);
+                    }
+                }
+            }
+
+            fnAlertPopupClose('#intro_go');
+        }
+
+        function fnGnbMyStudyLink(gb) {
+            var url = "";
+
+            switch (gb) {
+            case 'study': // 수강중인 강좌
+                url = "http://m.etoos.com/my_room/lecture/lecture_watch.asp?recent_yn=Y";
+                break;
+
+            case 'qna': // QNA
+                url = "http://m.etoos.com/my_room/qna/tea_qna_default.asp";
+                break;
+
+            case 'slippaper': // 쪽지
+                url = "http://m.etoos.com/my_room/slip_paper/slip_paper_list.asp";
+                break;
+
+            case 'cart': // 장바구니
+                url = "http://m.etoos.com/my_room/order/cart_list.asp";
+                break;
+
+            case 'order': // 주문/배송
+                url = "http://m.etoos.com/my_room/order/order_list.asp";
+                break;
+
+            case 'point': // E-통장
+                url = "http://m.etoos.com/my_room/order/ebank/coupon_list.asp";
+                break;
+
+            case 'scrap': // 학습보관함
+                url = "http://m.etoos.com/my_room/scrap/scrap_list.asp";
+                break;
+            }
+
+            if (loginCheckConfirm(url)) {
+                return;
+            } else {
+                if (url) {
+                    if (is_header_menu_open) {
+                        document.location.replace(url);
+                    } else {
+                        document.location.href(url);
+                    }
+                }
+            }
+        }
+
+    </script>
+    <!--// GNB 메뉴 종료 -->
+</div>
+
+<script type="text/javascript" src="file:///android_asset/www/cordova.js"></script>
+
+<!-- external library -->
+<script type="text/javascript" src="file:///android_asset/www/common/js/lib/js.cookie.js"></script>
+<script type="text/javascript" src="file:///android_asset/www/common/js/lib/nano-sql.min.js"></script>
+<!-- external library -->
+
+<!-- etoos library -->
+<script type="text/javascript" src="file:///android_asset/www/common/js/etoos_common.js?t=201806230123"></script>
+<!-- etoos library -->
+
+<script type="text/javascript" src="file:///android_asset/www/app/js/common/gnb.js"></script>
+</body>
+</html>
