@@ -29,10 +29,13 @@ import com.etoos.study.common.utils.CommonUtils;
 import com.etoos.study.device.Device;
 import com.etoos.study.device.DeviceInfo;
 
+import net.sqlcipher.database.SQLiteDatabase;
+
 import org.apache.cordova.*;
 import org.apache.cordova.engine.SystemWebViewEngine;
 
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 
 import cl.kunder.webview.WebViewActivity;

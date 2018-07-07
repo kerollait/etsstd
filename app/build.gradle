@@ -276,6 +276,7 @@ dependencies {
     implementation 'com.github.zawadz88.materialpopupmenu:material-popup-menu:2.1.0'
     implementation 'com.airbnb.android:lottie:2.5.0-rc1'
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
+    implementation 'net.zetetic:android-database-sqlcipher:3.5.9@aar'
 }
 
 def promptForReleaseKeyPassword() {

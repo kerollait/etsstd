@@ -294,6 +294,14 @@ module.exports = [
     "clobbers": [
       "window.FileTransfer"
     ]
+  },
+  {
+      "id": "etoos-cordova-plugin-global.etoos",
+      "file": "plugins/etoos-cordova-plugin-global/www/etoosPlugin.js",
+      "pluginId": "etoos-cordova-plugin-global",
+      "merges": [
+        "etoos"
+      ]
   }
 ];
 module.exports.metadata = 
@@ -310,7 +318,8 @@ module.exports.metadata =
   "kunder-cordova-plugin-webview": "2.6.0",
   "cordova-sqlite-storage": "2.3.0",
   "cordova-plugin-nano-sqlite": "1.3.0",
-  "cordova-plugin-file-transfer": "1.7.1"
+  "cordova-plugin-file-transfer": "1.7.1",
+  "etoos-cordova-plugin-global": "1.0.0"
 };
 // BOTTOM OF METADATA
 });

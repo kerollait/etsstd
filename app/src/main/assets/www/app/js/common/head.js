@@ -5,6 +5,7 @@ var GRADE = "go3";
 
 var url_root = "file:///android_asset/www";
 var api_domain = "http://m.etoos.com";
+var img_domain = "http://img.etoos.com";
 var api_path = api_domain + "/app";
 var gnb_set_url = "file:///android_asset/www/app/index.html";
 var storage_root = "";
@@ -37,45 +38,21 @@ function onLoginSuccessCallback() {
 }
 
 function FileUtils() {
-    function saveFileFromUrl(url, save_dir, save_file_nm, mime_type) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
-        xhr.responseType = 'blob';
-
-        xhr.onload = function() {
-            if (this.status == 200) {
-                var blob = new Blob([this.response], { type: mime_type });
-                saveFile(save_dir, blob, save_file_nm);
+    function saveFileFromUrl(url, save_dir, save_file_nm) {
+        var fileTransfer = new FileTransfer();
+        var uri = encodeURI(url);
+        fileTransfer.download(
+            uri,
+            save_dir,
+            function(entry) {
+                console.log("download complete: " + entry.toURL());
+            },
+            function(error) {
+                console.log("download error source " + error.source);
+                console.log("download error target " + error.target);
+                console.log("upload error code" + error.code);
             }
-        };
-        xhr.send();
-    }
-
-    function saveFile(save_dir, file_data, file_nm) {
-        save_dir.getFile(file_nm, { create: true, exclusive: false }, function (file_entry) {
-            writeFile(file_entry, file_data);
-        }, onErrorCreateFile);
-    }
-
-    function writeFile(file_entry, file_data, isAppend) {
-
-        // Create a FileWriter object for our FileEntry (log.txt).
-        file_entry.createWriter(function (fileWriter) {
-            fileWriter.onwriteend = function() {
-                if (file_data.type == "image/jpg") {
-                    readBinaryFile(fileEntry);
-                }
-                else {
-                    readFile(fileEntry);
-                }
-            };
-
-            fileWriter.onerror = function(e) {
-                console.log("Failed file write: " + e.toString());
-            };
-
-            fileWriter.write(dataObj);
-        });
+        );
     }
 }
 
