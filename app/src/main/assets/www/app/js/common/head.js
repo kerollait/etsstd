@@ -1,28 +1,33 @@
 var etoos_swiper = null;
 var etoos_util = new EtoosUtil();
-var token = "";
+var TOKEN = "";
+var GRADE = "go3";
 
-// GNB의 학년설정값 변경 시 페이지가 새로고침 되는데,
-// 학년에 따라 파라메터나 내용이 달라야 하는 페이지는 본 변수에 URL값을 지정해 주면,
-// 해당 URL로 새로고침 된다.
-var gnb_set_url = "./index.html";
+var url_root = "file:///android_asset/www";
+var api_domain = "http://m.etoos.com";
+var api_path = api_domain + "/app";
+var gnb_set_url = "file:///android_asset/www/app/index.html";
+var storage_root = "";
 
 function initCommon() {
 	window.open = cordova.InAppBrowser.open;
 
-	etoos.getLoginToken();
+	etoos.getLoginTokenAndGrade();
+	storage_root = cordova.file.externalApplicationStorageDirectory;
 }
 
-function setLoginToken(result) {
+function setLoginTokenAndGrade(result) {
 	if (typeof result === 'string') {
 		var json = JSON.parse(result);
-		this.token = json.token;
+
+		this.TOKEN = json.token;
+		this.GRADE = json.grade;
 	}
 }
 
 function onLogin(result) {
 	if (result == "login_ok") {
-		etoos.getLoginToken();
+		etoos.getLoginTokenAndGrade();
 		onLoginSuccessCallback();
 	}
 }
@@ -30,6 +35,51 @@ function onLogin(result) {
 function onLoginSuccessCallback() {
 
 }
+
+function FileUtils() {
+    function saveFileFromUrl(url, save_dir, save_file_nm, mime_type) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'blob';
+
+        xhr.onload = function() {
+            if (this.status == 200) {
+                var blob = new Blob([this.response], { type: mime_type });
+                saveFile(save_dir, blob, save_file_nm);
+            }
+        };
+        xhr.send();
+    }
+
+    function saveFile(save_dir, file_data, file_nm) {
+        save_dir.getFile(file_nm, { create: true, exclusive: false }, function (file_entry) {
+            writeFile(file_entry, file_data);
+        }, onErrorCreateFile);
+    }
+
+    function writeFile(file_entry, file_data, isAppend) {
+
+        // Create a FileWriter object for our FileEntry (log.txt).
+        file_entry.createWriter(function (fileWriter) {
+            fileWriter.onwriteend = function() {
+                if (file_data.type == "image/jpg") {
+                    readBinaryFile(fileEntry);
+                }
+                else {
+                    readFile(fileEntry);
+                }
+            };
+
+            fileWriter.onerror = function(e) {
+                console.log("Failed file write: " + e.toString());
+            };
+
+            fileWriter.write(dataObj);
+        });
+    }
+}
+
+
 
 // 학년 설정
 function fnGrdChange() {

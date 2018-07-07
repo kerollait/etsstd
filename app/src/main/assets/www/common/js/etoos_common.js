@@ -9,14 +9,12 @@ Etoos Common Function (이투스 공통 함수 모음)
 '=======================================================================
 */
 
-var url_root = "file:///android_asset/www";
-
 /*
 로그인 체크 : 시작 ========================================================================================
 */
 // 로그인 여부 가져오기
 function isLogin() {
-	if (token != null && token != "") {
+	if (TOKEN != null && TOKEN != "") {
 		return true;
 	} else {
 		return false;
@@ -89,7 +87,7 @@ function fnContentScrap(job, scr_fold_no, scr_fold_nm, scr_seq, scr_title, scr_u
 
 	$.ajax({
 		type: "POST",
-		url: url_root + "/common/data/mystudyroom/scrap_p.json.asp",
+		url: api_domain + "/common/data/mystudyroom/scrap_p.json.asp",
 		data: params,
 		dataType: "text",
 		beforeSend: function () {

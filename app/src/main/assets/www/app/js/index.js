@@ -14,6 +14,10 @@ var app = {
 		initEtoosUI();
         onInitTcc();
         onInitOnecutLecture();
+
+        var file = cordova.file.externalApplicationStorageDirectory +"www/teacher/tcc/24084112.jpg";
+
+        document.write("<img src='"+ file +"'>");
     }
 };
 
@@ -59,13 +63,8 @@ function goPageApp(link_url,link_url_ios){
 
 
 function onInitTcc() {
-	nSQL("main_tcc_list").model([
-        { key: 'board_arti_id', type: 'int', props: ['pk'] },
-        { key: 'board_id', type: 'int' },
-        { key: 'teacher_id', type: 'string'},
-        { key: 'teacher_nm', type: 'string'},
-        { key: 'title', type: 'string'},
-        { key: 'new_teacher_icon', type: 'string'}
+	nSQL("main_tcc").model([
+        { key: 'json_data', type: 'string' }
     ]).config({
         mode: window.nSQLite.getMode() // required
     }).connect();
@@ -74,45 +73,71 @@ function onInitTcc() {
 	var networkState = navigator.connection.type;
 	if (networkState !== Connection.NONE) {
 		$.ajax({
-			url: "http://m0.etoos.com/app/home/tcc_list.json.asp",
+			url: api_path +"/home/tcc_list.json.asp",
 			data: {
-				etgrd: 'go3'
+				etgrd: GRADE
 			},
-			cache: true,
+			timeout: 3000,
+			cache: false,
 			dataType: "text",
 			success: function (data) {
-                var json = JSON.parse(data);
+			    var json;
+			    try {
+			        json = JSON.parse(data);
+			    } catch(e) {
+			        data = '{ "err_cd":"0000", "err_msg":"정상", "data_list":[ { "board_id":2312, "board_arti_id":23392298, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":2312, "board_arti_id":22242531, "teacher_id":"200368", "teacher_nm":"정현경", "title":"[문제적 수학][1탄] 개념은 무엇인가?", "new_teacher_icon":"Y" }, { "board_id":1999, "board_arti_id":22240238, "teacher_id":"200333", "teacher_nm":"구현아", "title":"여름! 마지막 기회다! 사랑하는 수험생들아!", "new_teacher_icon":"N" }, { "board_id":2312, "board_arti_id":20387584, "teacher_id":"200343", "teacher_nm":"김세영", "title":"과학논술, 필요한 것만 골라서 학습하세요!", "new_teacher_icon":"N" }, { "board_id":2311, "board_arti_id":20387481, "teacher_id":"200303", "teacher_nm":"신승범", "title":"강한수학 스티커 활용법 3탄 : 플래너 활용법", "new_teacher_icon":"N" }, { "board_id":2783, "board_arti_id":20387480, "teacher_id":"200245", "teacher_nm":"강원우", "title":"테스트 6", "new_teacher_icon":"N" }, { "board_id":2312, "board_arti_id":20387479, "teacher_id":"200236", "teacher_nm":"심우철", "title":"심슨 겨울방학 학습 가이드", "new_teacher_icon":"N" }, { "board_id":2311, "board_arti_id":20387478, "teacher_id":"200209", "teacher_nm":"김민정", "title":"테스트 3", "new_teacher_icon":"N" }, { "board_id":2783, "board_arti_id":20387476, "teacher_id":"200238", "teacher_nm":"방동진", "title":"테스트 4", "new_teacher_icon":"N" }, { "board_id":2311, "board_arti_id":20387474, "teacher_id":"200248", "teacher_nm":"신영균", "title":"테스트 2", "new_teacher_icon":"N" } ] }';
+			        json = JSON.parse(data);
+			    }
+
                 var err_cd = json.err_cd;
                 var err_msg = json.err_msg;
 
                 if (err_cd == '0000') {
-                    tccListRender();
+                    nSQL("main_tcc").query("delete").exec();
+                    nSQL("main_tcc").query("upsert", {json_data: data}).exec();
+
+                    tccListRender(data);
+                } else {
+                    tccListRenderFromDatabase();
                 }
             },
             error: function () {
-                tccListRender();
+                tccListRenderFromDatabase();
             }
 		});
-
-		function tccListRender() {
-            var $tcc = $('.swiper-wrapper > .swiper-slide', '#tccswiper').get();
-            var random = $.randomize($tcc);
-
-            $('.swiper-wrapper', '#tccswiper').empty();
-            $('.swiper-wrapper', '#tccswiper').append(random);
-
-            setTimeout(function() {
-                // 표준 이미지는 16:9(영상비율) 비율 이므로.. 계산하여 적용한다.. (비율이 맞지 않는 이미지가 있을 수 있으므로..)
-                $('div.swiper-slide', '#tccswiper').find('img').each(function() {
-                    var height = parseInt(9 * ($(this).width() / 16));
-
-                    $(this).css('height', height +'px');
-                });
-
-                $('#tccswiper').animate({'opacity': '1'}, 200);
-            }, 100);
-        }
+	} else {
+	    tccListRenderFromDatabase();
 	}
+
+	function tccListRenderFromDatabase() {
+	    nSQL("main_tcc")
+	        .query("select", ["json_data"])
+	        .exec()
+	        .then(function(rows) {
+	            console.log(rows);
+	            tccListRender();
+	        });
+	}
+
+	function tccListRender(data) {
+
+        var $tcc = $('.swiper-wrapper > .swiper-slide', '#tccswiper').get();
+        var random = $.randomize($tcc);
+
+        $('.swiper-wrapper', '#tccswiper').empty();
+        $('.swiper-wrapper', '#tccswiper').append(random);
+
+        setTimeout(function() {
+            // 표준 이미지는 16:9(영상비율) 비율 이므로.. 계산하여 적용한다.. (비율이 맞지 않는 이미지가 있을 수 있으므로..)
+            $('div.swiper-slide', '#tccswiper').find('img').each(function() {
+                var height = parseInt(9 * ($(this).width() / 16));
+
+                $(this).css('height', height +'px');
+            });
+
+            $('#tccswiper').animate({'opacity': '1'}, 200);
+        }, 100);
+    }
 
 }
 

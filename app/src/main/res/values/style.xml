@@ -5,7 +5,7 @@
         <item name="android:windowExitAnimation">@anim/slide_right</item>
     </style>
 
-    <style name="LoadingDialogTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="LoadingDialogTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>

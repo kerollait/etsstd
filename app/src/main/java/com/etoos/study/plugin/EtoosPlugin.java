@@ -65,11 +65,12 @@ public class EtoosPlugin extends CordovaPlugin {
 			JSONObject r = new JSONObject();
 			r.put("responseCode", "ok");
 			callbackContext.success(r);
-		} else if (action.equals("getLoginToken")) {
-			LOG.d(LOG_TAG, "getLoginToken");
+		} else if (action.equals("getLoginTokenAndGrade")) {
+			LOG.d(LOG_TAG, "getLoginTokenAndGrade");
 
 			JSONObject item = new JSONObject();
 			item.put("token", "");
+			item.put("grade", "go3");
 
 			callbackContext.success(item.toString());
 		} else if (action.equals("setHeaderTitle")) {
