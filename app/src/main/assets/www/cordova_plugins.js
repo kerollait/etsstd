@@ -280,12 +280,20 @@ module.exports = [
     ]
   },
   {
-      "id": "etoos-cordova-plugin-global.etoos",
-      "file": "plugins/etoos-cordova-plugin-global/www/etoosPlugin.js",
-      "pluginId": "etoos-cordova-plugin-global",
-      "merges": [
-        "etoos"
-      ]
+    "id": "cordova-plugin-file-transfer.FileTransferError",
+    "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+    "pluginId": "cordova-plugin-file-transfer",
+    "clobbers": [
+      "window.FileTransferError"
+    ]
+  },
+  {
+    "id": "cordova-plugin-file-transfer.FileTransfer",
+    "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+    "pluginId": "cordova-plugin-file-transfer",
+    "clobbers": [
+      "window.FileTransfer"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -302,7 +310,7 @@ module.exports.metadata =
   "kunder-cordova-plugin-webview": "2.6.0",
   "cordova-sqlite-storage": "2.3.0",
   "cordova-plugin-nano-sqlite": "1.3.0",
-  "etoos-cordova-plugin-global": "1.0.0"
+  "cordova-plugin-file-transfer": "1.7.1"
 };
 // BOTTOM OF METADATA
 });

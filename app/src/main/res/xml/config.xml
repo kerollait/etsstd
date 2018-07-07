@@ -19,6 +19,10 @@
     <allow-intent href="data:*" />
     <allow-intent href="intent:*" />
 
+    <preference name="android-minSdkVersion" value="19" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="Orientation" value="all" />
+
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
@@ -56,8 +60,7 @@
     <feature name="EtoosPlugin">
         <param name="android-package" value="com.etoos.study.plugin.EtoosPlugin" />
     </feature>
-
-    <preference name="android-minSdkVersion" value="19" />
-    <preference name="loglevel" value="DEBUG" />
-    <preference name="Orientation" value="all" />
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
 </widget>
