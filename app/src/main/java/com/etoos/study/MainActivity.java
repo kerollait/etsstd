@@ -39,13 +39,9 @@ import cl.kunder.webview.WebViewActivity;
 
 public class MainActivity extends CordovaActivity {
 
-    private boolean mFlag = false;
     private View splashScreen;
     private Context context;
     private Activity activity;
-    private WebViewClient customWebViewClient;
-
-    private int ACTIVITY_RESULT_CODE_LOGIN = 1000;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +53,7 @@ public class MainActivity extends CordovaActivity {
         activity = this;
 
         SystemWebViewEngine systemWebViewEngine = (SystemWebViewEngine) appView.getEngine();
-        customWebViewClient = new CustomWebviewClient(systemWebViewEngine, this);
+        WebViewClient customWebViewClient = new CustomWebviewClient(systemWebViewEngine, this);
 
         WebView webView = (WebView) systemWebViewEngine.getView();
         webView.setWebViewClient(customWebViewClient);
@@ -120,9 +116,7 @@ public class MainActivity extends CordovaActivity {
         LinearLayout btnFooterDownloadList = main.findViewById(R.id.btn_footer_download_list);
         LinearLayout btnFooterMyroom = main.findViewById(R.id.btn_footer_myroom);
 
-        btnFooterHome.setOnClickListener(view -> {
-        	appView.loadUrl(launchUrl);
-		});
+        btnFooterHome.setOnClickListener(view -> appView.loadUrl(launchUrl));
 
         btnFooterRecentPlayList.setOnClickListener(view -> {
 
@@ -132,9 +126,7 @@ public class MainActivity extends CordovaActivity {
 
 		});
 
-        btnFooterMyroom.setOnClickListener(view -> {
-        	appView.loadUrl("file:///android_asset/www/app/my_room/index.html");
-		});
+        btnFooterMyroom.setOnClickListener(view -> appView.loadUrl("file:///android_asset/www/app/my_room/index.html"));
 
         setContentView(main);
 
