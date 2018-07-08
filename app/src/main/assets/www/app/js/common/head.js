@@ -8,13 +8,13 @@ var api_domain = "http://m.etoos.com";
 var img_domain = "http://img.etoos.com";
 var api_path = api_domain + "/app";
 var gnb_set_url = "file:///android_asset/www/app/index.html";
-var storage_root = "";
+var cache_storage_www = "";
 
 function initCommon() {
 	window.open = cordova.InAppBrowser.open;
 
 	etoos.getLoginTokenAndGrade();
-	storage_root = cordova.file.externalApplicationStorageDirectory;
+	cache_storage_www = cordova.file.externalCacheDirectory +"www";
 }
 
 function setLoginTokenAndGrade(result) {

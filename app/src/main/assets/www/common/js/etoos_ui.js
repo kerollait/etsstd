@@ -466,8 +466,12 @@ function tabshide(e, j) {
 }
 
 /* 롤링 배너, 탭메뉴 */
-function fnSwipeAreaTab() {
-	$(".comswiper").each(function (index) {
+function fnSwipeAreaTab(obj) {
+	if (obj == null || typeof obj === 'undefined') {
+		obj = ".comswiper";
+	}
+
+	$(obj).each(function (index) {
 		if ($(this).hasClass('not-this')) {  /*** 수정 : not-this 가 포함된 객체는 해당 페이지에서 swiper 처리하므로.. 제외되도록 처리 ***/
 
 		} else {

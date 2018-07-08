@@ -16,10 +16,10 @@
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/loader"
             android:visibility="gone"
-            android:layout_width="210dp"
-            android:layout_height="210dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             app:lottie_autoPlay="false"
-            app:lottie_fileName="simple.json"
+            app:lottie_fileName="loader_ring.json"
             app:lottie_loop="true"/>
 
     </RelativeLayout>

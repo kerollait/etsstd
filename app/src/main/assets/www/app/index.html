@@ -15,6 +15,17 @@
         <script type="text/javascript" src="file:///android_asset/www/app/js/common/head.js"></script>
         <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_ui.js"></script>
 
+		<style type="text/css">
+			img {
+			  opacity: 1;
+			  transition: opacity 0.3s;
+			}
+
+			img[data-src] {
+			  opacity: 0;
+			}
+		</style>
+
         <title>이투스 메인</title>
     </head>
     <body>
@@ -91,11 +102,17 @@
 
                     <!-- TCC -->
 
-                    <div id="tccswiper" class="comswiper" pevNo="2.3" centsild="false" swloop="false" sbtw="5" style="opacity: 0">
+                    <div id="tccswiper" class="comswiper not-this" centsild="false" swloop="false" sbtw="5">
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
-
-
+								<div class="swiper-slide" id="tcc_list_template" style="display:none;">
+									<a href="{link_url}">
+										<span class="tccsicon" style="display:none;">{tcc_gb_nm}</span>
+										<img src="" data-src="{img_path}"  data-img-url="{img_url}" width="150px" height="84.3px" alt="" />
+										<span class="list_ti linetx2">{title}</span>
+										<span class="list_nameb">{area_nm}&nbsp;{teacher_nm}</span>
+									</a>
+								</div>
                             </div>
                         </div>
                     </div>

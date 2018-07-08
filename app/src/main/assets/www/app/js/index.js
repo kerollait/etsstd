@@ -5,8 +5,6 @@ var app = {
     },
 
     onDeviceReady: function() {
-        document.addEventListener("backbutton", onBackKeyDown, false);
-
         etoos.setHeaderTitle('home', '', url_root +'/app/index.html');
         etoos.setFooterActiveButton('home');
 
@@ -28,11 +26,6 @@ var app = {
 };
 
 app.initialize();
-
-function onBackKeyDown(e) {
-	etoos.exitApp();
-    e.preventDefault();
-}
 
 function onWebviewSubscribeCallback(params) {
 	if (params == null || !typeof params =='Object' || params.length == 0) {
@@ -67,24 +60,10 @@ function goPageApp(link_url,link_url_ios){
 	}
 }
 
-function checkIfFileExists(path) {
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-        fileSystem.root.getFile(path, { create: false }, fileExists, fileDoesNotExist);
-    }, getFSFail); //of requestFileSystem
-}
-
-function fileExists(fileEntry) {
-    return true;
-}
-function fileDoesNotExist() {
-    return false;
-}
-
-function getFSFail(evt) {
-    console.log(evt.target.error.code);
-}
-
 function onInitTcc() {
+
+	var device_width = $(window).width();
+
 	// server 에서 데이터를 가져온다
 	var networkState = navigator.connection.type;
 	if (networkState !== Connection.NONE) {
@@ -101,7 +80,7 @@ function onInitTcc() {
 			    try {
 			        json = JSON.parse(data);
 			    } catch(e) {
-			        data = '{ "err_cd":"0000", "err_msg":"정상", "data_list":[ { "board_id":2311, "board_arti_id":24084112, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":2311, "board_arti_id":24084112, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":2311, "board_arti_id":24084112, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":2311, "board_arti_id":24084112, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" } ] }';
+			        data = '{ "err_cd":"0000", "err_msg":"정상", "data_list":[ { "board_id":2312, "board_arti_id":24084105, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":1999, "board_arti_id":24084397, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":2311, "board_arti_id":24084112, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":1999, "board_arti_id":24012029, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":1999, "board_arti_id":24014231, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":2312, "board_arti_id":24031928, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":1999, "board_arti_id":24049713, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":2312, "board_arti_id":24050483, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" } ] }';
 			        json = JSON.parse(data);
 			    }
 
@@ -116,17 +95,6 @@ function onInitTcc() {
                             .query("upsert", {id: 1, tcc: window.btoa(encodeURI(JSON.stringify(data_list)))})
                             .exec()
                             .then(function() {
-                                $.each(data_list, function() {
-                                    var img_url = img_domain + "/board/"+ this.board_id +"/"+ this.board_arti_id +".jpg";
-                                    var img_path = storage_root +"www/teacher/tcc/"+ this.board_id +'/'+ this.board_arti_id +'.jpg';
-                                    var img_file_nm = this.board_arti_id +'.jpg';
-
-                                    var file_exists = checkIfFileExists(img_path);
-                                    if (!file_exists) {
-                                        saveFileFromUrl(img_url, img_path, img_file_nm);
-                                    }
-                                });
-
                                 tccListRender(data_list);
                             });
                     })
@@ -154,91 +122,99 @@ function onInitTcc() {
         });
 	}
 
-	function saveFileFromUrl(url, save_dir, save_file_nm) {
-        var fileTransfer = new FileTransfer();
-        var uri = encodeURI(url);
-        fileTransfer.download(
-            uri,
-            save_dir,
-            function(entry) {
-                console.log("download complete: " + entry.toURL());
-            },
-            function(error) {
-                console.log("download error source " + error.source);
-                console.log("download error target " + error.target);
-                console.log("upload error code" + error.code);
-            }
-        );
+	function setImageResource(obj, path, img_url) {
+        window.resolveLocalFileSystemURL(path, function(fileEntry) {
+			$(obj).attr("src", $(obj).data('src'));
+			$(obj).on('load', function() {
+				$(this).removeAttr("data-src");
+				setTimeout(function() {
+					$(this).prev('span.tccsicon').show();
+				}, 300);
+			});
+
+			console.log("file already exists!!!!!!");
+        }, function(e) {
+        	if (networkState !== Connection.NONE) {
+				var fileTransfer = new FileTransfer();
+				var uri = encodeURI(img_url);
+				fileTransfer.download(
+					uri,
+					path,
+					function(entry) {
+						$(obj).attr("src", $(obj).data('src'));
+						$(obj).on('load', function() {
+							$(this).removeAttr("data-src");
+							setTimeout(function() {
+								$(this).prev('span.tccsicon').show();
+							}, 300);
+						});
+
+						console.log("download complete: " + entry.toURL());
+					},
+					function(error) {
+						$(obj).attr("src", "file:///android_asset/images/teacher/tcc_blank.jpg");
+
+						console.log("download error source " + error.source);
+						console.log("download error target " + error.target);
+						console.log("upload error code" + error.code);
+					}
+				);
+			} else {
+				$(obj).attr("src", "file:///android_asset/images/teacher/tcc_blank.jpg");
+			}
+        });
     }
 
 	function tccListRender(data) {
 	    var $obj = $("#tccswiper > .swiper-container > .swiper-wrapper");
 	    var html = "";
-        $.each(data, function() {
-            var img_path = storage_root +"www/teacher/tcc/"+ this.board_id +'/'+ this.board_arti_id +'.jpg';
+	    var $template = $obj.find("div[id='tcc_list_template']");
 
-            html += "<div class=\"swiper-slide\">";
-            html += "<a href=\"javascript:fnTccView('app/teacher/tcc/view.html?mode=teacher&teacher_id="+ this.teacher_id +"&board_id="+ this.board_id +"&board_arti_id="+ this.board_arti_id +"');\">";
-            html += "<span class=\"tccsicon\">특별영상</span>";
-            html += "<img src='"+ img_path +"' width='120' height='50' />";
-            html += "<span class='list_ti linetx2'>"+ this.title +"</span>";
-            html += "<span class=\"list_nameb\">영어&nbsp;"+ this.teacher_nm +"</span></a></div>";
+        $.each(data, function() {
+        	var img_url = img_domain + "/board/"+ this.board_id +"/"+ this.board_arti_id +".jpg";
+			var img_path = cache_storage_www +"/teacher/tcc/"+ this.board_id +'/'+ this.board_arti_id +'.jpg';
+			var template_html = $template.html();
+
+			template_html = template_html.replace("{img_path}", img_path);
+			template_html = template_html.replace("{img_url}", img_url);
+			template_html = template_html.replace("{tcc_gb_nm}", "입시정보");
+			template_html = template_html.replace("{link_url}", "javascript:fnTccView('app/teacher/tcc/view.html?mode=teacher&teacher_id="+ this.teacher_id +"&board_id="+ this.board_id +"&board_arti_id="+ this.board_arti_id +"');");
+			template_html = template_html.replace("{title}", this.title);
+			template_html = template_html.replace("{area_nm}", "국어");
+			template_html = template_html.replace("{teacher_nm}", this.teacher_nm);
+
+			html += "<div class='swiper-slide'>";
+			html += template_html;
+			html += "</div>";
         });
 
         $obj.html(html);
 
+        $obj.find("img").each(function() {
+        	var img_url = $(this).data('img-url');
+        	var img_path = $(this).data('src');
+
+        	setImageResource(this, img_path, img_url);
+        });
+
         var $tcc = $('.swiper-wrapper > .swiper-slide', '#tccswiper').get();
         var random = $.randomize($tcc);
-
-        console.log(random);
 
         $('.swiper-wrapper', '#tccswiper').empty();
         $('.swiper-wrapper', '#tccswiper').append(random);
 
-        setTimeout(function() {
-            // 표준 이미지는 16:9(영상비율) 비율 이므로.. 계산하여 적용한다.. (비율이 맞지 않는 이미지가 있을 수 있으므로..)
-            $('div.swiper-slide', '#tccswiper').find('img').each(function() {
-                var height = parseInt(9 * ($(this).width() / 16));
-
-                $(this).css('height', height +'px');
-            });
-
-            $('#tccswiper').animate({'opacity': '1'}, 200);
-        }, 100);
+        var view_per_cnt = (device_width / 160).toFixed(1);
+		$("#tccswiper").attr("pevNo", view_per_cnt);
+		$("#tccswiper").removeClass("not-this");
+		fnSwipeAreaTab("#tccswiper");
     }
 
 }
 
-var inAppBrowserRef;
 function fnTccView(url) {
 	webview.SubscribeCallback(onWebviewSubscribeCallback, onWebviewSubscribeCallbackError);
 	webview.Show(url, '선생님 TCC');
 }
-
-function loadStartCallBack() {
-    //etoos_util.showLoader();
-
-}
-
-function loadStopCallBack() {
-    if (inAppBrowserRef != undefined) {
-        //etoos_util.hideLoader();
-        inAppBrowserRef.show();
-    }
-}
-
-function loadErrorCallBack(params) {
-    //etoos_util.hideLoader();
-
-    var scriptErrorMesssage =
-       "alert('Sorry we cannot open that page. Message from the server is : "
-       + params.message + "');"
-
-    inAppBrowserRef.executeScript({ code: scriptErrorMesssage }, executeScriptCallBack);
-    inAppBrowserRef.close();
-    inAppBrowserRef = undefined;
-}
-
 
 var onecut_swiper_menu_active_seq = 0;
 var onecut_swiper_menu = null;

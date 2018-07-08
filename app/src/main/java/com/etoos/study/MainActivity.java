@@ -45,6 +45,7 @@ public class MainActivity extends CordovaActivity {
     private View splashScreen;
     private Context context;
     private Activity activity;
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -166,19 +167,49 @@ public class MainActivity extends CordovaActivity {
 				splashScreen.setVisibility(View.GONE);
 				splashScreen = null;
 
-				//String token = EtoosData.getToken();
-				//if (token == null || token.isEmpty()) {
-				//	Intent i = new Intent(context, LoginActivity.class);
-				//	i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				//	startActivityForResult(i, ACTIVITY_RESULT_CODE_LOGIN);
-				//} else {
-					CommonUtils.showLoader(activity);
-				//}
+				CommonUtils.showLoader(activity);
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        Log.d("EtoosSmartStudy", "event.getKeyCode() = "+ event.getKeyCode() + " , KeyEvent.KEYCODE_BACK = "+ KeyEvent.KEYCODE_BACK + ", appView.getUrl() = "+ appView.getUrl());
+
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            return true;
+        } else {
+            if (event.getKeyCode() == KeyEvent.KEYCODE_BACK
+                    && (appView.getUrl().matches("(?i).*/www/app/index.html") || appView.getUrl().matches("(?i).*/www/app/my_room/index.html"))) {
+
+                fnAppCloseMessageShow();
+                return true;
+            } else {
+                super.dispatchKeyEvent(event);
+            }
+        }
+
+        return true;
+    }
+
+    private void fnAppCloseMessageShow() {
+
+        if (doubleBackToExitPressedOnce) {
+            finish();
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(activity, "'뒤로'버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
     }
 }
