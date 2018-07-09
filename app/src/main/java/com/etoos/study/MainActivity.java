@@ -62,7 +62,7 @@ public class MainActivity extends CordovaActivity {
         WebView webView = (WebView) systemWebViewEngine.getView();
         webView.setWebViewClient(customWebViewClient);
 
-        super.loadUrl(launchUrl);
+		super.loadUrl(launchUrl);
 
         DeviceInfo deviceInfo = new DeviceInfo(context);
 

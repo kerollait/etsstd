@@ -9,8 +9,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-    <application android:hardwareAccelerated="true" android:finishOnTaskLaunch="true" android:icon="@mipmap/icon" android:label="@string/app_name" android:name="com.etoos.study.EtoosApplication" android:supportsRtl="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize" android:hardwareAccelerated="true" android:label="@string/activity_name" android:launchMode="singleTop" android:name="MainActivity" android:screenOrientation="unspecified" android:windowSoftInputMode="adjustResize">
+    <application android:hardwareAccelerated="true" android:finishOnTaskLaunch="true" android:icon="@mipmap/icon" android:label="@string/app_name" android:name="com.etoos.study.EtoosApplication" android:supportsRtl="true" android:theme="@style/AppTheme">
+        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize" android:hardwareAccelerated="true" android:label="@string/activity_name" android:launchMode="singleTop" android:name="MainActivity" android:theme="@style/AppTheme" android:screenOrientation="unspecified" android:windowSoftInputMode="adjustResize">
             <intent-filter android:label="@string/launcher_name">
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,8 +19,8 @@
         <provider android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true" android:name="org.apache.cordova.camera.FileProvider">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/camera_provider_paths" />
         </provider>
-        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize" android:name="cl.kunder.webview.WebViewActivity" android:launchMode="singleTop" android:screenOrientation="unspecified" android:windowSoftInputMode="adjustResize" />
-        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize" android:name="LoginActivity" android:launchMode="singleTop" android:screenOrientation="unspecified" android:windowSoftInputMode="stateHidden" />
+        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize" android:name="cl.kunder.webview.WebViewActivity" android:launchMode="singleTop" android:theme="@style/AppTheme" android:screenOrientation="unspecified" android:windowSoftInputMode="adjustResize" />
+        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize" android:name="LoginActivity" android:launchMode="singleTop" android:theme="@style/AppTheme" android:screenOrientation="unspecified" android:windowSoftInputMode="stateHidden" />
         <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" android:launchMode="singleTop" android:name=".player.PlayerActivity" android:screenOrientation="sensor" android:theme="@style/PlayerTheme">
             <intent-filter>
                 <action android:name="com.google.android.exoplayer.demo.action.VIEW" />

@@ -1,31 +1,195 @@
-var app = {
-    // Application Constructor
-    initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-    },
+var networkState;
 
-    onDeviceReady: function() {
-        etoos.setHeaderTitle('home', '', url_root +'/app/index.html');
-        etoos.setFooterActiveButton('home');
+function MainBanner() {
+	var is_complete = false;
+	var context = this;
 
-        initCommon();
-        initEtoosUI();
-
-        nSQL("home").model([
-            { key: 'id', type: 'int', props: ['pk'] },
-            { key: 'banner1', type: 'string'},
-            { key: 'banner2', type: 'string'},
-            { key: 'tcc', type: 'string' }
-        ]).config({
-            mode: window.nSQLite.getMode()
-        }).connect().then(function(){
-            onInitTcc();
-            onInitOnecutLecture();
-        });
+	context.getComplete = function() {
+        return is_complete;
     }
-};
 
-app.initialize();
+	context.bannerRenderFromDatabase = function() {
+		nSQL().onConnected(function() {
+            nSQL("home").query("select", ["banner1", "banner2"]).where(["id", "=", 1])
+            .exec()
+            .then(function(rows) {
+                var banner1 = decodeURI(window.atob(rows[0].banner1));
+                var banner2 = decodeURI(window.atob(rows[0].banner2));
+
+                var json1 = JSON.parse(banner1);
+                var json2 = JSON.parse(banner2);
+
+                context.bannerRender(json1, json2);
+            })
+        });
+	}
+
+	context.bannerRender = function(banner1, banner2) {
+		var $obj_banner1 = $("#appmainvisual > .swiper-container > .swiper-wrapper");
+		var $obj_banner2 = $("#appmainevent2 > .swiper-container > .swiper-wrapper");
+        var html1 = "", html2 = "";
+        var $template_banner1 = $obj_banner1.find("div[name='banner_template']");
+        var $template_banner2 = $obj_banner2.find("div[name='banner_template']");
+        var corver_img_height1 = $obj_banner1.find("div[name='cover_image']").height();
+        var corver_img_height2 = $obj_banner2.find("div[name='cover_image']").height();
+
+        $obj_banner1.css("height", corver_img_height1 +"px");
+        $obj_banner2.css("height", corver_img_height2 +"px");
+
+        $.each(banner1, function() {
+            var img_local_path = cache_storage_www +"/home/banner"+ this.cont_img_url.replace(img_domain, '');
+            var template_html = $template_banner1.html();
+
+            template_html = template_html.replace("{cont_img_url}", this.cont_img_url);
+            template_html = template_html.replace("{on_error}", "onerror='setImageResourceFromLocalStorage(this);'");
+            template_html = template_html.replace("{on_load}", "onload='setImageOnLoad(this);'");
+            template_html = template_html.replace("{img_local_path}", img_local_path);
+            template_html = template_html.replace("{title}", this.title);
+            template_html = template_html.replace("{cont_full_url}", this.cont_full_url);
+            template_html = template_html.replace("{cont_full_url_g}", this.cont_full_url_g);
+            template_html = template_html.replace("{event_text}", this.event_text);
+
+            html1 += "<div class='swiper-slide'>";
+            html1 += template_html;
+            html1 += "</div>";
+        });
+
+        $obj_banner1.html(html1);
+
+        $.each(banner2, function() {
+            var img_local_path = cache_storage_www +"/home/banner"+ this.cont_img_url.replace(img_domain, '');
+            var template_html = $template_banner2.html();
+
+            template_html = template_html.replace("{cont_img_url}", this.cont_img_url);
+            template_html = template_html.replace("{on_error}", "onerror='setImageResourceFromLocalStorage(this);'");
+            template_html = template_html.replace("{on_load}", "onload='setImageOnLoad(this);'");
+            template_html = template_html.replace("{img_local_path}", img_local_path);
+            template_html = template_html.replace("{title}", this.title);
+            template_html = template_html.replace("{cont_full_url}", this.cont_full_url);
+            template_html = template_html.replace("{cont_full_url_g}", this.cont_full_url_g);
+
+            html2 += "<div class='swiper-slide'>";
+            html2 += template_html;
+            html2 += "</div>";
+        });
+
+		$obj_banner2.html(html2);
+
+        var exec_cnt = 0;
+        var ti = setInterval(function() {
+            var img_ready_cnt1 = $obj_banner1.find("img.lazy-ready").length;
+            var img_ready_cnt2 = $obj_banner2.find("img.lazy-ready").length;
+
+            if (img_ready_cnt1 == 0 && img_ready_cnt2 == 0) {
+                $obj_banner1.css("height", "");
+                $obj_banner2.css("height", "");
+
+                clearInterval(ti);
+                if ($obj_banner1.find("div.swiper-slide").length > 1) {
+                    $("#appmainvisual").removeClass("not-this");
+                    fnSwipeAreaTab("#appmainvisual");
+                }
+
+                if ($obj_banner2.find("div.swiper-slide").length > 1) {
+                    $("#appmainevent2").removeClass("not-this");
+                    fnSwipeAreaTab("#appmainevent2");
+                }
+
+                is_complete = true;
+            }
+
+            exec_cnt++;
+
+            if (exec_cnt > 50) {
+                clearInterval(ti);
+                is_complete = true;
+            }
+        }, 234);
+	}
+}
+
+function Tcc() {
+	var context = this;
+	var device_width = $(window).width();
+	var is_complete = false;
+
+	context.getComplete = function() {
+		return is_complete;
+	}
+
+	context.tccListRenderFromDatabase = function() {
+		nSQL().onConnected(function() {
+            nSQL("home").query("select", ["tcc"]).where(["id", "=", 1])
+            .exec()
+            .then(function(rows) {
+                var data = decodeURI(window.atob(rows[0].tcc));
+                var json = JSON.parse(data);
+                context.tccListRender(json);
+            })
+        });
+	}
+
+	context.tccListRender = function(data) {
+	    var $obj = $("#tccswiper > .swiper-container > .swiper-wrapper");
+	    var html = "";
+	    var $template = $obj.find("div[name='tcc_template']");
+
+        $.each(data, function() {
+        	var img_url = img_domain + "/board/"+ this.board_id +"/"+ this.board_arti_id +".jpg";
+			var img_local_path = cache_storage_www +"/teacher/tcc/"+ this.board_id +'/'+ this.board_arti_id +'.jpg';
+			var template_html = $template.html();
+
+			template_html = template_html.replace("{img_local_path}", img_local_path);
+			template_html = template_html.replace("{img_url}", img_url);
+			template_html = template_html.replace("{on_error}", "onerror='setImageResourceFromLocalStorage(this);'");
+			template_html = template_html.replace("{on_load}", "onload='setImageOnLoad(this);'");
+			template_html = template_html.replace("{tcc_gb_nm}", "입시정보");
+			template_html = template_html.replace("{link_url}", "javascript:fnTccView('app/teacher/tcc/view.html?mode=teacher&teacher_id="+ this.teacher_id +"&board_id="+ this.board_id +"&board_arti_id="+ this.board_arti_id +"');");
+			template_html = template_html.replace("{title}", this.title);
+			template_html = template_html.replace("{area_nm}", "국어");
+			template_html = template_html.replace("{teacher_nm}", this.teacher_nm);
+
+			html += "<div class='swiper-slide'>";
+			html += template_html;
+			html += "</div>";
+        });
+
+        $obj.html(html);
+
+        var $tcc = $('.swiper-wrapper > .swiper-slide', '#tccswiper').get();
+        var random = $.randomize($tcc);
+
+        $('.swiper-wrapper', '#tccswiper').empty();
+        $('.swiper-wrapper', '#tccswiper').append(random);
+
+		var exec_cnt = 0;
+        var ti = setInterval(function() {
+            var img_ready_cnt = $obj.find("img.lazy-ready").length;
+
+            if (img_ready_cnt == 0) {
+                clearInterval(ti);
+                context.tccListRenderComplete();
+            }
+
+            exec_cnt++;
+
+            if (exec_cnt > 50) {
+                clearInterval(ti);
+                context.tccListRenderComplete();
+            }
+        }, 321);
+    }
+
+    context.tccListRenderComplete = function() {
+        var view_per_cnt = (device_width / 160).toFixed(1);
+        $("#tccswiper").attr("pevNo", view_per_cnt);
+        $("#tccswiper").removeClass("not-this");
+        fnSwipeAreaTab("#tccswiper");
+
+        is_complete= true;
+    }
+
+}
 
 function onWebviewSubscribeCallback(params) {
 	if (params == null || !typeof params =='Object' || params.length == 0) {
@@ -60,154 +224,100 @@ function goPageApp(link_url,link_url_ios){
 	}
 }
 
-function onInitTcc() {
+function setImageOnLoad(obj) {
+	var $img = $(obj);
+	var local_path = $img.data('local-path');
+	var img_url = $img.attr('src');
 
-	var device_width = $(window).width();
+    $img.removeClass("lazy-ready");
 
-	// server 에서 데이터를 가져온다
-	var networkState = navigator.connection.type;
-	if (networkState !== Connection.NONE) {
-		$.ajax({
-			url: api_path +"/home/tcc_list.json.asp",
-			data: {
-				etgrd: GRADE
-			},
-			timeout: 3000,
-			cache: false,
-			dataType: "text",
-			success: function (data) {
-			    var json;
-			    try {
-			        json = JSON.parse(data);
-			    } catch(e) {
-			        data = '{ "err_cd":"0000", "err_msg":"정상", "data_list":[ { "board_id":2312, "board_arti_id":24084105, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":1999, "board_arti_id":24084397, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":2311, "board_arti_id":24084112, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":1999, "board_arti_id":24012029, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":1999, "board_arti_id":24014231, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":2312, "board_arti_id":24031928, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":1999, "board_arti_id":24049713, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" }, { "board_id":2312, "board_arti_id":24050483, "teacher_id":"200331", "teacher_nm":"그레이스", "title":"그쌤 테스트", "new_teacher_icon":"N" } ] }';
-			        json = JSON.parse(data);
-			    }
-
-                var err_cd = json.err_cd;
-                var err_msg = json.err_msg;
-
-                if (err_cd == '0000') {
-                    var data_list = json.data_list;
-
-                    nSQL().onConnected(function() {
-                        nSQL("home")
-                            .query("upsert", {id: 1, tcc: window.btoa(encodeURI(JSON.stringify(data_list)))})
-                            .exec()
-                            .then(function() {
-                                tccListRender(data_list);
-                            });
-                    })
-                } else {
-                    tccListRenderFromDatabase();
-                }
-            },
-            error: function () {
-                tccListRenderFromDatabase();
-            }
-		});
-	} else {
-	    tccListRenderFromDatabase();
-	}
-
-	function tccListRenderFromDatabase() {
-	    nSQL().onConnected(function() {
-            nSQL("home").query("select", ["tcc"]).where(["id", "=", 1])
-            .exec()
-            .then(function(rows) {
-                var data = decodeURI(window.atob(rows[0].tcc));
-                var json = JSON.parse(data);
-                tccListRender(json);
-            })
-        });
-	}
-
-	function setImageResource(obj, path, img_url) {
-        window.resolveLocalFileSystemURL(path, function(fileEntry) {
-			$(obj).attr("src", $(obj).data('src'));
-			$(obj).on('load', function() {
-				$(this).removeAttr("data-src");
-				setTimeout(function() {
-					$(this).prev('span.tccsicon').show();
-				}, 300);
-			});
-
-			console.log("file already exists!!!!!!");
+    if (networkState !== Connection.NONE) {
+        window.resolveLocalFileSystemURL(local_path, function(fileEntry) {
+            // file is exists!!
         }, function(e) {
-        	if (networkState !== Connection.NONE) {
-				var fileTransfer = new FileTransfer();
-				var uri = encodeURI(img_url);
-				fileTransfer.download(
-					uri,
-					path,
-					function(entry) {
-						$(obj).attr("src", $(obj).data('src'));
-						$(obj).on('load', function() {
-							$(this).removeAttr("data-src");
-							setTimeout(function() {
-								$(this).prev('span.tccsicon').show();
-							}, 300);
-						});
-
-						console.log("download complete: " + entry.toURL());
-					},
-					function(error) {
-						$(obj).attr("src", "file:///android_asset/images/teacher/tcc_blank.jpg");
-
-						console.log("download error source " + error.source);
-						console.log("download error target " + error.target);
-						console.log("upload error code" + error.code);
-					}
-				);
-			} else {
-				$(obj).attr("src", "file:///android_asset/images/teacher/tcc_blank.jpg");
-			}
+            var fileTransfer = new FileTransfer();
+            var uri = encodeURI(img_url);
+            fileTransfer.download(
+                uri,
+                local_path,
+                function(entry) {
+                    // download complete!
+                },
+                function(error) {
+                    // download error!
+                }
+            );
         });
     }
+}
 
-	function tccListRender(data) {
-	    var $obj = $("#tccswiper > .swiper-container > .swiper-wrapper");
-	    var html = "";
-	    var $template = $obj.find("div[id='tcc_list_template']");
+function setImageResourceFromLocalStorage(obj) {
+	var $img = $(obj);
+	var local_path = $img.data('local-path');
+	var def_img_path = $img.data('default-src');
 
-        $.each(data, function() {
-        	var img_url = img_domain + "/board/"+ this.board_id +"/"+ this.board_arti_id +".jpg";
-			var img_path = cache_storage_www +"/teacher/tcc/"+ this.board_id +'/'+ this.board_arti_id +'.jpg';
-			var template_html = $template.html();
+	window.resolveLocalFileSystemURL(local_path, function(fileEntry) {
+		$img.attr('src', local_path);
+		$img.on('load', function() {
+			$img.removeClass("lazy-ready");
+		});
 
-			template_html = template_html.replace("{img_path}", img_path);
-			template_html = template_html.replace("{img_url}", img_url);
-			template_html = template_html.replace("{tcc_gb_nm}", "입시정보");
-			template_html = template_html.replace("{link_url}", "javascript:fnTccView('app/teacher/tcc/view.html?mode=teacher&teacher_id="+ this.teacher_id +"&board_id="+ this.board_id +"&board_arti_id="+ this.board_arti_id +"');");
-			template_html = template_html.replace("{title}", this.title);
-			template_html = template_html.replace("{area_nm}", "국어");
-			template_html = template_html.replace("{teacher_nm}", this.teacher_nm);
+	}, function(e) {
+		$img.attr('src', def_img_path);
+		$img.removeClass("lazy-ready");
+	});
 
-			html += "<div class='swiper-slide'>";
-			html += template_html;
-			html += "</div>";
-        });
-
-        $obj.html(html);
-
-        $obj.find("img").each(function() {
-        	var img_url = $(this).data('img-url');
-        	var img_path = $(this).data('src');
-
-        	setImageResource(this, img_path, img_url);
-        });
-
-        var $tcc = $('.swiper-wrapper > .swiper-slide', '#tccswiper').get();
-        var random = $.randomize($tcc);
-
-        $('.swiper-wrapper', '#tccswiper').empty();
-        $('.swiper-wrapper', '#tccswiper').append(random);
-
-        var view_per_cnt = (device_width / 160).toFixed(1);
-		$("#tccswiper").attr("pevNo", view_per_cnt);
-		$("#tccswiper").removeClass("not-this");
-		fnSwipeAreaTab("#tccswiper");
+	if (networkState !== Connection.NONE) {
+		window.resolveLocalFileSystemURL(local_path, function(fileEntry) {
+			// file is exists!!
+		}, function(e) {
+			var fileTransfer = new FileTransfer();
+            var uri = encodeURI(img_url);
+            fileTransfer.download(
+                uri,
+                local_path,
+                function(entry) {
+                    // download complete!
+                },
+                function(error) {
+                    // download error!
+                }
+            );
+		});
     }
+	/*window.resolveLocalFileSystemURL(path, function(fileEntry) {
+        $(obj).attr("src", $(obj).data('src'));
+        $(obj).on('load', function() {
+            $(obj).removeAttr("data-src");
+            $(obj).removeClass("lazy-ready");
+        });
+    }, function(e) {
+        if (networkState !== Connection.NONE) {
+            var fileTransfer = new FileTransfer();
+            var uri = encodeURI(img_url);
+            fileTransfer.download(
+                uri,
+                path,
+                function(entry) {
+                    $(obj).attr("src", $(obj).data('src'));
+                    $(obj).on('load', function() {
+                        $(obj).removeAttr("data-src");
+                        $(obj).removeClass("lazy-ready");
+                    });
+                },
+                function(error) {
+                    if (def_img_path != null && typeof def_img_path !== 'undefined') {
+                        $(obj).attr("src", def_img_path);
+                    }
+
+                }
+            );
+        } else {
+            if (def_img_path != null && typeof def_img_path !== 'undefined') {
+                $(obj).attr("src", def_img_path);
+            }
+        }
+    });*/
 
 }
 
@@ -349,8 +459,111 @@ function setOncutSwiperContent(area_cd) {
 			$('#onecut_swiper_content_'+ area_cd).animate({'opacity': '1'}, 400);
 		}
 	});
-
-	setTimeout(function() {
-		etoos.hideLoading();
-	}, 300);
 }
+
+var app = {
+    // Application Constructor
+    initialize: function() {
+        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+    },
+
+    onDeviceReady: function() {
+        networkState = navigator.connection.type;
+        etoos.setHeaderTitle('home', '', url_root +'/app/index.html');
+        etoos.setFooterActiveButton('home');
+
+        initCommon();
+        initEtoosUI();
+
+        var tcc = new Tcc();
+        var mainBanner = new MainBanner();
+        onInitOnecutLecture();
+
+        if (networkState !== Connection.NONE) {
+            $.ajax({
+                url: api_path +"/home/home.json.asp",
+                data: {
+                    etgrd: GRADE
+                },
+                timeout: 3000,
+                dataType: "text",
+                success: function (data) {
+                    var json = JSON.parse(data);
+
+                    var err_cd = json.err_cd;
+                    var err_msg = json.err_msg;
+
+                    if (err_cd == '0000') {
+                        var banner_list1 = json.banner_list1;
+                        var banner_list2 = json.banner_list2;
+                        var tcc_list = json.tcc_list;
+
+                        mainBanner.bannerRender(banner_list1, banner_list2);
+                        tcc.tccListRender(tcc_list);
+
+                        saveDataToLocalDatabase(banner_list1, banner_list2, tcc_list);
+                    }
+                },
+                error: function () {
+                    onOfflineMode();
+                }
+            });
+
+        } else {
+            onOfflineMode();
+        }
+
+        function getDatabaseModel() {
+            return nSQL("home").model([
+                       { key: 'id', type: 'int', props: ['pk'] },
+                       { key: 'banner1', type: 'string'},
+                       { key: 'banner2', type: 'string'},
+                       { key: 'tcc', type: 'string' }
+                   ]).config({
+                       mode: window.nSQLite.getMode()
+                   });
+        }
+
+        function saveDataToLocalDatabase(banner_list1, banner_list2, tcc_list) {
+            var banner1 = window.btoa(encodeURI(JSON.stringify(banner_list1)));
+            var banner2 = window.btoa(encodeURI(JSON.stringify(banner_list2)));
+            var tcc = window.btoa(encodeURI(JSON.stringify(tcc_list)));
+
+            getDatabaseModel().connect().then(function() {
+                nSQL("home")
+                    .query("upsert", {
+                        id: 1,
+                        banner1: banner1,
+                        banner2: banner2,
+                        tcc: tcc
+                    })
+                    .exec();
+            });
+        }
+
+        function onOfflineMode() {
+            getDatabaseModel().connect().then(function() {
+                mainBanner.bannerRenderFromDatabase();
+                tcc.tccListRenderFromDatabase();
+            });
+        }
+
+        var exec_cnt = 0;
+        var ti = setInterval(function() {
+            if (tcc.getComplete() && mainBanner.getComplete()) {
+                etoos.hideLoading();
+                clearInterval(ti);
+            }
+
+            exec_cnt++;
+
+            if (exec_cnt > 15) {
+                etoos.hideLoading();
+                clearInterval(ti);
+            }
+        }, 300);
+    }
+};
+
+app.initialize();
+

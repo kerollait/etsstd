@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,14 +20,13 @@ import com.etoos.study.common.utils.RecycleUtils;
 import com.etoos.study.player.PlayerActivity;
 
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
 
 	private Activity activity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(Environment.getExternalStorageDirectory().getPath()));
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             overridePendingTransition(R.anim.activity_open_translate, R.anim.activity_close_scale);

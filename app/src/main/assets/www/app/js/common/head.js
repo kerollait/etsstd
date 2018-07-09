@@ -6,7 +6,7 @@ var GRADE = "go3";
 var url_root = "file:///android_asset/www";
 var api_domain = "http://m.etoos.com";
 var img_domain = "http://img.etoos.com";
-var api_path = api_domain + "/app";
+var api_path = api_domain + "/app_api";
 var gnb_set_url = "file:///android_asset/www/app/index.html";
 var cache_storage_www = "";
 

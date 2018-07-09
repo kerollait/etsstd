@@ -21,9 +21,11 @@
 			  transition: opacity 0.3s;
 			}
 
-			img[data-src] {
-			  opacity: 0;
+			img.lazy-ready {
+			  opacity: 0.3;
 			}
+
+			#appmainevent2 .swiper-pagination .swiper-pagination-current{color:#222222; font-weight:700;}
 		</style>
 
         <title>이투스 메인</title>
@@ -51,17 +53,20 @@
             <!--//////////////////// 메인 컨텐츠 시작 ////////////////////////////// -->
             <div id="etoosContent" class="maincont">
 
-                <div id="appmainvisual" class="comswiper " pevNo="1" centsild="true" swloop="true" pyype="fraction" sbtw="0" atplay="4000">
+                <div id="appmainvisual" class="comswiper not-this" pevNo="1" centsild="true" swloop="true" pyype="fraction" sbtw="0" atplay="4000">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
 
-                            <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/lecture/promotion/2018/06/mh_pass_go3/?etgrd=go3&stype=0001','');"><span class='bandayno'>D-5</span><img src="http://img.etoos.com/lecture/Promotion/2018/04/unlimited6_g3/0628/660x290_g31.gif	" width="100%" alt="2019 무한패스 시즌7_이과"/></a></div>
+                            <div name="banner_template" style="display:none;">
+								<a href="javascript:goPageApp('{cont_full_url}','{cont_full_url_g');">
+									{event_text}
+									<img src="{cont_img_url}" data-local-path="{img_local_path}" data-default-src="file:///android_asset/images/main/home_banner_blank.png" class="lazy-ready" width="100%" alt="{title}" {on_error} {on_load}/>
+								</a>
+							</div>
 
-                            <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/lecture/promotion/2018/06/mh_pass_go3/?etgrd=go3&stype=0002','');"><span class='bandayno'>D-5</span><img src="http://img.etoos.com/lecture/Promotion/2018/04/unlimited6_g3/0628/660x290_g32.gif	" width="100%" alt="2019 무한패스 시즌7_문과"/></a></div>
-
-                            <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/lecture/promotion/2018/06/one_pass_go3/?etgrd=go3','');"><img src="http://img.etoos.com/lecture/Promotion/2018/05/onepass/g3/0628/660x290_3.jpg	" width="100%" alt="선생님 ONE PASS"/></a></div>
-
-                            <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/lecture/promotion/2018/05/N_pack/','');"><img src="http://img.etoos.com/lecture/Promotion/2018/05/npackage/660x290.gif	" width="100%" alt="N수생 전용관"/></a></div>
+							<div class="swiper-slide" name="cover_image">
+								<img src="file:///android_asset/images/main/home_banner_blank.png" class="lazy-ready" width="100%"/>
+							</div>
 
                         </div>
                         <div class="swiper-pagination"></div>
@@ -72,25 +77,22 @@
                     #appmainevent2 .swiper-pagination .swiper-pagination-current{color:#222222;font-weight:700;}
                 </style>
 
-                <div id="appmainevent2" class="comswiper appmainev " pevNo="1" centsild="true" swloop="true" pyype="fraction" sbtw="0" atplay="4000" style="padding:6px 13px 6px;">
-                    <div>
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper">
+                <div id="appmainevent2" class="comswiper appmainev not-this" pevNo="1" centsild="true" swloop="true" pyype="fraction" sbtw="0" atplay="4000" style="padding:6px 13px 6px;">
+					  <div class="swiper-container">
+						<div class="swiper-wrapper">
 
-                                <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/ecommunity/event/2018/05/etoosapp_evt/','');"><img src="http://img.etoos.com/lecture/Promotion/2018/06/app_11/18_660x160.png	" width="100%" alt="수강앱 신규 런칭 홍보" /></a></div>
+							<div name="banner_template" style="display:none;">
+								<a href="javascript:goPageApp('{cont_full_url}','{cont_full_url_g}');">
+									<img src="{cont_img_url}" data-local-path="{img_local_path}" data-default-src="file:///android_asset/images/main/home_banner_blank2.png" class="lazy-ready" width="100%" alt="{title}" {on_error} {on_load}/>
+								</a>
+							</div>
 
-                                <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/ecommunity/daily_voca/','');"><img src="http://img.etoos.com/lecture/promotion/2017/11/voca/660160.png	" width="100%" alt="데일리 보카20 " /></a></div>
-
-                                <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/lecture/promotion/2018/06/summer_g3/','');"><img src="http://img.etoos.com/lecture/Promotion/2018/06/summer_22/660160.png	" width="100%" alt="여름방학용 커리큘럼 홍보" /></a></div>
-
-                                <div class="swiper-slide"><a href="javascript:goPageApp('http://m.etoos.com/ecommunity/event/2018/03/scholarship_award/','');"><img src="http://img.etoos.com/lecture/Promotion/2018/03/scholarship/180620/660x160.png	" width="100%" alt="2019 대입 이투스 장학생 모집 공고" /></a></div>
-
-                                <div class="swiper-slide"><a href="javascript:goPageApp('http://qr2.etoos.gscdn.com/hd/qr/000/18/180607/260691_ehd.mp4','');"><img src="http://img.etoos.com/home/banner/180605/660x160.png	" width="100%" alt="고3 6월 홍보영상" /></a></div>
-
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
+							<div class="swiper-slide" name="cover_image">
+								<img src="file:///android_asset/images/main/home_banner_blank2.png" class="lazy-ready" width="100%"/>
+							</div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
                 </div>
                 <!-- 메인 배너 -->
 
@@ -105,13 +107,17 @@
                     <div id="tccswiper" class="comswiper not-this" centsild="false" swloop="false" sbtw="5">
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
-								<div class="swiper-slide" id="tcc_list_template" style="display:none;">
+								<div name="tcc_template" style="display:none;">
 									<a href="{link_url}">
 										<span class="tccsicon" style="display:none;">{tcc_gb_nm}</span>
-										<img src="" data-src="{img_path}"  data-img-url="{img_url}" width="150px" height="84.3px" alt="" />
+										<img src="{img_url}" data-local-path="{img_local_path}" data-default-src="file:///android_asset/images/main/tcc_blank.png" class="lazy-ready" width="150px" height="84px" alt="" {on_error} {on_load} />
 										<span class="list_ti linetx2">{title}</span>
 										<span class="list_nameb">{area_nm}&nbsp;{teacher_nm}</span>
 									</a>
+								</div>
+
+								<div class="swiper-slide" name="cover_image">
+									<img src="file:///android_asset/images/main/tcc_blank.png" class="lazy-ready" width="100%" height="84px" style="margin-right:13x;"/>
 								</div>
                             </div>
                         </div>

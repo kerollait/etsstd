@@ -5,12 +5,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -66,6 +69,37 @@ public class CommonUtils {
 		activity.runOnUiThread(() -> {
 			if (loaderDialog == null) {
 				loaderDialog = new Dialog(activity, R.style.LoadingDialogTheme);
+				ProgressBar progressBar = new ProgressBar(activity,null, android.R.attr.progressBarStyle);
+
+				LinearLayout linearLayout = new LinearLayout(activity);
+				linearLayout.setOrientation(LinearLayout.VERTICAL);
+				RelativeLayout layoutPrincipal = new RelativeLayout(activity);
+
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+				params.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+				linearLayout.addView(progressBar);
+
+				linearLayout.setLayoutParams(params);
+
+				layoutPrincipal.addView(linearLayout);
+
+				loaderDialog.setContentView(layoutPrincipal);
+				loaderDialog.setOnCancelListener(dialogInterface -> {
+
+				});
+				loaderDialog.setOnKeyListener((dialogInterface, i, keyEvent) -> {
+					if(keyEvent.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+						loaderDialog.dismiss();
+						loaderDialog = null;
+						return true;
+					}
+
+					return false;
+				});
+
+				loaderDialog.show();
+				/*loaderDialog = new Dialog(activity, R.style.LoadingDialogTheme);
 				loaderDialog.setContentView(R.layout.loader);
 				loaderDialog.setOnCancelListener(dialogInterface -> {
 
@@ -84,7 +118,7 @@ public class CommonUtils {
 
 				LottieAnimationView loader = loaderDialog.findViewById(R.id.loader);
 				loader.setVisibility(View.VISIBLE);
-				loader.playAnimation();
+				loader.playAnimation();*/
 			}
 		});
     }

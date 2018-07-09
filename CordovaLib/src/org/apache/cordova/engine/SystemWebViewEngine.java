@@ -178,7 +178,11 @@ public class SystemWebViewEngine implements CordovaWebViewEngine {
         settings.setSaveFormData(false);
         settings.setSavePassword(false);
 
-        // Jellybean rightfully tried to lock this down. Too bad they didn't give us a whitelist
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+			settings.setSafeBrowsingEnabled(false);
+		}
+
+		// Jellybean rightfully tried to lock this down. Too bad they didn't give us a whitelist
         // while we do this
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
             settings.setAllowUniversalAccessFromFileURLs(true);
