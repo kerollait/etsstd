@@ -1,4 +1,29 @@
 var networkState;
+var etoosStorage = null;
+
+function storageAvailable(type) {
+    try {
+        var storage = window[type],
+            x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            storage.length !== 0;
+    }
+}
 
 function MainBanner() {
 	var is_complete = false;
@@ -6,6 +31,23 @@ function MainBanner() {
 
 	context.getComplete = function() {
         return is_complete;
+    }
+
+    context.bannerRenderFromLocalStorage = function() {
+    	var banner1_data = etoosStorage.getItem("home.banner1");
+    	var banner2_data = etoosStorage.getItem("home.banner2");
+
+    	if (banner1_data != null && typeof banner1_data !== 'undefined' && banner2_data != null && typeof banner2_data !== 'undefined') {
+    		var banner1 = decodeURI(window.atob(banner1_data));
+			var banner2 = decodeURI(window.atob(banner2_data));
+
+			var json1 = JSON.parse(banner1);
+			var json2 = JSON.parse(banner2);
+
+			context.bannerRender(json1, json2);
+    	} else {
+    		context.bannerRender(null, null);
+    	}
     }
 
 	context.bannerRenderFromDatabase = function() {
@@ -26,7 +68,8 @@ function MainBanner() {
 
 	context.bannerRender = function(banner1, banner2) {
 		var $obj_banner1 = $("#appmainvisual > .swiper-container > .swiper-wrapper");
-		var $obj_banner2 = $("#appmainevent2 > .swiper-container > .swiper-wrapper");
+        var $obj_banner2 = $("#appmainevent2 > .swiper-container > .swiper-wrapper");
+
         var html1 = "", html2 = "";
         var $template_banner1 = $obj_banner1.find("div[name='banner_template']");
         var $template_banner2 = $obj_banner2.find("div[name='banner_template']");
@@ -36,44 +79,56 @@ function MainBanner() {
         $obj_banner1.css("height", corver_img_height1 +"px");
         $obj_banner2.css("height", corver_img_height2 +"px");
 
-        $.each(banner1, function() {
-            var img_local_path = cache_storage_www +"/home/banner"+ this.cont_img_url.replace(img_domain, '');
-            var template_html = $template_banner1.html();
+        if (banner1 == null || banner1.length == 0) {
+			$obj_banner1.find("img").removeClass("lazy-ready");
+		} else {
+			$.each(banner1, function() {
+				var img_local_path = cache_storage_www +"/home/banner"+ this.cont_img_url.replace(img_domain, '');
+				var template_html = $template_banner1.html();
 
-            template_html = template_html.replace("{cont_img_url}", this.cont_img_url);
-            template_html = template_html.replace("{on_error}", "onerror='setImageResourceFromLocalStorage(this);'");
-            template_html = template_html.replace("{on_load}", "onload='setImageOnLoad(this);'");
-            template_html = template_html.replace("{img_local_path}", img_local_path);
-            template_html = template_html.replace("{title}", this.title);
-            template_html = template_html.replace("{cont_full_url}", this.cont_full_url);
-            template_html = template_html.replace("{cont_full_url_g}", this.cont_full_url_g);
-            template_html = template_html.replace("{event_text}", this.event_text);
+				template_html = template_html.replace("{cont_img_url}", this.cont_img_url);
+				template_html = template_html.replace("{img_local_path}", img_local_path);
+				template_html = template_html.replace("{title}", this.title);
+				template_html = template_html.replace("{cont_full_url}", this.cont_full_url);
+				template_html = template_html.replace("{cont_full_url_g}", this.cont_full_url_g);
+				template_html = template_html.replace("{event_text}", this.event_text);
 
-            html1 += "<div class='swiper-slide'>";
-            html1 += template_html;
-            html1 += "</div>";
-        });
+				html1 += "<div class='swiper-slide'>";
+				html1 += template_html;
+				html1 += "</div>";
+			});
 
-        $obj_banner1.html(html1);
+			$obj_banner1.html(html1);
 
-        $.each(banner2, function() {
-            var img_local_path = cache_storage_www +"/home/banner"+ this.cont_img_url.replace(img_domain, '');
-            var template_html = $template_banner2.html();
+			$obj_banner1.find('img').each(function() {
+				setImageResourceFromLocalStorage(this);
+			});
+		}
 
-            template_html = template_html.replace("{cont_img_url}", this.cont_img_url);
-            template_html = template_html.replace("{on_error}", "onerror='setImageResourceFromLocalStorage(this);'");
-            template_html = template_html.replace("{on_load}", "onload='setImageOnLoad(this);'");
-            template_html = template_html.replace("{img_local_path}", img_local_path);
-            template_html = template_html.replace("{title}", this.title);
-            template_html = template_html.replace("{cont_full_url}", this.cont_full_url);
-            template_html = template_html.replace("{cont_full_url_g}", this.cont_full_url_g);
+        if (banner2 == null || banner2.length == 0) {
+			$obj_banner2.find("img").removeClass("lazy-ready");
+		} else {
+			$.each(banner2, function() {
+				var img_local_path = cache_storage_www +"/home/banner"+ this.cont_img_url.replace(img_domain, '');
+				var template_html = $template_banner2.html();
 
-            html2 += "<div class='swiper-slide'>";
-            html2 += template_html;
-            html2 += "</div>";
-        });
+				template_html = template_html.replace("{cont_img_url}", this.cont_img_url);
+				template_html = template_html.replace("{img_local_path}", img_local_path);
+				template_html = template_html.replace("{title}", this.title);
+				template_html = template_html.replace("{cont_full_url}", this.cont_full_url);
+				template_html = template_html.replace("{cont_full_url_g}", this.cont_full_url_g);
 
-		$obj_banner2.html(html2);
+				html2 += "<div class='swiper-slide'>";
+				html2 += template_html;
+				html2 += "</div>";
+			});
+
+			$obj_banner2.html(html2);
+
+			$obj_banner2.find('img').each(function() {
+				setImageResourceFromLocalStorage(this);
+			});
+		}
 
         var exec_cnt = 0;
         var ti = setInterval(function() {
@@ -117,6 +172,17 @@ function Tcc() {
 		return is_complete;
 	}
 
+	context.tccListRenderFromLocalStorage = function() {
+		var tcc_data = etoosStorage.getItem("home.tcc");
+		if (tcc_data != null && typeof tcc_data !== 'undefined') {
+			var data = decodeURI(window.atob(tcc_data));
+			var json = JSON.parse(data);
+			context.tccListRender(json);
+		} else {
+			context.tccListRender(null);
+		}
+	}
+
 	context.tccListRenderFromDatabase = function() {
 		nSQL().onConnected(function() {
             nSQL("home").query("select", ["tcc"]).where(["id", "=", 1])
@@ -130,19 +196,24 @@ function Tcc() {
 	}
 
 	context.tccListRender = function(data) {
-	    var $obj = $("#tccswiper > .swiper-container > .swiper-wrapper");
-	    var html = "";
-	    var $template = $obj.find("div[name='tcc_template']");
+		var $obj = $("#tccswiper > .swiper-container > .swiper-wrapper");
 
-        $.each(data, function() {
-        	var img_url = img_domain + "/board/"+ this.board_id +"/"+ this.board_arti_id +".jpg";
+		if (data == null || typeof data === 'undefined') {
+			$obj.find("img").removeClass("lazy-ready");
+            is_complete = true;
+			return;
+		}
+
+		var html = "";
+		var $template = $obj.find("div[name='tcc_template']");
+
+		$.each(data, function() {
+			var img_url = img_domain + "/board/"+ this.board_id +"/"+ this.board_arti_id +".jpg";
 			var img_local_path = cache_storage_www +"/teacher/tcc/"+ this.board_id +'/'+ this.board_arti_id +'.jpg';
 			var template_html = $template.html();
 
 			template_html = template_html.replace("{img_local_path}", img_local_path);
 			template_html = template_html.replace("{img_url}", img_url);
-			template_html = template_html.replace("{on_error}", "onerror='setImageResourceFromLocalStorage(this);'");
-			template_html = template_html.replace("{on_load}", "onload='setImageOnLoad(this);'");
 			template_html = template_html.replace("{tcc_gb_nm}", "입시정보");
 			template_html = template_html.replace("{link_url}", "javascript:fnTccView('app/teacher/tcc/view.html?mode=teacher&teacher_id="+ this.teacher_id +"&board_id="+ this.board_id +"&board_arti_id="+ this.board_arti_id +"');");
 			template_html = template_html.replace("{title}", this.title);
@@ -152,32 +223,36 @@ function Tcc() {
 			html += "<div class='swiper-slide'>";
 			html += template_html;
 			html += "</div>";
-        });
+		});
 
-        $obj.html(html);
+		$obj.html(html);
 
-        var $tcc = $('.swiper-wrapper > .swiper-slide', '#tccswiper').get();
-        var random = $.randomize($tcc);
+		var $tcc = $('.swiper-wrapper > .swiper-slide', '#tccswiper').get();
+		var random = $.randomize($tcc);
 
-        $('.swiper-wrapper', '#tccswiper').empty();
-        $('.swiper-wrapper', '#tccswiper').append(random);
+		$('.swiper-wrapper', '#tccswiper').empty();
+		$('.swiper-wrapper', '#tccswiper').append(random);
+
+		$obj.find('img').each(function() {
+			setImageResourceFromLocalStorage(this);
+		});
 
 		var exec_cnt = 0;
-        var ti = setInterval(function() {
-            var img_ready_cnt = $obj.find("img.lazy-ready").length;
+		var ti = setInterval(function() {
+			var img_ready_cnt = $obj.find("img.lazy-ready").length;
 
-            if (img_ready_cnt == 0) {
-                clearInterval(ti);
-                context.tccListRenderComplete();
-            }
+			if (img_ready_cnt == 0) {
+				clearInterval(ti);
+				context.tccListRenderComplete();
+			}
 
-            exec_cnt++;
+			exec_cnt++;
 
-            if (exec_cnt > 50) {
-                clearInterval(ti);
-                context.tccListRenderComplete();
-            }
-        }, 321);
+			if (exec_cnt > 50) {
+				clearInterval(ti);
+				context.tccListRenderComplete();
+			}
+		}, 321);
     }
 
     context.tccListRenderComplete = function() {
@@ -224,67 +299,39 @@ function goPageApp(link_url,link_url_ios){
 	}
 }
 
-function setImageOnLoad(obj) {
-	var $img = $(obj);
-	var local_path = $img.data('local-path');
-	var img_url = $img.attr('src');
-
-    $img.removeClass("lazy-ready");
-
-    if (networkState !== Connection.NONE) {
-        window.resolveLocalFileSystemURL(local_path, function(fileEntry) {
-            // file is exists!!
-        }, function(e) {
-            var fileTransfer = new FileTransfer();
-            var uri = encodeURI(img_url);
-            fileTransfer.download(
-                uri,
-                local_path,
-                function(entry) {
-                    // download complete!
-                },
-                function(error) {
-                    // download error!
-                }
-            );
-        });
-    }
-}
-
 function setImageResourceFromLocalStorage(obj) {
 	var $img = $(obj);
 	var local_path = $img.data('local-path');
+	var img_url = $img.data('img-url');
 	var def_img_path = $img.data('default-src');
 
 	window.resolveLocalFileSystemURL(local_path, function(fileEntry) {
 		$img.attr('src', local_path);
-		$img.on('load', function() {
-			$img.removeClass("lazy-ready");
-		});
-
+		$img.removeClass("lazy-ready");
 	}, function(e) {
-		$img.attr('src', def_img_path);
+		if (networkState !== Connection.NONE) {
+			$img.attr('src', img_url);
+
+			var fileTransfer = new FileTransfer();
+			var uri = encodeURI(img_url);
+			fileTransfer.download(
+				uri,
+				local_path,
+				function(entry) {
+					// download complete!
+				},
+				function(error) {
+					$img.attr('src', def_img_path);
+				}
+			);
+		} else {
+			$img.attr('src', def_img_path);
+		}
+
 		$img.removeClass("lazy-ready");
 	});
 
-	if (networkState !== Connection.NONE) {
-		window.resolveLocalFileSystemURL(local_path, function(fileEntry) {
-			// file is exists!!
-		}, function(e) {
-			var fileTransfer = new FileTransfer();
-            var uri = encodeURI(img_url);
-            fileTransfer.download(
-                uri,
-                local_path,
-                function(entry) {
-                    // download complete!
-                },
-                function(error) {
-                    // download error!
-                }
-            );
-		});
-    }
+
 	/*window.resolveLocalFileSystemURL(path, function(fileEntry) {
         $(obj).attr("src", $(obj).data('src'));
         $(obj).on('load', function() {
@@ -472,6 +519,15 @@ var app = {
         etoos.setHeaderTitle('home', '', url_root +'/app/index.html');
         etoos.setFooterActiveButton('home');
 
+        if (storageAvailable('localStorage')) {
+        	etoosStorage = window.localStorage;
+        } else {
+        	etoosStorage = {
+        		getItem: function(){},
+        		setItem: function(){}
+        	};
+        }
+
         initCommon();
         initEtoosUI();
 
@@ -479,7 +535,13 @@ var app = {
         var mainBanner = new MainBanner();
         onInitOnecutLecture();
 
-        if (networkState !== Connection.NONE) {
+        var home_expire_dt = etoosStorage.getItem("home.expire_dt");
+        var is_home_expired = true;
+        if (home_expire_dt != null && typeof home_expire_dt !== 'undefined') {
+        	is_home_expired = ((new Date().getTime() - new Date(localStorage.getItem("home.expire_dt")).getTime()) / 1000) > 900 ? true : false;
+        }
+
+        if (networkState !== Connection.NONE && is_home_expired) {
             $.ajax({
                 url: api_path +"/home/home.json.asp",
                 data: {
@@ -501,7 +563,10 @@ var app = {
                         mainBanner.bannerRender(banner_list1, banner_list2);
                         tcc.tccListRender(tcc_list);
 
-                        saveDataToLocalDatabase(banner_list1, banner_list2, tcc_list);
+                        //saveDataToLocalDatabase(banner_list1, banner_list2, tcc_list);
+                        saveDateToLocalStorage(banner_list1, banner_list2, tcc_list);
+
+                        etoosStorage.setItem("home.expire_dt", new Date());
                     }
                 },
                 error: function () {
@@ -524,6 +589,16 @@ var app = {
                    });
         }
 
+        function saveDateToLocalStorage(banner_list1, banner_list2, tcc_list) {
+        	var banner1 = window.btoa(encodeURI(JSON.stringify(banner_list1)));
+			var banner2 = window.btoa(encodeURI(JSON.stringify(banner_list2)));
+			var tcc = window.btoa(encodeURI(JSON.stringify(tcc_list)));
+
+			etoosStorage.setItem("home.banner1", banner1);
+			etoosStorage.setItem("home.banner2", banner2);
+			etoosStorage.setItem("home.tcc", tcc);
+        }
+
         function saveDataToLocalDatabase(banner_list1, banner_list2, tcc_list) {
             var banner1 = window.btoa(encodeURI(JSON.stringify(banner_list1)));
             var banner2 = window.btoa(encodeURI(JSON.stringify(banner_list2)));
@@ -542,10 +617,13 @@ var app = {
         }
 
         function onOfflineMode() {
-            getDatabaseModel().connect().then(function() {
+            /*getDatabaseModel().connect().then(function() {
                 mainBanner.bannerRenderFromDatabase();
                 tcc.tccListRenderFromDatabase();
-            });
+            });*/
+
+            mainBanner.bannerRenderFromLocalStorage();
+            tcc.tccListRenderFromLocalStorage();
         }
 
         var exec_cnt = 0;

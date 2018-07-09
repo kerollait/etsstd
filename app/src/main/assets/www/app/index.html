@@ -16,14 +16,14 @@
         <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_ui.js"></script>
 
 		<style type="text/css">
-			img {
+			/*img {
 			  opacity: 1;
 			  transition: opacity 0.3s;
 			}
 
 			img.lazy-ready {
 			  opacity: 0.3;
-			}
+			}*/
 
 			#appmainevent2 .swiper-pagination .swiper-pagination-current{color:#222222; font-weight:700;}
 		</style>
@@ -60,7 +60,7 @@
                             <div name="banner_template" style="display:none;">
 								<a href="javascript:goPageApp('{cont_full_url}','{cont_full_url_g');">
 									{event_text}
-									<img src="{cont_img_url}" data-local-path="{img_local_path}" data-default-src="file:///android_asset/images/main/home_banner_blank.png" class="lazy-ready" width="100%" alt="{title}" {on_error} {on_load}/>
+									<img src="file:///android_asset/images/main/home_banner_blank.png" data-local-path="{img_local_path}" data-img-url="{cont_img_url}" data-default-src="file:///android_asset/images/main/home_banner_blank.png" class="lazy-ready" width="100%" alt="{title}"/>
 								</a>
 							</div>
 
@@ -83,7 +83,7 @@
 
 							<div name="banner_template" style="display:none;">
 								<a href="javascript:goPageApp('{cont_full_url}','{cont_full_url_g}');">
-									<img src="{cont_img_url}" data-local-path="{img_local_path}" data-default-src="file:///android_asset/images/main/home_banner_blank2.png" class="lazy-ready" width="100%" alt="{title}" {on_error} {on_load}/>
+									<img src="file:///android_asset/images/main/home_banner_blank2.png" data-local-path="{img_local_path}" data-img-url="{cont_img_url}" data-default-src="file:///android_asset/images/main/home_banner_blank2.png" class="lazy-ready" width="100%" alt="{title}"/>
 								</a>
 							</div>
 
@@ -110,7 +110,7 @@
 								<div name="tcc_template" style="display:none;">
 									<a href="{link_url}">
 										<span class="tccsicon" style="display:none;">{tcc_gb_nm}</span>
-										<img src="{img_url}" data-local-path="{img_local_path}" data-default-src="file:///android_asset/images/main/tcc_blank.png" class="lazy-ready" width="150px" height="84px" alt="" {on_error} {on_load} />
+										<img src="file:///android_asset/images/main/tcc_blank.png" data-local-path="{img_local_path}" data-img-url="{img_url}" data-default-src="file:///android_asset/images/main/tcc_blank.png" class="lazy-ready" width="150px" height="84px" alt="" />
 										<span class="list_ti linetx2">{title}</span>
 										<span class="list_nameb">{area_nm}&nbsp;{teacher_nm}</span>
 									</a>
