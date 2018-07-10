@@ -68,7 +68,7 @@ public class CommonUtils {
     public synchronized static void showLoader(Activity activity) {
 		activity.runOnUiThread(() -> {
 			if (loaderDialog == null) {
-				loaderDialog = new Dialog(activity, R.style.LoadingDialogTheme);
+				/*loaderDialog = new Dialog(activity, R.style.LoadingDialogTheme);
 				ProgressBar progressBar = new ProgressBar(activity,null, android.R.attr.progressBarStyle);
 
 				LinearLayout linearLayout = new LinearLayout(activity);
@@ -98,8 +98,9 @@ public class CommonUtils {
 					return false;
 				});
 
-				loaderDialog.show();
-				/*loaderDialog = new Dialog(activity, R.style.LoadingDialogTheme);
+				loaderDialog.show();*/
+
+				loaderDialog = new Dialog(activity, R.style.LoadingDialogTheme);
 				loaderDialog.setContentView(R.layout.loader);
 				loaderDialog.setOnCancelListener(dialogInterface -> {
 
@@ -118,7 +119,7 @@ public class CommonUtils {
 
 				LottieAnimationView loader = loaderDialog.findViewById(R.id.loader);
 				loader.setVisibility(View.VISIBLE);
-				loader.playAnimation();*/
+				loader.playAnimation();
 			}
 		});
     }

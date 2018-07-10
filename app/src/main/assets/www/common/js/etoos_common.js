@@ -26,10 +26,15 @@ function loginCheck(url) {
 	if (isLogin()) {
 		return false;
 	} else {
+		if (url == null || typeof url === 'undefined') {
+			url = "";
+		}
+
 		var extras = {
-            mode: "login"
+            mode: "login",
+            url: url
         };
-		intentPlugin.startActivityForResult("com.etoos.study", "LoginActivity", JSON.stringify(extras), "1", onLogin);
+		intentPlugin.startActivityForResult("com.etoos.study", "LoginActivity", JSON.stringify(extras), "1", onLoginCallback);
 		return true;
 	}
 }
@@ -44,10 +49,7 @@ function loginCheckConfirm(url, msg) {
 		}
 
 		if (confirm(msg)) {
-			var extras = {
-				mode: "login"
-			};
-            intentPlugin.startActivityForResult("com.etoos.study", "LoginActivity", JSON.stringify(extras), "1", onLogin);
+			loginCheck(url);
 			return true;
 		}
 		return true;

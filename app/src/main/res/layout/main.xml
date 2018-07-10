@@ -19,15 +19,23 @@
         <include layout="@layout/footer" />
 
         <!-- Content below header and above footer -->
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/content"
+        <com.etoos.study.CustomSwipeToRefresh
+            android:id="@+id/swipeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_above="@id/footer"
             android:layout_below="@id/header"
-            android:gravity="center">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/content"
+                android:gravity="center">
+
+            </RelativeLayout>
+
+        </com.etoos.study.CustomSwipeToRefresh>
 
     </RelativeLayout>
 

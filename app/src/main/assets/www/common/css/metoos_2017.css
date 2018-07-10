@@ -14,3 +14,12 @@
 @import url("file:///android_asset/www/common/css/sky.css");
 @import url("file:///android_asset/www/common/css/report.css");
 @import url("file:///android_asset/www/common/css/member.css");
+
+.lazy-complete {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.lazy-ready {
+  opacity: 0.3;
+}

@@ -12,7 +12,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dip"
+        android:layout_height="64dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:id="@+id/top_menu">
@@ -20,21 +20,21 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="15dip"
+            android:layout_marginStart="11dip"
             android:id="@+id/btn_header_left"
             android:gravity="center">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dip"
+                android:padding="10dp"
                 android:src="@drawable/ic_hamburger"
                 android:id="@+id/iv_menu"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dip"
+                android:padding="10dp"
                 android:src="@drawable/ic_arrow_back"
                 android:id="@+id/iv_back"
                 android:visibility="gone"/>
@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_title"
-                android:textSize="17sp"
+                android:textSize="23sp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="#333333"
@@ -74,11 +74,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_title_grade"
-                    android:textSize="17sp"
+                    android:textSize="23sp"
                     android:fontFamily="@font/noto_sans_kr_black_"
                     android:textColor="#333333"
-                    android:layout_marginStart="7dip"
-                    android:text="@string/grade3_name"/>
+                    android:layout_marginStart="7dip"/>
 
             </LinearLayout>
 
@@ -87,14 +86,14 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dip"
+            android:layout_marginEnd="11dip"
             android:id="@+id/btn_header_right"
             android:gravity="center">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dip"
+                android:padding="10dp"
                 android:id="@+id/iv_setting"
                 android:src="@drawable/ic_setting"/>
 

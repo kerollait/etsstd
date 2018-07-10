@@ -80,14 +80,27 @@ public class IntentPlugin extends CordovaPlugin {
 
     @Override
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		Log.d("EtoosSmartStudy", "IntetPlugin - onActivityResult : requestCode = "+ requestCode +", resultCode = "+ resultCode +", activityResultOK = " + Activity.RESULT_OK);
-
 		int REQUEST_CODE_LOGIN = 1;
+
 		if (requestCode == REQUEST_CODE_LOGIN) {
+			JSONObject r = new JSONObject();
+
 			if (resultCode == Activity.RESULT_OK) {
-				this.callbackContext.success("login_ok");
+				try {
+					r.put("login_state", "ok");
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+
+				this.callbackContext.success(r);
 			} else {
-				this.callbackContext.success("login_cancel");
+				try {
+					r.put("login_state", "canceled");
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+
+				this.callbackContext.success(r);
 			}
 		}
 	}

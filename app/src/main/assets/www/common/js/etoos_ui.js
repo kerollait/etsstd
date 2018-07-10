@@ -16,7 +16,6 @@ var quick_menu_wscrt = 0; //초기값
 var ti_quick_menu_visible = null;
 
 function initEtoosUI() {
-	//$('.usemap img[usemap]').rwdImageMaps();
 
 	/*전체메뉴 접고 펼침*/
 	$('.leftgnb .gnbtab a').on("click", function (e) {
@@ -80,50 +79,6 @@ function initEtoosUI() {
 		}
 	});
 	/*공통 탭 클릭시 끝*/
-
-
-	/* 퀵메뉴 스크립트 */
-	$.fn.scrollEnd = function (callback, timeout) {
-		$(this).scroll(function () {
-			if (isQuickMenuDisable) {
-				return false;
-			}
-
-			if (is_header_menu_open) {
-				return false;
-			}
-
-			var $this = $(this);
-			if ($this.data('scrollTimeout')) { clearTimeout($this.data('scrollTimeout')); }
-			$this.data('scrollTimeout', setTimeout(callback, timeout));
-		});
-	};
-
-	$(window).scrollEnd(function () {
-		var wscret = $(window).scrollTop();
-
-		if (!$('body').hasClass('quickopen')) {
-			if (wscret > quick_menu_wscrt) {
-				$('.quicknavi').addClass("off")
-			} else {
-				$('.quicknavi').removeClass("off")
-			}
-		}
-
-		if (wscret > 0) {
-			quick_menu_wscrt = $(window).scrollTop();
-		} //스크롤 멈춤때 높이값
-	}, 50);
-
-	$('.quicknavi .quickmbtn').on("click", function (e) {
-		if ($('body').hasClass('quickopen')) {
-			$('body').removeClass("quickopen")
-		} else {
-			$('body').addClass("quickopen")
-		}
-		return false;
-	});
-	/* 퀵메뉴 스크립트 끝 */
 
 	/* 본문 접기 */
 	$('body').on('click', '.viewbtn', function () { /** 수정 : 이벤트 객체대상 body 로 확장 ***/
@@ -270,56 +225,6 @@ function initEtoosUI() {
 
 
 	////////// UI 스크립트 커스트마이징 : 시작 //////////////////////////////////////////////////////////////
-
-	/* keypad 로드 시 quick 메뉴 비활성화 처리 : 시작 */
-	$('body').on('focus', 'textarea,input:text,select', function () {
-		if (ti_quick_menu_visible) {
-			clearTimeout(ti_quick_menu_visible);
-			ti_quick_menu_visible = null;
-			return;
-		}
-
-		if ($('.quicknavi').hasClass('off')) {
-			isQuickMenuVisibled = false;
-		} else {
-			isQuickMenuVisibled = true;
-
-			$('.quicknavi').addClass("off");
-			isQuickMenuDisable = true;
-
-			clearTimeout(ti_quick_menu_visible);
-			ti_quick_menu_visible = null;
-		}
-	});
-
-	$('body').on('blur', 'textarea,input:text,select', function () {
-		if (isQuickMenuVisibled) { // keypad 호출 시 quick메뉴가 노출된 상태였다면 다시 노출시켜준다..
-			if (ti_quick_menu_visible == null) {
-				ti_quick_menu_visible = setTimeout(function () {
-					$('.quicknavi').removeClass("off");
-					ti_quick_menu_visible = null;
-					isQuickMenuDisable = false;
-				}, 500);
-			}
-		}
-	});
-	/* keypad 로드 시 quick 메뉴 비활성화 처리 : 끝 */
-
-
-
-	// 헤더메뉴 링크 컨트롤
-	$('body').on('click', '#cNavNew .gnbcont a, div.teacher_list ul li a', function (e) {
-		var url = $(this).attr('href');
-
-		if (is_header_menu_open) { // 헤더메뉴가 열려진 상태라면..
-			if (url.indexOf('javascript:') == -1) { // 연결할 링크가 있다면..
-				e.preventDefault();
-
-				document.location.replace(url); // history replace 처리한다 (back버튼 클릭시 헤더메뉴가 다시 열리지 않도록..)
-			}
-		}
-	});
-
 
 	if (is_pushstate_supported) {
 		// UI 관련 popstate 이벤트 처리

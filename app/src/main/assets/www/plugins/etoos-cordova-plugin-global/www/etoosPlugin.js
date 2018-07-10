@@ -10,9 +10,17 @@ cordova.define("etoos-cordova-plugin-global.etoos", function(require, exports, m
 			cordova.exec(null, null, 'EtoosPlugin', 'hideLoading', []);
 		};
 
-		var getLoginTokenAndGrade = function() {
-			cordova.exec(setLoginTokenAndGrade, function(){}, 'EtoosPlugin', 'getLoginTokenAndGrade', []);
-		};
+		var setLoginToken = function(token) {
+            cordova.exec(function(){}, function(){}, 'EtoosPlugin', 'setLoginToken', [token]);
+        };
+
+        var setGrade = function(grade) {
+            cordova.exec(function(){}, function(){}, 'EtoosPlugin', 'setGrade', [grade]);
+        };
+
+        var setGradeName = function(gradeName) {
+            cordova.exec(function(){}, function(){}, 'EtoosPlugin', 'setGradeName', [gradeName]);
+        };
 
 		var setHeaderTitle = function(headerType, title, titleLink) {
 			cordova.exec(function() {}, function() {}, 'EtoosPlugin', 'setHeaderTitle', [headerType, title, titleLink]);
@@ -29,7 +37,9 @@ cordova.define("etoos-cordova-plugin-global.etoos", function(require, exports, m
 		return {
 			showLoading: showLoading,
 			hideLoading: hideLoading,
-			getLoginTokenAndGrade: getLoginTokenAndGrade,
+			setLoginToken: setLoginToken,
+			setGrade: setGrade,
+			setGradeName: setGradeName,
 			setHeaderTitle: setHeaderTitle,
 			setFooterActiveButton: setFooterActiveButton,
 			exitApp: exitApp

@@ -8,10 +8,10 @@ var app = {
     },
 
     onDeviceReady: function() {
-        etoos.setHeaderTitle('title', '선생님', 'file:///android_asset/www/app/teacher/index.html');
+        initCommon();
+        etoos.setHeaderTitle('title', '선생님', url_root +'/app/teacher/index.html');
 		etoos.setFooterActiveButton('home');
 
-        initCommon();
         initEtoosUI();
         initTcc();
     }

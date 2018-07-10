@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.etoos.study.MainActivity;
 import com.etoos.study.R;
 import com.etoos.study.common.utils.CommonUtils;
+import com.etoos.study.data.EtoosData;
 
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
@@ -65,14 +66,54 @@ public class EtoosPlugin extends CordovaPlugin {
 			JSONObject r = new JSONObject();
 			r.put("responseCode", "ok");
 			callbackContext.success(r);
-		} else if (action.equals("getLoginTokenAndGrade")) {
-			LOG.d(LOG_TAG, "getLoginTokenAndGrade");
+		} else if (action.equals("setLoginToken")) {
+			LOG.d(LOG_TAG, "setLoginToken : args = " + args);
 
-			JSONObject item = new JSONObject();
-			item.put("token", "");
-			item.put("grade", "go3");
+			if (args != null) {
+				String token = "";
+				try {
+					token = args.getString(0);
+				} catch (Exception e) {
 
-			callbackContext.success(item.toString());
+				}
+
+				EtoosData.setToken(cordova.getContext(), token);
+				callbackContext.success("ok");
+			} else {
+				callbackContext.error("error");
+			}
+		} else if (action.equals("setGrade")) {
+			LOG.d(LOG_TAG, "setGrade : args = " + args);
+
+			if (args != null) {
+				String grade = "";
+				try {
+					grade = args.getString(0);
+				} catch (Exception e) {
+
+				}
+
+				EtoosData.setGrade(cordova.getContext(), grade);
+				callbackContext.success("ok");
+			} else {
+				callbackContext.error("error");
+			}
+		} else if (action.equals("setGradeName")) {
+			LOG.d(LOG_TAG, "setGradeName : args = " + args);
+
+			if (args != null) {
+				String gradeName = "";
+				try {
+					gradeName = args.getString(0);
+				} catch (Exception e) {
+
+				}
+
+				EtoosData.setGradeName(cordova.getContext(), gradeName);
+				callbackContext.success("ok");
+			} else {
+				callbackContext.error("error");
+			}
 		} else if (action.equals("setHeaderTitle")) {
 			LOG.d(LOG_TAG, "setHeaderTitle : args = " + args);
 
@@ -80,7 +121,7 @@ public class EtoosPlugin extends CordovaPlugin {
 				cordova.getActivity().runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						String headerType = "main";
+						String headerType = "home";
 						String title = "";
 						String titleLink = "";
 
@@ -105,6 +146,9 @@ public class EtoosPlugin extends CordovaPlugin {
 								if (headerType.equals("home")) {
 									cordova.getActivity().findViewById(R.id.ll_title).setVisibility(View.VISIBLE);
 									cordova.getActivity().findViewById(R.id.tv_title).setVisibility(View.GONE);
+
+									TextView titleGrade = cordova.getActivity().findViewById(R.id.tv_title_grade);
+									titleGrade.setText(title);
 
 									final String headerLink = titleLink;
 

@@ -1,33 +1,26 @@
 package cl.kunder.webview;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.res.ResourcesCompat;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.airbnb.lottie.LottieAnimationView;
+import com.etoos.study.CustomSwipeToRefresh;
 import com.etoos.study.CustomWebviewClient;
-import com.etoos.study.ExceptionHandler;
 import com.etoos.study.R;
 import com.etoos.study.common.utils.CommonUtils;
-import com.etoos.study.common.utils.RecycleUtils;
 
 import org.apache.cordova.CordovaActivity;
 import org.apache.cordova.engine.SystemWebViewEngine;
@@ -37,6 +30,8 @@ public class WebViewActivity extends CordovaActivity {
     private String title = "";
     private String animType = "";
     private boolean shouldShowLoading = true;
+	private CustomSwipeToRefresh mySwipeRefreshLayout;
+	private ViewTreeObserver.OnScrollChangedListener mOnScrollChangedListener;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,16 +40,6 @@ public class WebViewActivity extends CordovaActivity {
         activity2 = this;
         Bundle b = getIntent().getExtras();
         String url = b.getString("url");
-
-        try {
-            shouldShowLoading = b.getBoolean("shouldShowLoading");
-        } catch (Exception e) {
-
-        }
-
-        if (shouldShowLoading) {
-            //showLoading();
-        }
 
         try {
             title = b.getString("title");
@@ -85,7 +70,37 @@ public class WebViewActivity extends CordovaActivity {
 		webView.setWebViewClient(customWebViewClient);
 
         super.loadUrl((url.matches("^(.://|javascript:)[\\s\\S]$") ? "" : "file:///android_asset/www/" + (isPluginCryptFileActive() ? "+++/" : "")) + url);
+
+		mySwipeRefreshLayout = this.findViewById(R.id.swipeContainer);
+		mySwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_button_default));
+		mySwipeRefreshLayout.setOnRefreshListener(
+				() -> {
+					appView.loadUrl("javascript:fnSwipePullRefresh();");
+
+					new Handler().postDelayed(() -> mySwipeRefreshLayout.setRefreshing(false), 1000);
+				}
+		);
     }
+
+	@Override
+	public void onStart() {
+		super.onStart();
+
+		mySwipeRefreshLayout.getViewTreeObserver().addOnScrollChangedListener(mOnScrollChangedListener =
+				() -> {
+					if (appView.getView().getScrollY() == 0)
+						mySwipeRefreshLayout.setEnabled(true);
+					else
+						mySwipeRefreshLayout.setEnabled(false);
+
+				});
+	}
+
+	@Override
+	public void onStop() {
+		mySwipeRefreshLayout.getViewTreeObserver().removeOnScrollChangedListener(mOnScrollChangedListener);
+		super.onStop();
+	}
 
     @SuppressWarnings({"deprecation", "ResourceType", "InflateParams"})
     @Override
@@ -159,22 +174,6 @@ public class WebViewActivity extends CordovaActivity {
             }
         }
     }
-
-    @Override
-	public void onDestroy() {
-    	super.onDestroy();
-
-		try {
-			appView.getView().destroyDrawingCache();
-			appView.getEngine().destroy();
-			appView = null;
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-
-		RecycleUtils.recursiveRecycle(getWindow().getDecorView());
-		RecycleUtils.gc();
-	}
 
     @Override
     public void onBackPressed() {

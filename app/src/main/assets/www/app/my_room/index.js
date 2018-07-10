@@ -5,12 +5,11 @@ var app = {
     },
 
     onDeviceReady: function() {
-        etoos.setHeaderTitle('title', '마이룸', 'file:///android_asset/www/app/my_room/index.html');
+        initCommon();
+        etoos.setHeaderTitle('title', '마이룸', url_root +'/app/my_room/index.html');
         etoos.setFooterActiveButton('myroom');
 
-        initCommon();
 		initEtoosUI();
-
 		etoos.hideLoading();
     }
 };

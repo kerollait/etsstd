@@ -4,29 +4,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1.0, width=device-width">
 
         <meta http-equiv="Content-Security-Policy" content="default-src * 'self' cdvfile://*; img-src * data: cdvfile://*; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 
         <link rel="stylesheet" type="text/css" href="file:///android_asset/www/common/css/metoos_2017.css">
         <script type="text/javascript" src="file:///android_asset/www/common/js/jquery/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_util.js"></script>
+		<script type="text/javascript" src="file:///android_asset/www/common/js/etoos_storage.js"></script>
 
-        <script type="text/javascript" src="file:///android_asset/www/app/js/common/head.js"></script>
+		<script type="text/javascript" src="file:///android_asset/www/app/common/head.js"></script>
         <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_ui.js"></script>
-
-		<style type="text/css">
-			/*img {
-			  opacity: 1;
-			  transition: opacity 0.3s;
-			}
-
-			img.lazy-ready {
-			  opacity: 0.3;
-			}*/
-
-			#appmainevent2 .swiper-pagination .swiper-pagination-current{color:#222222; font-weight:700;}
-		</style>
 
         <title>이투스 메인</title>
     </head>
@@ -60,12 +48,12 @@
                             <div name="banner_template" style="display:none;">
 								<a href="javascript:goPageApp('{cont_full_url}','{cont_full_url_g');">
 									{event_text}
-									<img src="file:///android_asset/images/main/home_banner_blank.png" data-local-path="{img_local_path}" data-img-url="{cont_img_url}" data-default-src="file:///android_asset/images/main/home_banner_blank.png" class="lazy-ready" width="100%" alt="{title}"/>
+									<img src="file:///android_asset/images/main/home_banner_blank.png" data-local-path="{img_local_path}" data-img-url="{cont_img_url}" data-default-src="file:///android_asset/images/main/home_banner_blank.png" class="lazy-ready" width="100%" alt="{title}" style="max-width:660px; max-height: 290px;"/>
 								</a>
 							</div>
 
 							<div class="swiper-slide" name="cover_image">
-								<img src="file:///android_asset/images/main/home_banner_blank.png" class="lazy-ready" width="100%"/>
+								<img src="file:///android_asset/images/main/home_banner_blank.png" class="lazy-ready" width="100%" style="max-width:660px; max-height: 290px;"/>
 							</div>
 
                         </div>
@@ -83,20 +71,18 @@
 
 							<div name="banner_template" style="display:none;">
 								<a href="javascript:goPageApp('{cont_full_url}','{cont_full_url_g}');">
-									<img src="file:///android_asset/images/main/home_banner_blank2.png" data-local-path="{img_local_path}" data-img-url="{cont_img_url}" data-default-src="file:///android_asset/images/main/home_banner_blank2.png" class="lazy-ready" width="100%" alt="{title}"/>
+									<img src="file:///android_asset/images/main/home_banner_blank2.png" data-local-path="{img_local_path}" data-img-url="{cont_img_url}" data-default-src="file:///android_asset/images/main/home_banner_blank2.png" width="100%" class="lazy-ready" alt="{title}" style="max-width:660px; max-height: 161px;"/>
 								</a>
 							</div>
 
 							<div class="swiper-slide" name="cover_image">
-								<img src="file:///android_asset/images/main/home_banner_blank2.png" class="lazy-ready" width="100%"/>
+								<img src="file:///android_asset/images/main/home_banner_blank2.png" class="lazy-ready" width="100%" style="max-width:660px; max-height: 161px;"/>
 							</div>
 						</div>
 						<div class="swiper-pagination"></div>
 					</div>
                 </div>
                 <!-- 메인 배너 -->
-
-                <div class="mt6 bgw"><a href="javascript:;" onclick = "alert('킹갓제네럴 이투스플래너 커밍순 ~');"><img src="http://img.etoos.com/lecture/promotion/2018/06/planner_main/m_mainbn.gif" class="wid100" alt=""/></a></div>
 
                 <div class="mainbox">
 
@@ -1057,14 +1043,6 @@
 
         </div>
 
-        <!--// 퀵메뉴 시작 -->
-        <div class="quicknavi">
-            <div class="apprefresh"><a href="javascript:fnRefresh();"><span>새로고침</span></a></div>
-            <div class="apptopgobtn"><a href="javascript:fnScrollTop();"><span>상단으로</span></a></div>
-        </div>
-
-        <script type="text/javascript" src="file:///android_asset/www/app/js/common/quick_menu.js"></script>
-        <!--// 퀵메뉴 종료 -->
 
     </div>
 
@@ -1081,7 +1059,7 @@
     <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_common.js?t=201806230123"></script>
     <!-- etoos library -->
 
-    <script type="text/javascript" src="file:///android_asset/www/app/js/index.js"></script>
+    <script type="text/javascript" src="index.js"></script>
 
     </body>
 </html>

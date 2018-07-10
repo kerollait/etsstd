@@ -7,19 +7,19 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,25 +29,22 @@ import com.etoos.study.common.utils.CommonUtils;
 import com.etoos.study.device.Device;
 import com.etoos.study.device.DeviceInfo;
 
-import net.sqlcipher.database.SQLiteDatabase;
-
 import org.apache.cordova.*;
 import org.apache.cordova.engine.SystemWebViewEngine;
-
-
-import java.io.File;
-import java.lang.ref.WeakReference;
 
 import cl.kunder.webview.WebViewActivity;
 
 public class MainActivity extends CordovaActivity {
 
+	private String LOG_TAG = "EtoosSmartStudy";
     private View splashScreen;
     private Context context;
     private Activity activity;
     private boolean doubleBackToExitPressedOnce = false;
+	private CustomSwipeToRefresh mySwipeRefreshLayout;
+	private ViewTreeObserver.OnScrollChangedListener mOnScrollChangedListener;
 
-    @Override
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -64,13 +61,44 @@ public class MainActivity extends CordovaActivity {
 
 		super.loadUrl(launchUrl);
 
+		mySwipeRefreshLayout = this.findViewById(R.id.swipeContainer);
+		mySwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_button_default));
+		mySwipeRefreshLayout.setOnRefreshListener(
+				() -> {
+					appView.loadUrl("javascript:fnSwipePullRefresh();");
+
+					new Handler().postDelayed(() -> mySwipeRefreshLayout.setRefreshing(false), 1000);
+				}
+		);
+
         DeviceInfo deviceInfo = new DeviceInfo(context);
 
-        Log.d("EtoosSmartStudy", "device id : "+ deviceInfo.getDeviceInfo(Device.DEVICE_ID));
-		Log.d("EtoosSmartStudy", "device memory : "+ deviceInfo.getDeviceInfo(Device.DEVICE_TOTAL_MEMORY));
-		Log.d("EtoosSmartStudy", "device model : "+ deviceInfo.getDeviceInfo(Device.DEVICE_HARDWARE_MODEL));
-		Log.d("EtoosSmartStudy", "device type : "+ deviceInfo.getDeviceInfo(Device.DEVICE_TYPE));
+        Log.d(LOG_TAG, "device id : "+ deviceInfo.getDeviceInfo(Device.DEVICE_ID));
+		Log.d(LOG_TAG, "device memory : "+ deviceInfo.getDeviceInfo(Device.DEVICE_TOTAL_MEMORY));
+		Log.d(LOG_TAG, "device model : "+ deviceInfo.getDeviceInfo(Device.DEVICE_HARDWARE_MODEL));
+		Log.d(LOG_TAG, "device type : "+ deviceInfo.getDeviceInfo(Device.DEVICE_TYPE));
     }
+
+
+	@Override
+	public void onStart() {
+		super.onStart();
+
+		mySwipeRefreshLayout.getViewTreeObserver().addOnScrollChangedListener(mOnScrollChangedListener =
+				() -> {
+					if (appView.getView().getScrollY() == 0)
+						mySwipeRefreshLayout.setEnabled(true);
+					else
+						mySwipeRefreshLayout.setEnabled(false);
+
+				});
+	}
+
+	@Override
+	public void onStop() {
+		mySwipeRefreshLayout.getViewTreeObserver().removeOnScrollChangedListener(mOnScrollChangedListener);
+		super.onStop();
+	}
 
     @SuppressWarnings({"deprecation", "ResourceType", "InflateParams"})
     @Override
@@ -85,6 +113,8 @@ public class MainActivity extends CordovaActivity {
         appView.getView().setLayoutParams(new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
+
+
 
         RelativeLayout rl = main.findViewById(R.id.content);
         rl.addView(appView.getView());
@@ -183,8 +213,6 @@ public class MainActivity extends CordovaActivity {
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
-        Log.d("EtoosSmartStudy", "event.getKeyCode() = "+ event.getKeyCode() + " , KeyEvent.KEYCODE_BACK = "+ KeyEvent.KEYCODE_BACK + ", appView.getUrl() = "+ appView.getUrl());
-
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             return true;
         } else {

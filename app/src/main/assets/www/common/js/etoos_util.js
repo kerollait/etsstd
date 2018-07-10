@@ -668,19 +668,6 @@ function EtoosUtil() {
 		}
 	}
 
-	context.setCookieAtServer = function (name, val) {
-		$.ajax({
-			url: "/common/data/common/cookie_writer.asp",
-			data: {
-				name: name,
-				val: val
-			},
-			success: function (data) {
-
-			}
-		});
-	}
-
 	/*
 	* 쿠키 가져오기
 	*/
@@ -753,73 +740,4 @@ function EtoosUtil() {
 	}
 
 
-}
-
-
-
-/*=====================================================================
-함 수 명 : CurFormat
-기능설명 : 숫자 3자리씩 포맷팅
-입 력 값 :
-반 환 값 :
-=======================================================================*/
-function CurFormat(obj) {
-	var txtNumber;
-	if (obj == '[object]') txtNumber = obj.value; else txtNumber = obj;
-	txtNumber = String(txtNumber);
-	if (isNaN(filterNum(txtNumber))) {
-		if (obj == '[object]') obj.value = "";
-		return;
-	}
-	var rxSplit = new RegExp('([0-9])([0-9][0-9][0-9][,.])');
-	var arrNumber = txtNumber.split('.');
-	var result;
-	arrNumber[0] += '.';
-	do {
-		arrNumber[0] = arrNumber[0].replace(rxSplit, '$1,$2');
-	} while (rxSplit.test(arrNumber[0]));
-	if (arrNumber.length > 1) result = arrNumber.join(''); else result = arrNumber[0].split('.')[0];
-	if (obj == '[object]') obj.value = result;
-	return result;
-}
-
-/*=====================================================================
-함 수 명 : CurFormat
-기능설명 : 숫자 3자리씩 포맷팅 제거
-입 력 값 :
-반 환 값 :
-=======================================================================*/
-function filterNum(str) {
-	re = /^\$|,/g;
-	str = String(str);
-	return str.replace(re, "");
-}
-
-/* =============================================================
-함수명 		: IsNumberCheck()
-기능설명	: 숫자체크
-입 력 값	: OBJECT
-반 환 값	:
-============================================================= */
-function IsNumberCheck(obj) {
-	var Chk = "0123456789"
-	var j
-	var k
-	var expression
-	expression = obj.value;
-	for (k = 0; k < expression.length; k++) {
-		var ch = expression.charAt(k)
-		for (j = 0; j < Chk.length; j++) {
-			if (ch == Chk.charAt(j))
-				break;
-		}
-	}
-	if (Chk.length == j) {
-		alert('숫자만 입력할 수 있습니다.');
-		obj.value = "";
-		return false;
-	}
-	else {
-		return true;
-	}
 }

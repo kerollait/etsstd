@@ -11,8 +11,9 @@
     <link rel="stylesheet" type="text/css" href="file:///android_asset/www/common/css/metoos_2017.css">
     <script type="text/javascript" src="file:///android_asset/www/common/js/jquery/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_util.js"></script>
+	<script type="text/javascript" src="file:///android_asset/www/common/js/etoos_storage.js"></script>
 
-    <script type="text/javascript" src="file:///android_asset/www/app/js/common/head.js"></script>
+    <script type="text/javascript" src="file:///android_asset/www/app/common/head.js"></script>
     <script type="text/javascript" src="file:///android_asset/www/common/js/etoos_ui.js"></script>
 
     <title>이투스 메인</title>
@@ -252,9 +253,9 @@
         <div class="atranim">
             <p>이투스의 시작페이지로 설정할<br />학년을 선택해 주세요. </p>
             <ul>
-                <li><input type="radio" id="etgrd_go3" name="set_etgrd"  Checked value="go3"><label for="etgrd_go3">고3·N수</label></li>
-                <li><input type="radio" id="etgrd_go2" name="set_etgrd"  value="go2"><label for="etgrd_go2">고2</label></li>
-                <li><input type="radio" id="etgrd_go1" name="set_etgrd"  value="go1"><label for="etgrd_go1">고1</label></li>
+                <li><input type="radio" id="etgrd_go3" name="set_etgrd" value="go3"><label for="etgrd_go3">고3·N수</label></li>
+                <li><input type="radio" id="etgrd_go2" name="set_etgrd" value="go2"><label for="etgrd_go2">고2</label></li>
+                <li><input type="radio" id="etgrd_go1" name="set_etgrd" value="go1"><label for="etgrd_go1">고1</label></li>
             </ul>
             <!--<p class="tal fw300 fz13">학년을 선택해 주세요.</p>-->
             <a href="javascript:;" onclick="fnGrdChange();" class="intro_popbtn f_r"><span>확인</span></a>
@@ -266,12 +267,18 @@
     <div id="cNavNew" style="z-index:30;">
         <div class="leftgnb">
             <a href="javascript:;" onclick="fnGnbClose();" class="leftgnbcle"><span>전체메뉴 닫기</span></a>
-            <div class="gnbhead">
-                <div class="gnbti"><strong>고3·N수</strong><a href="javascript:fnPopupOpen('alert', '#intro_go');">학년설정</a></div>
+            <div class="gnbhead" style="opacity:0">
+                <div class="gnbti"><strong></strong><a href="javascript:fnPopupOpen('alert', '#intro_go');">학년설정</a></div>
 
+				<div id="login_section">
+					<div class="loginbox" id="gnb_login_off">
+						<a href="javascript:loginCheck('');">로그인</a><a href="https://m.etoos.com:44300/member/join_01.asp">회원가입</a>
+					</div>
 
-                <div class="loginbox"><a href="javascript:loginCheck('');">로그인</a><a href="https://m.etoos.com:44300/member/join_01.asp">회원가입</a></div>
-
+					<div class="loginname" id="gnb_login_on" style="display:none;">
+						<strong>-</strong><span id="gnb_mem_grade_nm"></span>
+					</div>
+				</div>
             </div>
             <div class="onofftab tfixed gnbtab">
                 <ul class="tfrow">
@@ -448,127 +455,18 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        function fnPlayerAppMarket() {
-            fnGoAppMarket(PLAYER_APP_ANDROID_MARKET_URL, PLAYER_APP_IPHONE_URL, PLAYER_APP_IPAD_URL);
-        }
-
-        // 학년 설정
-        function fnGrdChange() {
-            var cookie_grd = etoos_util.getCookie('etgrd');
-            var now_grd = "go3";
-            var grd = jQuery('input:radio[name="set_etgrd"]:checked').val();
-
-            if (now_grd != grd || !cookie_grd) {
-                var set_url = etoos_util.pageParamMake(null, 'etgrd', 'etgrd', grd, ['full-popup', 'pop-obj', 'pop-url', 'anim-type', 'header-menu', 'alert-popup', 'alert-pop-obj']);
-                if (gnb_set_url) {
-                    set_url = etoos_util.pageParamMake(gnb_set_url, 'etgrd', 'etgrd', grd);
-                }
-
-                etoos_util.setCookie('etgrd', grd, 365);
-
-
-
-                if (is_pushstate_supported) {
-                    setTimeout(function() {
-                        if (is_header_menu_open) {
-                            document.location.href = set_url;
-                        } else {
-                            document.location.replace(set_url);
-                        }
-                    }, 150);
-
-                    if (is_header_menu_open) {
-                        window.history.go(-2);
-                    }
-
-                } else {
-                    setTimeout(function() {
-                        document.location.replace(set_url);
-                    }, 150);
-                }
-
-            } else {
-                set_url = etoos_util.pageParamMake(null, null, null, null, ['alert-popup', 'alert-pop-obj']);
-
-                if (is_pushstate_supported) {
-                    if (is_header_menu_open) {
-                        setTimeout(function() {
-                            window.history.pushState(null, '', set_url);
-                            window.history.back(-1);
-                        }, 150);
-
-                        window.history.back(-1);
-                    } else {
-                        window.history.replaceState(null, '', set_url);
-                    }
-                }
-            }
-
-            fnAlertPopupClose('#intro_go');
-        }
-
-        function fnGnbMyStudyLink(gb) {
-            var url = "";
-
-            switch (gb) {
-            case 'study': // 수강중인 강좌
-                url = "http://m.etoos.com/my_room/lecture/lecture_watch.asp?recent_yn=Y";
-                break;
-
-            case 'qna': // QNA
-                url = "http://m.etoos.com/my_room/qna/tea_qna_default.asp";
-                break;
-
-            case 'slippaper': // 쪽지
-                url = "http://m.etoos.com/my_room/slip_paper/slip_paper_list.asp";
-                break;
-
-            case 'cart': // 장바구니
-                url = "http://m.etoos.com/my_room/order/cart_list.asp";
-                break;
-
-            case 'order': // 주문/배송
-                url = "http://m.etoos.com/my_room/order/order_list.asp";
-                break;
-
-            case 'point': // E-통장
-                url = "http://m.etoos.com/my_room/order/ebank/coupon_list.asp";
-                break;
-
-            case 'scrap': // 학습보관함
-                url = "http://m.etoos.com/my_room/scrap/scrap_list.asp";
-                break;
-            }
-
-            if (loginCheckConfirm(url)) {
-                return;
-            } else {
-                if (url) {
-                    if (is_header_menu_open) {
-                        document.location.replace(url);
-                    } else {
-                        document.location.href(url);
-                    }
-                }
-            }
-        }
-
-    </script>
     <!--// GNB 메뉴 종료 -->
 </div>
 
 <script type="text/javascript" src="file:///android_asset/www/cordova.js"></script>
 
 <!-- external library -->
-<script type="text/javascript" src="file:///android_asset/www/common/js/lib/js.cookie.js"></script>
-<script type="text/javascript" src="file:///android_asset/www/common/js/lib/nano-sql.min.js"></script>
 <!-- external library -->
 
 <!-- etoos library -->
-<script type="text/javascript" src="file:///android_asset/www/common/js/etoos_common.js?t=201806230123"></script>
+<script type="text/javascript" src="file:///android_asset/www/common/js/etoos_common.js"></script>
 <!-- etoos library -->
 
-<script type="text/javascript" src="file:///android_asset/www/app/js/common/gnb.js"></script>
+<script type="text/javascript" src="gnb.js"></script>
 </body>
 </html>

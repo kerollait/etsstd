@@ -10,16 +10,15 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:id="@+id/loader_container"
-        android:alpha="0.6"
         android:gravity="center">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/loader"
             android:visibility="gone"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             app:lottie_autoPlay="false"
-            app:lottie_fileName="loader_ring.json"
+            app:lottie_fileName="simple.json"
             app:lottie_loop="true"/>
 
     </RelativeLayout>
