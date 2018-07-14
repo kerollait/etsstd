@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+/*new아이콘*/
+.new{color:#1aa5b1;font-weight:300;font-size:11px;margin-left:5px;}
+.textlist .list_namet .new{display:inline-block;border:1px solid #1aa5b1;border-radius:100%;font-size:10px;width:13px;height:13px;line-height:13px;text-align:center;font-size:10px;text-indent:-1px;}
+/*검정 플레이 아이콘*/
+.playicon{display:inline-block;width:14px;height:14px;position:relative;border:1px solid #595959;border-radius:100%;}
+.playicon s{display:block;text-indent:-5000px;font-size:0;}
+.playicon s:after{content:"";position:absolute;left: 5px;top: 3px;width: 0;height: 0;border-top: 4px solid transparent;border-left: 6px solid #444444;border-bottom:4px solid transparent;}
+
+/*tcc 리스트 아이콘*/
+.tccsicon{display:inline-block;height:17px;line-height:16px;background:#000;color:#fff;font-size:8px;text-align:center;font-weight:400;padding:0 5px;}
+.tccsicon:before{content:"";display:inline-block;width:5px;height:6px;background: url('file:///android_asset/images/common/tcc_sicon.svg') center center no-repeat;background-size:5px auto;vertical-align:middle;margin-right:3px;position:relative;top:-1px;}
+.tccsicon.cut:before{margin-right:0}
+
+.icons .tcc{background-color:rgba(40, 169, 116, 0.9);background-image:url('file:///android_asset/images/teacher/tctcc_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:auto 100%;}
+.icons .event{background-color:rgba(100, 161, 70, 0.9);background-image:url('file:///android_asset/images/teacher/tcevent_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:auto 100%;}
+
+
+.playcenter{display:inline-block;width:44px;height:44px;background-color:rgba(255, 255, 255, 0.3);border: 2px solid rgba(255, 255, 255, .6);border-radius: 100%;text-align:center;}
+.playcenter:before{content:"";display:inline-block;width:15px;height:18px;background: url('file:///android_asset/images/common/tcc_sicon.svg') center center no-repeat;background-size:15px auto;vertical-align:middle;position:relative;top:11px;left:2px;}
+
+.iconsize{text-indent:-5000px;font-size:0}
+.playicong{display:inline-block;position: relative;top: -1px;vertical-align: middle;background-image:url('file:///android_asset/images/common/tcc_sicon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.playicong1{display:inline-block;position: relative;top: -1px;vertical-align: middle;background-image:url('file:///android_asset/images/common/tcc_sicon2.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.playicong2{display:inline-block;position: relative;top: -1px;vertical-align: middle;background-image:url('file:///android_asset/images/common/tcc_sicon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.file_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/file_list.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.download_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/download_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.downloadw_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/downloadw_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.scrap_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/scrap_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.twitter_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/twitter_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.facebook_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/facebook_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.talk_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/talk_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.twitter_icon1{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/twitter_icon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.facebook_icon1{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/facebook_icon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.talk_icon2{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/talk_icon2.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+
+.review_txet{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/review_txet.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.review_txet2{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/review_txet2.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.reicon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/reicon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.lock_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/lock_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.talk_icon1{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/talk_icon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.sms_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/sms_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.mail_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/mail_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.rp_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/rp_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.qna_icon{display:inline-block;vertical-align: top;background-image:url('file:///android_asset/images/teacher/qna.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;}
+.notcm_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/notcm_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.heart_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/heart_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.heart_icon1{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/heart_icon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.back_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/back_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.home_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/home_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.bell_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/bell_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.gnb_icon1{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/gnb_icon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.gnb_icon2{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/gnb_icon2.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.gnb_icon3{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/gnb_icon3.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.gnb_icon4{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/gnb_icon4.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.gnb_icon5{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/gnb_icon5.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.gnb_icon6{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/gnb_icon6.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.gnb_icon7{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/gnb_icon7.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.logout_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/logout_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.cut_icon1{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/cut_icon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.cut_icon2{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/cut_icon2.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.cut_icon3{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/cut_icon3.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.cut_icon4{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/cut_icon4.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.cut_icon5{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/cut_icon5.png');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.cut_icon6{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/cut_icon6.png');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.event_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/event_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.bellbtn_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/teacher/bell_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.choice_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/choice_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.request_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/request_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.w_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/w_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.m_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/m_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.pb_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/pb_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.mb_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/mb_icon.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.cart_icon1{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/cart_icon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.cart_icon2{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/cart_icon2.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.cart_icon3{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/cart_icon3.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.cart_icon4{border:1px solid #989898;border-radius: 100%;display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/cart_icon4.svg');background-repeat:no-repeat;background-position:center center;background-size:60% 60%;position:relative;top:-2px;}
+.payment_icon1{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/payment_icon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.payment_icon2{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/payment_icon2.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.payment_icon3{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/payment_icon3.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.payment_icon4{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/payment_icon4.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.payment_icon5{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/payment_icon5.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.payment_icon6{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/payment_icon6.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.scrap_icon1{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/scrap_icon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.scrap_icon2{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/scrap_icon2.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.member_icon{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/mr_member.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.mricon1{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/mricon1.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.mricon2{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/mricon2.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.mricon3{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/mricon3.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.mricon4{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/myroom/mricon4.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.reset{display:inline-block;vertical-align: middle;background-image:url('file:///android_asset/images/common/reset.svg');background-repeat:no-repeat;background-position:center 0;background-size:100% 100%;position:relative;top:-2px;}
+.ua-samsungbrowser .notcm_icon{top:-4px;}
+
+.depi2{display:inline-block;position:relative;width:12px;height:13px;}
+.depi2:before{content:"";display:inline-block;width:1px;height:10px;background:#525252;position:absolute;left:0;top:0px;}
+.depi2:after{content:"";display:inline-block;width:11px;height:1px;background:#525252;position:absolute;left:0;top:10px;}
+
+.lecture_icon1{color:#3866cd;}
+.lecture_icon1:before{background: url('file:///android_asset/images/teacher/lecture_icon1.svg') center center no-repeat;background-size:auto 100%;}
+.lecture_icon2{color:#229a84;}
+.lecture_icon2:before{background: url('file:///android_asset/images/teacher/lecture_icon2.svg') center center no-repeat;background-size:auto 100%;}
+.lecture_icon3{color:#c5963c;}
+.lecture_icon3:before{background: url('file:///android_asset/images/teacher/lecture_icon3.svg') center center no-repeat;background-size:auto 100%;}
+.lecture_icon4{color:#e65b4e;}
+.lecture_icon4:before{background: url('file:///android_asset/images/teacher/lecture_icon4.svg') center center no-repeat;background-size:auto 100%;}
+.lecture_icon5{color:#777777;}
+.lecture_icon5:before{background: url('file:///android_asset/images/teacher/lecture_icon5.svg') center center no-repeat;background-size:auto 100%;}
+.lecture_icon6{color:#777777;}
+.lecture_icon6:before{background: url('file:///android_asset/images/teacher/lecture_icon6.svg') center center no-repeat;background-size:auto 100%;}
+.lecture_icon7{color:#777777;}
+.lecture_icon7:before{background: url('file:///android_asset/images/teacher/lecture_icon7.svg') center center no-repeat;background-size:auto 100%;}
+
+
+.tx_icon{display:inline-block;position:relative;top:1px;padding:2px 5px 2px;font-size: 10px;line-height:1;font-weight:300;border:1px solid #ccc;color:#999999;}
+.tx_icon.basic_color{border:1px solid #129ca7;color:#129ca7;} /* n,up */
+.tx_icon.etc1_color{border:1px solid #c58954;color:#c58954;} /* 새강좌 */
+.tx_icon.rsv_color{border:1px solid #27cfd1;color:#27cfd1;} /* 예약 */
+.tx_icon.fns_color{border:1px solid #5799ea;color:#5799ea;} /* 완강 */
+.tx_icon.pkg_color{border:1px solid #0ab727;color:#0ab727;} /* 패키지 */
+.tx_icon.etc2_color{border:1px solid #da9b15;color:#da9b15;} /* DIY패키지 */
+.tx_icon.etc3_color{border:1px solid #c97b37;color:#c97b37;} /* 대특강 */
+.tx_icon.weekend{border:1px solid #00c0ff;color:#00c0ff;} /* 주말전용 */
+.tx_icon.revision{border:1px solid #8f87ff;color:#8f87ff;} /* 복습강좌 */
+.tx_icon.mobile{border:1px solid #bda81a;color:#bda81a;} /* 모바일전용 */
+.tx_icon.pc{border:1px solid #b177ff;color:#b177ff;} /* pc전용 */
+.tx_icon.assis{border:1px solid #d06aea;color:#d06aea;} /* 수강중 */
+.tx_icon.hidea{border:1px solid #b39989;color:#b39989;} /* 감춘강좌 */
+.tx_icon.prelib{border:1px solid #0c818b;color:#0c818b;} /* 맛보기 */
+.tx_icon.lecture{border:1px solid #31859c;color:#31859c;} /* 강좌 */
+.tx_icon.book{border:1px solid #cd6209;color:#cd6209;} /* 교재 */
+.tx_icon.pkg_book{border:1px solid #cd6209;color:#cd6209;} /* 교재패키지 */
+.tx_icon.etbook{border:1px solid #0070c0;color:#0070c0;} /* 이투스북 */
+.tx_icon.mac{border:1px solid #7030a0;color:#7030a0;} /* 학습기기 */
+.tx_icon.freebie{border:1px solid #ff6600;color:#ff6600;} /* 사은품 */
+.tx_icon.zipdefault{border:1px solid #5a9eae;color:#5a9eae;} /* 기본주소 */
+.tx_icon.g3{border:1px solid #c97b37;color:#c97b37;} /* 고3 */
+.tx_icon.g2{border:1px solid #0c818b;color:#0c818b;} /* 고2 */
+.tx_icon.g1{border:1px solid #1e71d8;color:#1e71d8;} /* 고3 */
+.boxr{display:inline-block;position:relative;top:-1px;padding:1px 3px 1px;text-align:center;;font-size: 10px;line-height:1;font-weight:300;color:#888;border:1px solid #888;border-radius:20px;margin-left:2px;}
+.boxr span{display:inline-block;vertical-align:middle;position:relative;top:-1px;left:-1px;}
+.ua-ios .boxr span{top:1px;}
+.ua-ios td .boxr span{top:0px;}
+.ua-samsungbrowser .tx_icon{padding:3px 5px 1px;}
+.ua-android-4 .tx_icon{padding:1px 5px 3px;}
+
+.arrowud{display:inline-block;width: 22px;height: 22px;position:absolute;top:0;right:0;}
+.arrowud span{display:block;text-indent: -50000px;}
+.arrowud:before{position:absolute;top:11px;right:5px;content:"";display:block;width:10px;height:1px;background:#383838;transform:rotate(45deg);-webkit-transform: rotate(45deg);-webkit-transition: all .5s ease ;transition: all .5s ease ;}
+.arrowud:after{position:absolute;top:11px;right:12px;content:"";display:block;width:10px;height:1px;background:#383838;transform:rotate(-45deg);-webkit-transform: rotate(-45deg);-webkit-transition: all .5s ease ;transition: all .5s ease ;}
+.arrowud.on{position:absolute;top:0;right:0;}
+.arrowud.on:before{transform:rotate(-45deg);-moz-transform: rotate(-45deg);-webkit-transform: rotate(-45deg);-o-transform: rotate(-45deg);}
+.arrowud.on:after{transform:rotate(45deg);-moz-transform: rotate(45deg);-webkit-transform: rotate(45deg);-o-transform: rotate(45deg);}

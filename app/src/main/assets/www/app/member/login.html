@@ -8,15 +8,15 @@
 
 	<meta http-equiv="Content-Security-Policy" content="default-src * 'self' cdvfile://*; img-src * data: cdvfile://*; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 
-	<link rel="stylesheet" type="text/css" href="file:///android_asset/www/common/css/metoos_2017.css">
-	<script type="text/javascript" src="file:///android_asset/www/common/js/jquery/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="file:///android_asset/www/common/js/etoos_util.js"></script>
-	<script type="text/javascript" src="file:///android_asset/www/common/js/etoos_storage.js"></script>
+	<link rel="stylesheet" type="text/css" href="file:///android_asset/www/app/common-res/css/metoos_2017.css">
+	<script type="text/javascript" src="file:///android_asset/www/app/common-res/js/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="file:///android_asset/www/app/common-res/js/etoos_util.js"></script>
+	<script type="text/javascript" src="file:///android_asset/www/app/common-res/js/etoos_storage.js"></script>
+	<script type="text/javascript" src="file:///android_asset/www/app/common-res/js/etoos_ui.js"></script>
 
-	<script type="text/javascript" src="file:///android_asset/www/app/common/head.js"></script>
-	<script type="text/javascript" src="file:///android_asset/www/common/js/etoos_ui.js"></script>
+	<script type="text/javascript" src="file:///android_asset/www/app/head.js"></script>
 
-	<title>이투스 메인</title>
+	<title>로그인</title>
 </head>
 <body>
 <div id="etoosHtmlBody">
@@ -24,16 +24,10 @@
 	<div id="etoosWrap">
 
 		<!--//////////////////// 메인 컨텐츠 시작 ////////////////////////////// -->
-		<form id="fmLogin" name="fmLogin" method="post" action="http://m0.etoos.com/member/login_sql.asp">
-
-			<input type="hidden" name="returnURL" value="http://m0.etoos.com/my_room/">
-			<input type="hidden" name="authDom" value="">
-
-
+		<form id="fmLogin" name="fmLogin" method="post">
 			<div id="all_popupBody">
 				<div id="all_popup">
 					<div class="all_popup" style="padding-bottom:40%;">
-						<h1 class="tac">로그인<a href="javascript:fnLoginCancel();"><span>전체 팝업 닫기</span></a></h1>
 
 						<div class="allpo_box">
 							<div class="box_login">
@@ -48,6 +42,10 @@
 									</span>
 								</div>
 								<div class="mt5">
+									<span class="checkbox">
+										<input type="checkbox" id="mem_id_save" name="mem_id_save" value="Y">
+										<label for="mem_id_save"><span class="box"></span><span>아이디 저장</span></label>
+									</span>
 									<span class="checkbox">
 										<input type="checkbox" id="auto_login" name="auto_login" value="Y">
 										<label for="auto_login"><span class="box"></span><span>자동 로그인</span></label>
@@ -84,7 +82,7 @@
 <!-- external library -->
 
 <!-- etoos library -->
-<script type="text/javascript" src="file:///android_asset/www/common/js/etoos_common.js"></script>
+<script type="text/javascript" src="file:///android_asset/www/app/common-res/js/etoos_common.js"></script>
 <!-- etoos library -->
 
 <script type="text/javascript" src="login.js"></script>

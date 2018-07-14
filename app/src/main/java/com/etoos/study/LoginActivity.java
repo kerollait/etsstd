@@ -1,116 +1,165 @@
 package com.etoos.study;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.etoos.study.common.utils.CommonUtils;
-import com.etoos.study.common.utils.RecycleUtils;
-import com.etoos.study.player.PlayerActivity;
+
+import org.apache.cordova.CordovaActivity;
+import org.apache.cordova.engine.SystemWebViewEngine;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends CordovaActivity {
+	private CustomSwipeToRefresh mySwipeRefreshLayout;
+	private ViewTreeObserver.OnScrollChangedListener mOnScrollChangedListener;
 
-	private Activity activity;
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+			overridePendingTransition(R.anim.activity_open_translate, R.anim.activity_close_scale);
+		}
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            overridePendingTransition(R.anim.activity_open_translate, R.anim.activity_close_scale);
-        }
+		super.init();
 
-        activity = this;
+		SystemWebViewEngine systemWebViewEngine = (SystemWebViewEngine) appView.getEngine();
+		WebViewClient customWebViewClient = new CustomWebviewClient(systemWebViewEngine, this);
 
-        setContentView(R.layout.login);
+		WebView webView = (WebView) systemWebViewEngine.getView();
+		webView.setWebViewClient(customWebViewClient);
 
-        ImageView btnLoginClose = findViewById(R.id.btn_login_close);
-        TextView loginTitle = findViewById(R.id.tv_login_title);
-        final EditText editLoginId = findViewById(R.id.et_login_id);
-        final EditText editLoginPwd = findViewById(R.id.et_login_pwd);
-        final Button btnLoginSubmit = findViewById(R.id.btn_login_submit);
-        final Button btnJoinMember = findViewById(R.id.btn_join_member);
+		String returnUrl = "";
+		Bundle b = getIntent().getExtras();
+
+		try {
+			returnUrl = b.getString("return_url");
+		} catch(Exception e) {
+
+		}
+
+		super.loadUrl("file:///android_asset/www/app/member/login.html?return_url="+ returnUrl);
+
+		mySwipeRefreshLayout = this.findViewById(R.id.swipeContainer);
+		mySwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.color_button_default));
+		mySwipeRefreshLayout.setOnRefreshListener(
+				() -> {
+					appView.loadUrl("javascript:fnSwipePullRefresh();");
+
+					new Handler().postDelayed(() -> mySwipeRefreshLayout.setRefreshing(false), 1000);
+				}
+		);
+	}
+
+	@SuppressWarnings({"deprecation", "ResourceType", "InflateParams"})
+	@Override
+	protected void createViews() {
+
+		// Main container layout
+		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View main = inflater.inflate(R.layout.main, null);
+
+		main.findViewById(R.id.footer).setVisibility(View.GONE);
+		main.findViewById(R.id.splash_screen).setVisibility(View.GONE);
+
+
+		main.findViewById(R.id.iv_menu).setVisibility(View.GONE);
+		main.findViewById(R.id.iv_back).setVisibility(View.VISIBLE);
+
+		main.findViewById(R.id.btn_header_left).setOnClickListener(v -> fnClose());
+
+		TextView tvTitle = main.findViewById(R.id.tv_title);
+		tvTitle.setText("로그인");
 
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
 			Typeface typeface = ResourcesCompat.getFont(this, R.font.noto_sans_kr_black_);
-			loginTitle.setTypeface(typeface);
-			editLoginId.setTypeface(typeface);
-			editLoginPwd.setTypeface(typeface);
-			btnLoginSubmit.setTypeface(typeface);
-			btnJoinMember.setTypeface(typeface);
+			tvTitle.setTypeface(typeface);
 		}
 
-        btnLoginClose.setOnClickListener(view -> {
-        	fnLoginCancel();
-        });
+		main.findViewById(R.id.ll_title).setVisibility(View.GONE);
+		tvTitle.setVisibility(View.VISIBLE);
 
-        btnLoginSubmit.setOnClickListener(view -> {
-			editLoginId.setEnabled(false);
-			editLoginPwd.setEnabled(false);
-			btnLoginSubmit.setEnabled(false);
-			btnJoinMember.setEnabled(false);
+		appView.getView().setId(300);
+		appView.getView().setLayoutParams(new RelativeLayout.LayoutParams(
+				ViewGroup.LayoutParams.MATCH_PARENT,
+				ViewGroup.LayoutParams.MATCH_PARENT));
 
-			CommonUtils.showLoader(activity);
+		// Add our webview to our main view/layout
+		RelativeLayout rl = main.findViewById(R.id.content);
+		rl.addView(appView.getView());
 
-			final Handler handler = new Handler();
-			handler.postDelayed(() -> {
-				CommonUtils.hideLoader(activity);
+		setContentView(main);
 
-				Intent i = new Intent();
-				setResult(Activity.RESULT_OK, i);
-				finish();
-			}, 2000);
-        });
+		if (preferences.contains("BackgroundColor")) {
+			try {
+				int backgroundColor = preferences.getInteger("BackgroundColor", Color.BLACK);
+				// Background of activity:
+				appView.getView().setBackgroundColor(backgroundColor);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+		}
 
-        btnJoinMember.setOnClickListener(view -> {
-
-			String url = "http://redirector.c.youtube.com/videoplayback?id=604ed5ce52eda7ee&itag=22&source=youtube&sparams=ip,ipbits,expire,source,id&ip=0.0.0.0&ipbits=0&expire=19000000000&signature=513F28C7FDCBEC60A66C86C9A393556C99DC47FB.04C88036EEE12565A1ED864A875A58F15D8B5300&key=ik0";
-			Uri uri = Uri.parse(url);
-
-			Intent i = new Intent(this, PlayerActivity.class);
-			i.setData(uri);
-			i.setAction(PlayerActivity.ACTION_VIEW);
-			startActivity(i);
-		});
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            overridePendingTransition(R.anim.activity_open_scale, R.anim.activity_close_translate);
-        }
-    }
+		appView.getView().requestFocusFromTouch();
+	}
 
 	@Override
-	public void onDestroy() {
-		super.onDestroy();
+	public void onStart() {
+		super.onStart();
 
-		RecycleUtils.recursiveRecycle(getWindow().getDecorView());
-		RecycleUtils.gc();
+		mySwipeRefreshLayout.getViewTreeObserver().addOnScrollChangedListener(mOnScrollChangedListener =
+				() -> {
+					if (appView.getView().getScrollY() == 0)
+						mySwipeRefreshLayout.setEnabled(true);
+					else
+						mySwipeRefreshLayout.setEnabled(false);
+
+				});
+	}
+
+	@Override
+	public void onStop() {
+		mySwipeRefreshLayout.getViewTreeObserver().removeOnScrollChangedListener(mOnScrollChangedListener);
+		CommonUtils.hideLoader(this);
+		super.onStop();
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+			overridePendingTransition(R.anim.activity_open_scale, R.anim.activity_close_translate);
+		}
 	}
 
 	@Override
 	public void onBackPressed() {
-		fnLoginCancel();
+		fnClose();
 	}
 
-	private void fnLoginCancel() {
+	public void fnClose() {
+		CommonUtils.hideLoader(this);
+
 		Intent i = new Intent();
 		setResult(Activity.RESULT_CANCELED, i);
+
 		finish();
 	}
 }

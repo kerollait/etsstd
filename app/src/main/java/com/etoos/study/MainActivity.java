@@ -79,27 +79,6 @@ public class MainActivity extends CordovaActivity {
 		Log.d(LOG_TAG, "device type : "+ deviceInfo.getDeviceInfo(Device.DEVICE_TYPE));
     }
 
-
-	@Override
-	public void onStart() {
-		super.onStart();
-
-		mySwipeRefreshLayout.getViewTreeObserver().addOnScrollChangedListener(mOnScrollChangedListener =
-				() -> {
-					if (appView.getView().getScrollY() == 0)
-						mySwipeRefreshLayout.setEnabled(true);
-					else
-						mySwipeRefreshLayout.setEnabled(false);
-
-				});
-	}
-
-	@Override
-	public void onStop() {
-		mySwipeRefreshLayout.getViewTreeObserver().removeOnScrollChangedListener(mOnScrollChangedListener);
-		super.onStop();
-	}
-
     @SuppressWarnings({"deprecation", "ResourceType", "InflateParams"})
     @Override
     protected void createViews() {
@@ -132,7 +111,7 @@ public class MainActivity extends CordovaActivity {
         RelativeLayout navBtn = main.findViewById(R.id.btn_header_left);
         navBtn.setOnClickListener(v -> {
             Intent i = new Intent(context, WebViewActivity.class);
-            i.putExtra("url", "app/common/gnb.html");
+            i.putExtra("url", "app/gnb/gnb.html");
             i.putExtra("shouldShowLoading", false);
             i.putExtra("title", "");
             i.putExtra("animType", "from_left");
@@ -146,13 +125,18 @@ public class MainActivity extends CordovaActivity {
         tvTitle.setVisibility(View.GONE);
 
         LinearLayout btnFooterHome = main.findViewById(R.id.btn_footer_home);
-        LinearLayout btnFooterRecentPlayList = main.findViewById(R.id.btn_footer_recent_playlist);
+        LinearLayout btnFooterStudyList = main.findViewById(R.id.btn_footer_study_list);
+		LinearLayout btnFooterFavoriteList = main.findViewById(R.id.btn_footer_favorite_list);
         LinearLayout btnFooterDownloadList = main.findViewById(R.id.btn_footer_download_list);
         LinearLayout btnFooterMyroom = main.findViewById(R.id.btn_footer_myroom);
 
         btnFooterHome.setOnClickListener(view -> appView.loadUrl(launchUrl));
 
-        btnFooterRecentPlayList.setOnClickListener(view -> {
+        btnFooterStudyList.setOnClickListener(view -> {
+
+		});
+
+		btnFooterFavoriteList.setOnClickListener(view -> {
 
 		});
 
@@ -160,7 +144,7 @@ public class MainActivity extends CordovaActivity {
 
 		});
 
-        btnFooterMyroom.setOnClickListener(view -> appView.loadUrl("file:///android_asset/www/app/my_room/index.html"));
+        btnFooterMyroom.setOnClickListener(view -> appView.loadUrl("javascript:fnGoMyroom();"));
 
         setContentView(main);
 
@@ -170,6 +154,27 @@ public class MainActivity extends CordovaActivity {
         final Handler handler = new Handler();
         handler.postDelayed(this::removeSplashScreen, 1000);
     }
+
+	@Override
+	public void onStart() {
+		super.onStart();
+
+		mySwipeRefreshLayout.getViewTreeObserver().addOnScrollChangedListener(mOnScrollChangedListener =
+				() -> {
+					if (appView.getView().getScrollY() == 0)
+						mySwipeRefreshLayout.setEnabled(true);
+					else
+						mySwipeRefreshLayout.setEnabled(false);
+
+				});
+	}
+
+	@Override
+	public void onStop() {
+		mySwipeRefreshLayout.getViewTreeObserver().removeOnScrollChangedListener(mOnScrollChangedListener);
+		CommonUtils.hideLoader(this);
+		super.onStop();
+	}
 
 	@Override
 	public void onDestroy() {

@@ -20,8 +20,8 @@ var app = {
 app.initialize();
 
 function initTcc() {
-    etoos_swiper = new EtoosSwiper();
-    etoos_swiper.init({
+    etoosSwiper = new EtoosSwiper();
+    etoosSwiper.init({
         menu_key: "area_cd",
         use_top_swiper_menu_hash_history: false,
         use_menu_reload_hash_history: false,

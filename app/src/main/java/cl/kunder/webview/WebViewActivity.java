@@ -82,6 +82,62 @@ public class WebViewActivity extends CordovaActivity {
 		);
     }
 
+	@SuppressWarnings({"deprecation", "ResourceType", "InflateParams"})
+	@Override
+	protected void createViews() {
+
+		// Main container layout
+		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View main = inflater.inflate(R.layout.main, null);
+
+		main.findViewById(R.id.footer).setVisibility(View.GONE);
+		main.findViewById(R.id.splash_screen).setVisibility(View.GONE);
+
+		if (title != null && !title.isEmpty()) {
+			main.findViewById(R.id.iv_menu).setVisibility(View.GONE);
+			main.findViewById(R.id.iv_back).setVisibility(View.VISIBLE);
+
+			main.findViewById(R.id.btn_header_left).setOnClickListener(v -> fnClose());
+
+			TextView tvTitle = main.findViewById(R.id.tv_title);
+			tvTitle.setText(title);
+
+			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+				Typeface typeface = ResourcesCompat.getFont(this, R.font.noto_sans_kr_black_);
+				tvTitle.setTypeface(typeface);
+			}
+
+			main.findViewById(R.id.ll_title).setVisibility(View.GONE);
+			tvTitle.setVisibility(View.VISIBLE);
+		} else {
+			main.findViewById(R.id.header).setVisibility(View.GONE);
+		}
+
+		appView.getView().setId(200);
+		appView.getView().setLayoutParams(new RelativeLayout.LayoutParams(
+				ViewGroup.LayoutParams.MATCH_PARENT,
+				ViewGroup.LayoutParams.MATCH_PARENT));
+
+		// Add our webview to our main view/layout
+		RelativeLayout rl = main.findViewById(R.id.content);
+		rl.addView(appView.getView());
+
+		setContentView(main);
+
+		if (preferences.contains("BackgroundColor")) {
+			try {
+				int backgroundColor = preferences.getInteger("BackgroundColor", Color.BLACK);
+				// Background of activity:
+				appView.getView().setBackgroundColor(backgroundColor);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+		}
+
+		appView.getView().requestFocusFromTouch();
+	}
+
+
 	@Override
 	public void onStart() {
 		super.onStart();
@@ -99,68 +155,9 @@ public class WebViewActivity extends CordovaActivity {
 	@Override
 	public void onStop() {
 		mySwipeRefreshLayout.getViewTreeObserver().removeOnScrollChangedListener(mOnScrollChangedListener);
+		CommonUtils.hideLoader(this);
 		super.onStop();
 	}
-
-    @SuppressWarnings({"deprecation", "ResourceType", "InflateParams"})
-    @Override
-    protected void createViews() {
-
-        // Main container layout
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View main = inflater.inflate(R.layout.main, null);
-
-        main.findViewById(R.id.footer).setVisibility(View.GONE);
-        main.findViewById(R.id.splash_screen).setVisibility(View.GONE);
-
-        if (title != null && !title.isEmpty()) {
-            main.findViewById(R.id.iv_menu).setVisibility(View.GONE);
-            main.findViewById(R.id.iv_back).setVisibility(View.VISIBLE);
-
-            main.findViewById(R.id.btn_header_left).setOnClickListener(v -> fnClose());
-
-            TextView tvTitle = main.findViewById(R.id.tv_title);
-            tvTitle.setText(title);
-
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                Typeface typeface = ResourcesCompat.getFont(this, R.font.noto_sans_kr_black_);
-                tvTitle.setTypeface(typeface);
-            }
-
-            main.findViewById(R.id.ll_title).setVisibility(View.GONE);
-            tvTitle.setVisibility(View.VISIBLE);
-        } else {
-            main.findViewById(R.id.header).setVisibility(View.GONE);
-        }
-
-        appView.getView().setId(200);
-        appView.getView().setLayoutParams(new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
-
-        // Add our webview to our main view/layout
-        RelativeLayout rl = main.findViewById(R.id.content);
-        rl.addView(appView.getView());
-
-        setContentView(main);
-
-        if (preferences.contains("BackgroundColor")) {
-            try {
-                int backgroundColor = preferences.getInteger("BackgroundColor", Color.BLACK);
-                // Background of activity:
-                appView.getView().setBackgroundColor(backgroundColor);
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            }
-        }
-
-        appView.getView().requestFocusFromTouch();
-    }
-
-    public void fnClose() {
-		CommonUtils.hideLoader(activity2);
-		finish();
-    }
 
     @Override
     public void onPause() {
@@ -174,6 +171,10 @@ public class WebViewActivity extends CordovaActivity {
             }
         }
     }
+
+	public void fnClose() {
+		finish();
+	}
 
     @Override
     public void onBackPressed() {

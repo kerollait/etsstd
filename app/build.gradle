@@ -175,6 +175,10 @@ android {
       abortOnError false;
     }
 
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
     compileSdkVersion cdvCompileSdkVersion
     buildToolsVersion cdvBuildToolsVersion
 
@@ -234,10 +238,10 @@ android {
         signingConfigs {
             release {
                 // These must be set or Gradle will complain (even if they are overridden).
-                keyAlias = ""
-                keyPassword = "__unset" // And these must be set to non-empty in order to have the signing step added to the task graph.
-                storeFile = null
-                storePassword = "__unset"
+                keyAlias = "etoos"
+                keyPassword = "2xntmApp" // And these must be set to non-empty in order to have the signing step added to the task graph.
+                storeFile = "../release-key.jks"
+                storePassword = "2xntmApp"
             }
         }
         buildTypes {

@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+/*메인 비주얼*/
+#mainvisual{position:relative;padding-top:5px;background:#fff;}
+#mainvisual .swiper-container{padding-bottom: 10px;}
+#mainvisual .swiper-slide{position:relative;-webkit-border-radius:5px;border-radius:5px;overflow: hidden;}
+#mainvisual .swiper-slide > a{display: block; width: 100%;position:relative;}
+#mainvisual .swiper-pagination{width:auto;left:auto;right:9%;bottom: 18px;font-family: 'Roboto';color:#999999;font-size:10px;letter-spacing: -0.1em;}
+#mainvisual .swiper-pagination .swiper-pagination-current{color:#fff;font-weight:700;}
+#mainvisual .swiper-slide-active{box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.2);}
+/*메인 배너*/
+#mainbanner{padding:0 10px;background:#fff;}
+#mainbanner .swiper-slide{position:relative;padding-bottom:10px;}
+#mainbanner .swiper-slide > a{display: block; width: 100%;position:relative;text-align:left;}
+#mainbanner .swiper-slide > a > span{display:inline-block;margin-left:20px;width:40px;color:#0c818b;border-top: 1px solid #c2c2c2;font-family: 'Roboto';font-size:13px;text-align:center;letter-spacing: 0;padding-top:3px;vertical-align:top;}
+#mainbanner .swiper-slide > a > span s{font-size:10px;font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;text-decoration: none;position:relative;top:-1px;}
+#mainbanner .swiper-pagination{width:auto;left:auto;right:9%;bottom: 16px;font-family: 'Roboto';color:#999999;font-size:10px;letter-spacing: -0.1em;}
+#mainbanner .swiper-pagination .swiper-pagination-current{color:#222222;font-weight:700;}
+#mainbanner .minbmore{position:absolute;bottom:13px;right:0;border:1px solid #a5a5a5;display:inline-block;width:18px;height:18px;z-index: 2;background:#fff;}
+#mainbanner .minbmore span{display:block;text-indent:-5000px;position:relative;}
+#mainbanner .minbmore span:after{content:"";display:block;width:1px;height:9px;background:#4e4e4e;position:absolute;left:50%;top:50%;margin-top:-5px;}
+#mainbanner .minbmore span:before{content:"";display:block;width:9px;height:1px;background:#4e4e4e;position:absolute;left:50%;top:50%;margin-left:-4px;margin-top:-1px;}
+.minbmlist li{border-bottom:1px solid #dadada;padding:0 15px;}
+/*메인 박스공통*/
+.mainbox{margin-top:6px;background:#fff;padding:15px 0 15px 13px;}
+.mainbox h2{color:#222222;font-size:15px;font-weight:700;margin-bottom:8px;}
+.mainbox h2 a{color:#222222;font-size:15px;font-weight:700;}
+.mainbox .mainrbox{padding-right:13px;}
+/*tcc*/
+#tccswiper .swiper-slide > a{display: block; width: 100%;position:relative;text-align:left; text-decoration: none;}
+#tccswiper .swiper-slide > a .tccsicon{position:absolute;left:0;top:0;}
+#tccswiper .swiper-slide > a .list_ti{font-size:13px;margin-top: 6px;}
+#tccswiper .swiper-slide > a .list_nameb{display:block;margin-top:2px;color:#999999;font-size:11px;}
+/*오늘도 열강중*/
+#tchswiper .swiper-slide > a{display: block; width: 100%;position:relative;text-align:left; text-decoration: none;}
+#tchswiper .swiper-slide > a div{position:relative;padding:10px;border:3px solid #e6e6e6;border-bottom:3px solid #bfbfbf;min-height:100px}
+#tchswiper .swiper-slide > a div:after{content:"";display:block;width:3px;height:25px;background:#bfbfbf;position:absolute;left:-3px;bottom:-3px;}
+#tchswiper .swiper-slide > a div:before{content:"";display:block;width:3px;height:25px;background:#bfbfbf;position:absolute;right:-3px;bottom:-3px;}
+#tchswiper .swiper-slide > a div .tx{display:block;color:#222222;font-size:13px;}
+#tchswiper .swiper-slide > a div .name{display:block;margin-top:6px;color:#999999;font-size:11px;color:#222222;}
+#tchswiper .swiper-slide > a div .name s{display:inline-block;position:relative;text-decoration: none;}
+#tchswiper .swiper-slide > a div .name s:after{content:"";display:block;width:100%;height:1px;background:#222222;position:absolute;left:0px;top:-3px;}
+#tchswiper .swiper-slide > a div .img{position:absolute;bottom:0;left:0;}
+#tchswiper .swiper-slide > a div .img img{width:100%;max-width:134px;}
+/*입시,학습정보, 의치정보*/
+.mainsbox li{float:left;width:50%;}
+.mainsbox li a{display:block;text-decoration: none;}
+.mainsbox li a > div{border:1px solid #dddddd;background:#f1f1f1;position:relative;padding:23px 0 20px;text-align:center;min-height: 42px;}
+.mainsbox li:nth-of-type(1) a > div{border-right:0;}
+.mainsbox li a > div > strong{display: block;color:#222222;font-size:14px;font-weight:500;}
+.mainsbox li a > div > strong span{color:#0c818b;}
+.mainsbox li a > div .sti{position:absolute;left:-1px;top:-1px;display:inline-block;color:#222222;font-size:10px;background:#fff;padding:2px 10px;border:1px solid #dddddd;}
+.mainsbox li a > div .playicon{position:absolute;right:5px;bottom:5px;}
+.mainsbox li a > p{margin:6px 0 0;padding:0 8px;color:#999999;font-size:13px;}
+.tagbox{margin-top:1px;background:#fff;padding:8px 5px 10px 18px;}
+.tagbox > div{text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;overflow:hidden;}
+.tagbox a{color:#333333;font-size:12px;text-decoration: none;margin-right:8px;}
+/*의치배너부분*/
+.recm li{float:left;width:33.3%;}
+.recm li a{display:block;border-left:1px solid #f1f1f1;text-align:center;text-decoration: none;padding:15px 0;}
+.recm li a:before{content:"";display:inline-block;width:50px;height:36px;background-image:url('file:///android_asset/images/main/mainimg.png');background-size:250px auto;background-position:0 0;}
+.recm li a span{display:block;color:#222222;font-size:13px;margin-top:3px;}
+.recm li:nth-of-type(1) a{border-left:0px}
+.recm li:nth-of-type(1) a:before{background-position:0 0;}
+.recm li:nth-of-type(2) a:before{background-position:-50px 0;}
+.recm li:nth-of-type(3) a:before{background-position:-100px 0;}
+/*메인 한컷강의*/
+#onecut{margin-top:8px;}
+#onecut .swiper-slide > a{display: block; width: 100%;position:relative;text-align:left; text-decoration: none;padding-bottom: 50px;}
+#onecut .swiper-slide > a .img{position:relative;}
+#onecut .swiper-slide > a .img img{width:100%;}
+#onecut .swiper-slide > a .img:after{content:"";display:block;position:absolute;left:0;top:0;width:100%;height:100%;background:#000;opacity:0.5;}
+#onecut .swiper-slide > a .tx{background:#222222;color:#fff;font-size:13px;padding:7px;}
+#onecut .swiper-slide > a .tx span{display:block;overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;min-height: 38px;}
+#onecut .swiper-slide > a .nameimg{display:block;position:absolute;left:0;bottom: 12px;width:100%;text-align:center;}
+#onecut .swiper-slide > a .nameimg img{width:45px;border-radius:100%;overflow:hidden;}
+#onecut .swiper-slide > a .nameimg span{margin-top:4px;}
+/*선생님 이벤트*/
+.tchevent{border-top:2px solid #dddddd;width: 100%;position:relative;}
+.tchevent li{border-bottom:1px solid #dddddd;position:relative;padding:10px 10px 10px 66px;min-height:42px;text-align:left;}
+.tchevent li a{text-decoration: none;}
+.tchevent li .img{position:absolute;left:0;bottom:0;height:54px;padding-top: 10px;overflow:hidden;}
+.tchevent li .img img{width:62px;}
+.tchevent li .tx strong{display:block;color:#222;font-size:14px;font-weight:500;}
+.tchevent li .tx .name{color:#999999;font-size:12px;}
+.tchevent li .list_data{position:absolute;right:10px;bottom:10px;}
+#tchevent{position:relative;padding-bottom:10px;}
+#tchevent .swiper-pagination{text-align:right;font-family: 'Roboto';color:#999999;font-size:10px;letter-spacing: -0.1em;margin-top:5px;bottom: -10px;}
+#tchevent .swiper-pagination .swiper-pagination-current{color:#222222;font-weight:700;}
+/*패밀리 사이트*/
+.familysite{padding:21px 35px 16px 40px;background:#fff;margin-top:6px;}
+.familysite li{float:left;margin-bottom:8px;}
+.familysite li:nth-of-type(1), .familysite li:nth-of-type(4){width:38%;}
+.familysite li:nth-of-type(2), .familysite li:nth-of-type(5){width:26%;}
+.familysite li:nth-of-type(3), .familysite li:nth-of-type(6){width:36%;}
+.familysite li a{font-size:11px;color:#555555;text-decoration: none;}
+
+/*메인 app비주얼*/
+#appmainvisual{position:relative;background:#fff;padding:15px 13px 0;}
+#appmainvisual .swiper-container{-webkit-border-radius:5px;border-radius:5px;overflow: hidden;}
+#appmainvisual .swiper-slide{position:relative;overflow: hidden;}
+#appmainvisual .swiper-slide > a{display: block; width: 100%;position:relative;}
+#appmainvisual .swiper-pagination{width:auto;left:auto;right:13px;bottom:8px;font-family: 'Roboto';color:#999999;font-size:10px;letter-spacing: -0.1em;}
+#appmainvisual .swiper-pagination .swiper-pagination-current{color:#fff;font-weight:700;}
+
+#appmainevent1{position:relative;background:#fff;padding:6px 13px 15px;}
+#appmainevent1 .swiper-container{-webkit-border-radius:5px;border-radius:5px;overflow: hidden;}
+#appmainevent1 .swiper-slide{position:relative;overflow: hidden;}
+#appmainevent1 .swiper-slide > a{display: block; width: 100%;position:relative;}
+#appmainevent1 .swiper-pagination{width:auto;left:auto;right:13px;bottom:8px;font-family: 'Roboto';color:#999999;font-size:10px;letter-spacing: -0.1em;}
+#appmainevent1 .swiper-pagination .swiper-pagination-current{color:#fff;font-weight:700;}
+
+.appmainev{position:relative;background:#fff;padding:6px 13px 15px;}
+.appmainev > div{-webkit-border-radius:5px;border-radius:5px;overflow: hidden;}
+.ua-ios .appmainev > div{position: relative;z-index:10}
+.appmainev .swiper-slide{position:relative;overflow: hidden;}
+.appmainev .swiper-slide > a{display: block; width: 100%;position:relative;}
+.appmainev .swiper-pagination{width:auto;left:auto;right:13px;bottom:8px;font-family: 'Roboto';color:#999999;font-size:10px;letter-spacing: -0.1em;}
+.appmainev .swiper-pagination .swiper-pagination-current{color:#fff;font-weight:700;}
+
+.appmainevent{position:relative;background:#fff;padding:6px 13px 15px;}
+.appmainevent .swiper-container{-webkit-border-radius:5px;border-radius:5px;overflow: hidden;}
+.appmainevent .swiper-slide{position:relative;overflow: hidden;}
+.appmainevent .swiper-slide > a{display: block; width: 100%;position:relative;}
+.appmainevent .swiper-pagination{width:auto;left:auto;right:13px;bottom:8px;font-family: 'Roboto';color:#999999;font-size:10px;letter-spacing: -0.1em;}
+.appmainevent .swiper-pagination .swiper-pagination-current{color:#fff;font-weight:700;}
+
+#appmainevent > div{border-radius: 5px;overflow: hidden;position: relative;z-index: 2;}
+#appmainevent .bx-wrapper{position:relative;}
+#appmainevent .bx-default-pager{position: absolute;width:auto;left:auto;right:13px;bottom:8px;font-family: 'Roboto';color:#999999;font-size:10px;letter-spacing: -0.1em;}
+#appmainevent .bx-default-pager:first-letter { color:#fff } 
+#appmainevent .bx-default-pager span { color:#999999;margin:0 2px; } 
+
+.nban_ti{text-align:center;line-height:1.2}
+.nban_ti > span{display:inline-block;position:relative;color:#666666;font-size:14px;font-weight:300;padding: 0 18px;}
+.nban_ti > span > span{display:inline-block;background:#fff;position:relative;z-index:2;padding: 0 18px;}
+.nban_ti > span > span:after{content:"";display:inline-block;width:1px;height:10px;background:#cccccc;position:absolute;left:-18px;top:29px;}
+.nban_ti > span > span:before{content:"";display:inline-block;width:1px;height:10px;background:#cccccc;position:absolute;right:-18px;top:29px;}
+.nban_ti strong{display:block;color:#222222;font-size:22px;}
+.nban_ti > span:after{content:"";display:inline-block;width:100%;height:1px;background:#cccccc;position:absolute;left:0;top:29px;}
+.nban_list{margin-top:12px;}
+.nban_list li{margin-top:3px;}
+
+.mainkeep{margin-top:8px;}
+.mainkeep .swiper-slide > a{display: block; width: 100%;position:relative;text-align:left; text-decoration: none;padding-bottom: 50px;}
+.mainkeep .swiper-slide > a .img{position:relative;}
+.mainkeep .swiper-slide > a .img img{width:100%;}
+.mainkeep .swiper-slide > a .img:after{content:"";display:block;position:absolute;left:0;top:0;width:100%;height:100%;background:#000;opacity:0.5;}
+.mainkeep .swiper-slide > a .tx{background:#222222;color:#fff;font-size:13px;padding:7px;}
+.mainkeep .swiper-slide > a .tx span{display:block;overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;min-height: 38px;}
+.mainkeep .swiper-slide > a .nameimg{display:block;position:absolute;left:0;bottom: 12px;width:100%;text-align:center;}
+.mainkeep .swiper-slide > a .nameimg img{width:45px;border-radius:100%;overflow:hidden;}
+.mainkeep .swiper-slide > a .nameimg span{margin-top:4px;}

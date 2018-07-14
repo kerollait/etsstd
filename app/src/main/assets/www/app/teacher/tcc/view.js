@@ -60,8 +60,8 @@ function onLoginSuccessCallback() {
 
 // 최신 TCC 상세보기
 function fnLatelyTccView(board_id, board_arti_id) {
-	if (etoos_swiper) {
-		etoos_swiper.goSubMenu("view", "board_id="+ board_id +"&board_arti_id="+ board_arti_id +"&_swipe_scroll_top="+ page_param_tcc_view.swipe_scroll_top);
+	if (etoosSwiper) {
+		etoosSwiper.goSubMenu("view", "board_id="+ board_id +"&board_arti_id="+ board_arti_id +"&_swipe_scroll_top="+ page_param_tcc_view.swipe_scroll_top);
 	} else {
 		var url = "view.html?mode="+ page_param_tcc_view.mode;
 
@@ -83,22 +83,22 @@ function fnLatelyTccView(board_id, board_arti_id) {
 function fnTccList() {
 	var list_url = "";
 
-	if (etoos_swiper) { // EtoosSwiper 객체내라면..
+	if (etoosSwiper) { // EtoosSwiper 객체내라면..
 		var params = "";
 
 		// 스크롤위치가 기록되있지 않다면.. 해당 TCC 컨텐츠 위치로 이동되도록..
-		if (etoos_swiper.menu_list[etoos_swiper.now_menu].scrolltop == null && page_param_tcc_view.swipe_scroll_top == "") {
+		if (etoosSwiper.menu_list[etoosSwiper.now_menu].scrolltop == null && page_param_tcc_view.swipe_scroll_top == "") {
 
 			params = "anchor=tcc_"+ page_param_tcc_view.board_arti_id +"&anchor_rev_px="+ -($('#top_swiper_menu').height() + 1);
 
-		} else if (page_param_tcc_view.swipe_scroll_top != "" && etoos_util.isNumeric(page_param_tcc_view.swipe_scroll_top)) {
+		} else if (page_param_tcc_view.swipe_scroll_top != "" && etoosSwiper.isNumeric(page_param_tcc_view.swipe_scroll_top)) {
 
 			params = "anchor_scroll_top="+ page_param_tcc_view.swipe_scroll_top;
 
 		}
 
 		// 목록으로 이동..
-		etoos_swiper.goMainMenu(params, page_param_tcc_view.list_hash_params);
+		etoosSwiper.goMainMenu(params, page_param_tcc_view.list_hash_params);
 
 	} else { // 외부 URL로 연결된 경우라면..
 
@@ -117,7 +117,7 @@ function fnTccList() {
 
 				list_url += "#!/"+ page_param_tcc_view.list_hash_params;
 
-				if (page_param_tcc_view.swipe_scroll_top != "" && etoos_util.isNumeric(page_param_tcc_view.swipe_scroll_top)) { // swiper 스크롤 위치가 있다면..
+				if (page_param_tcc_view.swipe_scroll_top != "" && etoosSwiper.isNumeric(page_param_tcc_view.swipe_scroll_top)) { // swiper 스크롤 위치가 있다면..
 
 					list_url += "&anchor_scroll_top="+ page_param_tcc_view.swipe_scroll_top;
 

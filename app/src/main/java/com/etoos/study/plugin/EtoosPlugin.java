@@ -203,32 +203,38 @@ public class EtoosPlugin extends CordovaPlugin {
 						LayoutInflater inflater = (LayoutInflater) cordova.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 						assert inflater != null;
 						ImageView ivHome = cordova.getActivity().findViewById(R.id.iv_footer_home);
-						ImageView ivRecent = cordova.getActivity().findViewById(R.id.iv_footer_recent_playlist);
-						ImageView ivDownload = cordova.getActivity().findViewById(R.id.iv_footer_download_list);
+						ImageView ivStudyList = cordova.getActivity().findViewById(R.id.iv_footer_study_list);
+						ImageView ivFavoriteList = cordova.getActivity().findViewById(R.id.iv_footer_favorite_list);
+						ImageView ivDownloadList = cordova.getActivity().findViewById(R.id.iv_footer_download_list);
 						ImageView ivMyroom = cordova.getActivity().findViewById(R.id.iv_footer_myroom);
 
-						ivHome.setImageResource(R.drawable.ic_home);
-						ivRecent.setImageResource(R.drawable.ic_m);
-						ivDownload.setImageResource(R.drawable.ic_fl);
-						ivMyroom.setImageResource(R.drawable.ic_u);
+						ivHome.setImageResource(R.drawable.icon_home);
+						ivStudyList.setImageResource(R.drawable.icon_study_list);
+						ivFavoriteList.setImageResource(R.drawable.icon_favorite_list);
+						ivDownloadList.setImageResource(R.drawable.icon_download_list);
+						ivMyroom.setImageResource(R.drawable.icon_user);
 
 						try {
 							String activeButton = args.getString(0);
 							switch (activeButton) {
 								case "home":
-									ivHome.setImageResource(R.drawable.ic_home_on);
+									ivHome.setImageResource(R.drawable.icon_home_on);
 									break;
 
-								case "recent":
-									ivRecent.setImageResource(R.drawable.ic_m_on);
+								case "study_list":
+									ivStudyList.setImageResource(R.drawable.icon_study_list_on);
+									break;
+
+								case "favorite_list":
+									ivFavoriteList.setImageResource(R.drawable.icon_favorite_list_on);
 									break;
 
 								case "download":
-									ivDownload.setImageResource(R.drawable.ic_fl_on);
+									ivDownloadList.setImageResource(R.drawable.icon_download_list_on);
 									break;
 
 								case "myroom":
-									ivMyroom.setImageResource(R.drawable.ic_u_on);
+									ivMyroom.setImageResource(R.drawable.icon_user_on);
 									break;
 							}
 

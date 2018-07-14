@@ -127,7 +127,9 @@ public class CommonUtils {
     public synchronized static void hideLoader(Activity activity) {
 		activity.runOnUiThread(() -> {
 			if (loaderDialog != null) {
-				loaderDialog.dismiss();
+				if (loaderDialog.isShowing()) {
+					loaderDialog.dismiss();
+				}
 				loaderDialog = null;
 			}
 		});

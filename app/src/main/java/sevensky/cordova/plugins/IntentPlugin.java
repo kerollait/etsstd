@@ -8,6 +8,7 @@ import android.util.Log;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.LOG;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +27,7 @@ public class IntentPlugin extends CordovaPlugin {
         if (action.equals("startActivity") || action.equals("startActivityForResult")) {
             String appName = args.getString(0);
             String activityName = args.getString(1);
-            JSONObject jsonObject=new JSONObject(args.getString(2));
+            JSONObject jsonObject = new JSONObject(args.getString(2));
             int requestCode = 0;
             if (action.equals("startActivityForResult")) {
             	try {
@@ -35,8 +36,8 @@ public class IntentPlugin extends CordovaPlugin {
 
 				}
 			}
-            Bundle bundle=new Bundle();
-            for(int i = 0; i<jsonObject.names().length(); i++){
+            Bundle bundle = new Bundle();
+            for(int i = 0; i < jsonObject.names().length(); i++){
                 bundle.putString(jsonObject.names().getString(i) ,
                         jsonObject.get(jsonObject.names().getString(i)).toString());
             }
@@ -47,7 +48,40 @@ public class IntentPlugin extends CordovaPlugin {
 				this.startActivityForResult(appName, activityName, bundle, requestCode);
 			}
             return true;
-        }
+        } else if (action.equals("finishActivity") || action.equals("finishActivityForResult")) {
+			String appName = args.getString(0);
+			String activityName = args.getString(1);
+			JSONObject jsonObject = new JSONObject(args.getString(2));
+			int resultCode = Activity.RESULT_OK;
+
+			if (action.equals("finishActivityForResult")) {
+				try {
+					String resultCodeType = args.getString(4);
+					if ("RESULT_OK".equals(resultCodeType.toUpperCase())) {
+						resultCode = Activity.RESULT_OK;
+					} else {
+						resultCode = Activity.RESULT_CANCELED;
+					}
+				} catch(Exception e) {
+
+				}
+			}
+
+			Bundle bundle = new Bundle();
+			for(int i = 0; i < jsonObject.names().length(); i++){
+				bundle.putString(jsonObject.names().getString(i) ,
+						jsonObject.get(jsonObject.names().getString(i)).toString());
+			}
+
+			if (action.equals("finishActivity")) {
+				this.finishActivity(appName, activityName);
+			} else if (action.equals("finishActivityForResult")) {
+				this.finishActivityForResult(appName, activityName, bundle, resultCode);
+			}
+
+			return true;
+		}
+
         return false;
     }
 
@@ -64,6 +98,14 @@ public class IntentPlugin extends CordovaPlugin {
         }
     }
 
+    private void finishActivity(String appName, String activityName) {
+		Log.d("EtoosSmartStudy", "IntetPlugin - finishActivity : appName = "+ appName +", activityName = "+ activityName);
+
+		if (appName != null && appName.length() > 0) {
+			Log.d("EtoosSmartStudy", this.cordova.getActivity().getLocalClassName());
+		}
+	}
+
     private void startActivityForResult(String appName,String activityName, Bundle bundle, int requestCode) {
 		Log.d("EtoosSmartStudy", "IntetPlugin - startActivityForResult : requestCode = "+ requestCode);
 		if (appName != null && appName.length() > 0) {
@@ -78,9 +120,25 @@ public class IntentPlugin extends CordovaPlugin {
 		}
 	}
 
+	private void finishActivityForResult(String appName, String activityName, Bundle bundle, int resultCode) {
+		Log.d("EtoosSmartStudy", "IntetPlugin - finishActivityForResult : appName = "+ appName +", activityName = "+ activityName);
+
+		if (appName != null && appName.length() > 0) {
+			if (this.cordova.getActivity().getPackageName().equals(appName) && this.cordova.getActivity().getLocalClassName().equals(activityName)) {
+
+				Intent intent = new Intent();
+				intent.putExtras(bundle);
+				this.cordova.getActivity().setResult(resultCode, intent);
+				this.cordova.getActivity().finish();
+			}
+		}
+	}
+
     @Override
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		int REQUEST_CODE_LOGIN = 1;
+
+		Log.d("EtoosSmartStudy", "IntentPlugin - onActivityResult resultCode : "+ resultCode + ", requestCode = "+ requestCode +", intent = "+ intent.getExtras());
 
 		if (requestCode == REQUEST_CODE_LOGIN) {
 			JSONObject r = new JSONObject();
@@ -93,9 +151,9 @@ public class IntentPlugin extends CordovaPlugin {
 				}
 
 				this.callbackContext.success(r);
-			} else {
+			} else if (resultCode == Activity.RESULT_CANCELED) {
 				try {
-					r.put("login_state", "canceled");
+					r.put("login_state", "cancel");
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}

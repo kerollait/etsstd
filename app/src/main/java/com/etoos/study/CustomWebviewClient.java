@@ -35,22 +35,18 @@ public class CustomWebviewClient extends SystemWebViewClient {
 
         RelativeLayout splashScreen = activity.findViewById(R.id.splash_screen);
 
-        if ((url.matches("(?i).*/www/app/index.html") && splashScreen.getVisibility() == View.VISIBLE) || (url.matches("(?i).*/www/app/common/gnb.html"))) {
+        if ((url.matches("(?i).*/www/app/index.html") && splashScreen.getVisibility() == View.VISIBLE)
+				|| url.matches("(?i).*/www/app/gnb/gnb.html")
+				|| url.matches("(?i).*/www/app/member/login.html")) {
 
         } else {
 			CommonUtils.showLoader(activity);
         }
-
-        Log.d("EtoosSmartStudy", "onPageStarted : "+ activity.getPackageName());
     }
 
     @Override
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
-
-
-		//CommonUtils.hideLoader(activity);
-
     }
 
     /**

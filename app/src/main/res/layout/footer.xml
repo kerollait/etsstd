@@ -25,7 +25,7 @@
         <LinearLayout
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="2.5"
+            android:layout_weight="2"
             android:id="@+id/btn_footer_home"
             android:gravity="center"
             android:clickable="true"
@@ -35,7 +35,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_home"
+                android:src="@drawable/icon_home"
                 android:id="@+id/iv_footer_home"/>
 
         </LinearLayout>
@@ -43,8 +43,8 @@
         <LinearLayout
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="2.5"
-            android:id="@+id/btn_footer_recent_playlist"
+            android:layout_weight="2"
+            android:id="@+id/btn_footer_study_list"
             android:gravity="center"
             android:clickable="true"
             android:focusable="true"
@@ -53,15 +53,33 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_m"
-                android:id="@+id/iv_footer_recent_playlist"/>
+                android:src="@drawable/icon_study_list"
+                android:id="@+id/iv_footer_study_list"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="2.5"
+            android:layout_weight="2"
+            android:id="@+id/btn_footer_favorite_list"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_favorite_list"
+                android:id="@+id/iv_footer_favorite_list"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
             android:id="@+id/btn_footer_download_list"
             android:gravity="center"
             android:clickable="true"
@@ -71,7 +89,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_fl"
+                android:src="@drawable/icon_download_list"
                 android:id="@+id/iv_footer_download_list"/>
 
         </LinearLayout>
@@ -79,7 +97,7 @@
         <LinearLayout
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="2.5"
+            android:layout_weight="2"
             android:id="@+id/btn_footer_myroom"
             android:gravity="center"
             android:clickable="true"
@@ -89,7 +107,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_u"
+                android:src="@drawable/icon_user"
                 android:id="@+id/iv_footer_myroom"/>
 
         </LinearLayout>
